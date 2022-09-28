@@ -33,6 +33,8 @@ const emoji = new EmojiAPI()
 const { smsg, formatp, tanggal, GIFBufferToVideoBuffer, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/myfunc')
 const { aiovideodl } = require('./lib/scraper.js')
 const cheerio = require ("cheerio");
+const eco = require('discord-mongoose-economy')
+const ty = eco.connect('mongodb+srv://jayjay:jayjay@cluster0.39zfejm.mongodb.net/test');
 const textpro = require('./lib/textpro')
 const { detikNews } = require('./lib/detik')
 const { wikiSearch } = require('./lib/wiki.js');
@@ -216,7 +218,7 @@ const mongoose = require("mongoose");
 /////////// -  DM chatbot (Delete this part to turn off DM Chat Bot) - //////////////////
 
 if (!isCmd && !m.isGroup){
-    const botreply = await axios.get(`http://api.brainshop.ai/get?bid=168758&key=Ci7eNhtxpxxDB5FQ&uid=[uid]&msg=[${budy}]`)
+    const botreply = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${budy}]`)
     txt = `${botreply.data.cnt}`
     m.reply(txt)
     }
@@ -691,27 +693,45 @@ let afkTime = user.afkTime
 if (!afkTime || afkTime < 0) continue
 let reason = user.afkReason || ''
 reply(`
-Pls try not to tag him!
-He's in away from keyboard ${reason ? 'with reason ' + reason : 'no reason'}
-During ${clockString(new Date - afkTime)}
+*Pls try not to tag him!*
+*He's away from keyboard ${reason ? 'with reason ' + reason : 'no reason'}
+During ${clockString(new Date - afkTime)}*
 `.trim())
 }
 
 if (db.users[m.sender].afkTime > -1) {
 let user = global.db.users[m.sender]
 reply(`
-Pls try not to tag him!
-He's Offline ${user.afkReason ? ' after ' + user.afkReason : ''}
-During ${clockString(new Date - user.afkTime)}
+*Pls try not to tag him!*
+*He's Offline ${user.afkReason ? ' after ' + user.afkReason : ''}
+During ${clockString(new Date - user.afkTime)}*
 `.trim())
 user.afkTime = -1
 user.afkReason = ''
 }
 
 
+/*
 if (m.mtype === 'groupInviteMessage') {
 teks = `I can't join the group untill my *Owner* ask me to join. Type *-owner* to get owner number and ask him.`
 sendOrder(m.chat, teks, "5123658817728409", fs.readFileSync('./Assets/pic10.jpg'), `${watermark}`, `${BotName}`, "916909137213@s.whatsapp.net", "AR7zJt8MasFx2Uir/fdxhkhPGDbswfWrAr2gmoyqNZ/0Wg==", "99999999999999999999")
+}
+*/
+
+if (!m.isGroup && !isCreator){
+    if (m.mtype === 'groupInviteMessage'){
+    //await Miku.sendMessage(m.chat, {text: `Sorry i can't join anymore groups as i have reached my limit\n\nFor further info you can ask my *Owner* by typing *${prefix}owner*`}, { quoted: m })
+    await Miku.sendMessage(m.chat, {text: `I can't join the group untill my *Owner* ask me to join. Type *${prefix}owner* to get owner number and ask him, then wait for his reply.`},  { quoted: m })
+  }
+}
+
+
+if (!m.isGroup && !isCreator){
+    let urls = 'https://chat.whatsapp.com/'
+     if (budy.includes(urls)){
+          //await Miku.sendMessage(m.chat, {text: `Sorry i can't join anymore groups as i have reached my limit\n\nFor further info you can ask my *Owner* by typing *${prefix}owner*`}, { quoted: m })
+          await Miku.sendMessage(m.chat, {text: `I can't join the group untill my *Owner* ask me to join. Type *${prefix}owner* to get owner number and ask him, then wait for his reply.`},  { quoted: m })
+     }
 }
 
 
@@ -726,7 +746,7 @@ if (AntiLink) {
     if (isCreator) return reply(bvl)
     kice = m.sender
     await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove').then((res) => reply(jsonformat(res))).catch((err) => reply(jsonformat(err)))
-    Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} Baka Has been removed for sending link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+    Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} Removed for sending link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
     } else {
     }
     }
@@ -740,7 +760,7 @@ if (AntiLink) {
   if (isCreator) return reply(bvl)
   kice = m.sender
   await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove')
-  Miku.sendMessage(from, {text:`\`\`\`「 'wa.me' PM link Detected! 」\`\`\`\n\n@${kice.split("@")[0]} Baka Has been removed for sending link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+  Miku.sendMessage(from, {text:`\`\`\`「 'wa.me' PM link Detected! 」\`\`\`\n\n@${kice.split("@")[0]} Removed for sending link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
   } else {
   }
   if (antiWame)
@@ -752,14 +772,14 @@ if (m.key.fromMe) return reply(bvl)
 if (isCreator) return reply(bvl)
 kice = m.sender
 await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove')
-Miku.sendMessage(from, {text:`\`\`\`「 'wa.me' PM link Detected! 」\`\`\`\n\n@${kice.split("@")[0]}  Baka Has been removed for sending link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+Miku.sendMessage(from, {text:`\`\`\`「 'wa.me' PM link Detected! 」\`\`\`\n\n@${kice.split("@")[0]} Removed for sending link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
 } else {
 }
 
 if (antiVirtex) {
     if (budy.length > 3500) {
     reply(`*Caution!*\n\n`.repeat(300))
-    reply(`\`\`\`Virus Detected !!\`\`\`\n\nRevoving sender...`)
+    reply(`\`\`\`Virus Detected !!\`\`\`\n\nRemoving sender...`)
     if (!isBotAdmins) return reply(mess.botAdmin)
     Miku.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
     }
@@ -778,7 +798,7 @@ if (antiVirtex) {
         if (isCreator) return reply(bvl)
         kice = m.sender
         await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove')
-        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} Baka has been removed for sending link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} Removed for sending link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
         } else {
         }
         }
@@ -793,7 +813,7 @@ if (antiVirtex) {
         if (isCreator) return reply(bvl)
         kice = m.sender
         await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove')
-        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} Baka has been removed for sending Yt video link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} has been removed for sending Yt video link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
         } else {
         }
         
@@ -806,7 +826,7 @@ if (antiVirtex) {
         if (isCreator) return reply(bvl)
         kice = m.sender
         await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove')
-        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} Baka has been removed for sending Yt channel link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} has been removed for sending Yt channel link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
         } else {
         }
         
@@ -819,7 +839,7 @@ if (antiVirtex) {
         if (isCreator) return reply(bvl)
         kice = m.sender
         await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove')
-        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} Baka has been removed for sending Instagram link in this group! No promotion is allowed!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} has been removed for sending Instagram link in this group! No promotion is allowed!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
         } else {
         }
         
@@ -832,7 +852,7 @@ if (antiVirtex) {
         if (isCreator) return reply(bvl)
         kice = m.sender
         await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove')
-        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} Baka has been removed for sending Facebook link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} has been removed for sending Facebook link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
         } else {
         }
         
@@ -846,7 +866,7 @@ if (antiVirtex) {
         if (isCreator) return reply(bvl)
         kice = m.sender
         await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove')
-        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} Baka has been removed for sending Telegram link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} has been removed for sending Telegram link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
         } else {
         }
         
@@ -859,7 +879,7 @@ if (antiVirtex) {
         if (isCreator) return reply(bvl)
         kice = m.sender
         await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove')
-        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} Baka has been removed for sending Tiktok link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} has been removed for sending Tiktok link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
         } else {
         }
         
@@ -872,7 +892,7 @@ if (antiVirtex) {
         if (isCreator) return reply(bvl)
         kice = m.sender
         await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove')
-        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} Baka has been removed for sending Twitter link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} has been removed for sending Twitter link in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
         } else {
         }
         
@@ -885,7 +905,7 @@ if (antiVirtex) {
         if (isCreator) return reply(bvl)
         kice = m.sender
         await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove')
-        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} Baka has been removed for sending links in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
+        Miku.sendMessage(from, {text:`\`\`\`「  Antilink System  」\`\`\`\n\n@${kice.split("@")[0]} has been removed for sending links in this group!`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})
         } else {
         }
         
@@ -1358,9 +1378,9 @@ const ftroli = {
     Potion : ${getPotion(m.sender)}
     
     
-    Type *-menu* or press any button below to start using *${global.BotName}*
+    Type *${prefix}menu* or press any button below to start using *${global.BotName}*
     
-    ©️ *${global.BotName}* All Rights Reserved by: *Fantox*
+    ©️ *${global.BotName}* All Rights Reserved by: *${global.OwnerName}*
     `
         const qtod = m.quoted? "true":"false"
         
@@ -1379,7 +1399,7 @@ switch(command) {
     if (isBanChat) return reply(mess.bangc)
     teks = `*${global.BotName}'s Script*\n\n*GitHub*: ${global.BotSourceCode}\n\nDont forget to follow me on *GitHub* and give a ⭐️ to my projects. `
     let buttons = [
-    {buttonId: `-menu`, buttonText: {displayText: '✨Bot Menu✨'}, type: 1}
+    {buttonId: `${prefix}menu`, buttonText: {displayText: '✨Bot Menu✨'}, type: 1}
     ]
     let buttonMessage = {
     image: Thumb,
@@ -1389,7 +1409,7 @@ switch(command) {
     buttons: buttons,
     headerType: 4,
     /*contextInfo:{externalAdReply:{
-    title:"Powered by Fantox",
+    title:`Powered by ${global.OwnerName}`,
     body: " ", 
     thumbnail: fs.readFileSync("Assets/pic2.jpg"),
     mediaType:1,
@@ -1430,7 +1450,7 @@ case 'me': case 'profile': case 'p':
 
 
 let buttonspro = [
-    {buttonId: `-soulmate`, buttonText: {displayText: 'Your Soulmate'}, type: 1}
+    {buttonId: `${prefix}soulmate`, buttonText: {displayText: 'Your💑Soulmate'}, type: 1}
     ]
             let buttonMessage = {
                 image: { url: pfp },
@@ -1450,23 +1470,23 @@ if (!isCreator) return replay(mess.botowner)
 if (args[0] === "on") {
 if (isBanChat) return replay('This Group is Already Banned from using me!')
 banchat.push(from)
-replay('This Group has been banned from using me!')
+replay('This Group has been banned from using ${global.BotName}!')
 var groupe = await Miku.groupMetadata(from)
 var members = groupe['participants']
 var mems = []
 members.map(async adm => {
 mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
 })
-Miku.sendMessage(from, {text: `\`\`\`「 Notice 」\`\`\`\n\nThis group is banned from using bot. So, here nobody can use me anymore!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
+Miku.sendMessage(from, {text: `\`\`\`「 Notice 」\`\`\`\n\nThis group is banned from using ${global.BotName}, seek owner's help to lift ban!`, contextInfo: { mentionedJid : mems }}, {quoted:m})
 } else if (args[0] === "off") {
-if (!isBanChat) return replay('This Group is Already Banned from using me!')
+if (!isBanChat) return replay('This Group is Already Banned from using ${global.BotName}!')
 let off = banchat.indexOf(from)
 banchat.splice(off, 1)
-replay('This Group has been *unbanned* from using me!')
+replay('This Group has been *unbanned* from using ${global.BotName}!')
 } else {
   let buttonsntnsfw = [
-  { buttonId: `-bangroup on`, buttonText: { displayText: 'Ban' }, type: 1 },
-  { buttonId: `-bangroup off`, buttonText: { displayText: 'Unban' }, type: 1 }
+  { buttonId: `${prefix}bangroup on`, buttonText: { displayText: 'Ban' }, type: 1 },
+  { buttonId: `${prefix}bangroup off`, buttonText: { displayText: 'Unban' }, type: 1 }
   ]
   await Miku.sendButtonText(m.chat, buttonsntnsfw, `Please choose any Button below.\n\n *On / Off*`, `${global.BotName }`, m)
   }
@@ -1510,20 +1530,322 @@ case 'support': case 'supportgc':
 
 case 'repo': case 'botrepo':
     
-    reply(`*My Source Code:* https://github.com/FantoX001/Miku-MD`)
+    reply(`*❛ Source Code of top bot ❜* \n\n\n_Miku ➻ https://github.com/FantoX001/Miku-MD_\n\n_Sector ➻ https://github.com/SecktorBot/Secktor-Md_\n\n_Ethan-v2 ➻ https://github.com/jayjay-ops/Miku-MD_\n\n\n*Hosting Tutorial ~ https://youtu.be/fZdM7Ahb4JE*`)
     break
+
+case 'ethan': case 'about': {
+          if (isBan) return replay(mess.banned)
+          await Miku.sendMessage(`${m.sender}`, 
+            {text: `*❗🄴🅃🄷🄰🄽-🄱🄾🅃*\n\n *📮【About】:* 𝑨𝒖𝒕𝒐𝒎𝒂𝒕𝒆𝒅 𝑯𝒆𝒍𝒑𝒇𝒖𝒍/𝑭𝒖𝒏 𝑩𝒐𝒕 𝒕𝒐 𝒎𝒂𝒌𝒆 𝒍𝒊𝒇𝒆 𝒆𝒂𝒔𝒊𝒆𝒓 𝒐𝒏 𝑾𝒉𝒂𝒕𝒔𝑨𝒑𝒑\n\n*🏅【Support】:* https://www.instagram.com/jayjay_ops\n\n*🛸【Group】:* http://gg.gg/MikuSupport \n`},
+            { quoted: m }
+        )
+        return replay(`🧧 𝐒𝐞𝐧𝐭 𝐲𝐨𝐮 𝐭𝐡𝐞 𝐬𝐮𝐩𝐩𝐨𝐫𝐭 𝐢𝐧𝐟𝐨 𝐢𝐧 𝐩𝐞𝐫𝐬𝐨𝐧𝐚𝐥 𝐦𝐞𝐬𝐬𝐚𝐠𝐞 🧧`);   //.catch((reason: Error) => M.reply(`an error occurred, Reason: ${reason}`))
+    }
+    break
+
+case 'rules': case 'botrule': {
+          if (isBan) return replay(mess.banned)
+          mikupic ='https://wallpapercave.com/wp/wp10524580.jpg'
+          const rule =  `_*❛ ╾╼🎀[Rules]🎀╾╼ ❜*_\n\n\n*➻* _Bot won't join a group it was removed from._\n\n*➻* _use !ethan to get the Official group link and support link_\n\n*➻* _Use ${prefix}bot/chat to chat with ai chat bots..._\n\n*➻* _If you want to add Ethan-Bot in your group then contact the owner by typing *!owner/!mods*_ \n\n*➻* _Dont use wrong command, use the command given in the *help list*_ \n\n*➻* _Dont spam the bot with commands if the bot is not responding, its means the bot maybe offline or under maintenance._ \n\n*➻* _Dont Dm the bot_ \n\n\n*IF YOU DONT FOLLOW THE RULES THEN YOU WILL BE BAN SOON* 🚫 `
+          let law = [
+                {buttonId: `${prefix}rules`, buttonText: {displayText: 'Rules'}, type: 1}
+                ]
+                let buttonMessage = {
+                    file: Miku.sendMessage(m.chat,{video:fs.readFileSync('./system/miku.mp4'),gifPlayback:true,caption:rule},{quoted:m}),
+                    caption: rule,
+                    footer: `${global.BotName}`,
+                    buttons: butRun,
+                    headerType: 4
+                }
+            Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
+    }
+    break
+
+
+//=============Economy===============
+
+
+
+//--------------daily---------------------
+
+case 'daily': case 'reward': {
+	if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)	
+        if (isBan) return reply(mess.banned)	 			
+        if (isBanChat) return reply(mess.bangc)
+        let user = m.sender
+	const cara = "cara"
+	const daily  = await eco.daily(user, cara, 500); //give 500 for daily, can be changed
+	
+	        if (daily.cd) return replay(`You already claimed daily for today, come back in ${daily.cdL}`); //cdL is already formatted cooldown Left
+	
+            replay(`you claimed 💎${daily.amount} for daily`);        
+}
+break
+
+
+
+//---------------bank-increase--------------------
+
+case 'capacity':  case 'bankupgrade': {
+	if (!isCreator) return replay(mess.botowner)
+	if (!text) return replay("💴 *Bank-capacity* 💳\n\n1 | *1000* = ¥100\n\n2 | *100000* = ¥1000\n\n3 | *10000000* = ¥10000000\n\nEx- /inc 1 OR /inc 1000")	
+	if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
+        const user = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
+	const cara = "cara"
+	let value = text.trim();
+	let k = parseInt(value)
+	const balance  = await eco.balance(user, cara)
+  switch (value) {
+          case '1000':
+          case '1':
+          if (k > balance.wallet ) return replay("Check your wallet");
+            const deduct1 = await eco.deduct(user, cara, 100);
+            const add1 = eco.giveCapacity(user, cara, 1000); 
+                await replay(`1000 💎 storage has been added in ${pushname} bank`)
+     
+                break
+          case '100000':
+          case '2':
+          if (k < balance.wallet) return replay("Check your wallet");
+            const deduct2 = await eco.deduct(user, cara, 1000);
+            const add2 = eco.giveCapacity(user, cara, 100000); 
+                await replay(`100000 💎 storage has been added in ${pushname} bank`)
+     
+                break
+          case '10000000':
+          case '3':
+          if (k < balance.wallet) return replay("Check your wallet");
+             const deduct3 = await eco.deduct(user, cara, 10000);
+             const add3 = eco.giveCapacity(user, cara, 10000000); 
+                 await replay(`10000000 💎 storage has been added in ${pushname} bank`)
+     
+               break
+  default:
+   await replay('*What are you trying to do*.')
+   
+   }
+
+}
+break
+
+
+
+//---------------deposit--------------------
+
+
+case 'deposit':  case 'pay-in': {
+        if (isBan) return reply(mess.banned)	 			
+        if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
+		if (!text) return replay("Provide the amount you want to deposit!");
+		const texts = text.trim();
+		const user = m.sender;
+		const cara = 'cara'
+        const deposit = await eco.deposit(user, cara, texts);
+            if(deposit.noten) return replay('You can\'t deposit what you don\'t have.'); //if user states more than whats in his wallet
+             replay(`Successfully Deposited 💎${deposit.amount} to your bank.`)
+		
+}
+break
+
+
+//--------------transfer---------------------
+
+
+
+case 'transfer':  case 'give': {
+        if (isBan) return reply(mess.banned)	 			
+        if (isBanChat) return reply(mess.bangc)
+	let value = text.trim().split(" ");
+	if (value[0] === "") return replay(`Use ${prefix}transfer 100 @user`);
+	const target =
+			             m.quoted && m.mentionedJid.length === 0
+			             ? m.quoted.sender
+			             : m.mentionedJid[0] || null;    
+           if (!target || target === m.sender) return replay("what are you trying to do!")
+           if (m.quoted?.sender && !m.mentionedJid.includes(m.quoted.sender)) m.mentionedJid.push(m.quoted.sender)
+        while (m.mentionedJid.length < 2) m.mentionedJid.push(m.sender)
+        const cara = "cara"
+        const user1 = m.sender
+        const user2 = target
+		           const word = value[0];
+		           const code = value[1];
+		let d = parseInt(word)
+		if (!d) return replay("check your text plz u r using the command in a wrong way")
+		
+		const balance = await eco.balance(user1, cara); 
+        let a = (balance.wallet) < parseInt(word)
+        //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.	
+        if(a == true) return replay("you dont have sufficient money to transfer");
+        
+        const deduct = await eco.deduct(user1, cara, value[0]);
+        const give = await eco.give(user2, cara, value[0]);
+        replay(`Transaction successful \n\n New Balance: ${balance.wallet}`)
+
+}
+break
+			
+	
+
+//--------------bank/wallet---------------------
+
+case 'wallet':  case 'purse': {
+        if (isBan) return reply(mess.banned)	 			
+        if (isBanChat) return reply(mess.bangc)
+	if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
+    const user = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
+    const cara = "cara"
+    const balance = await eco.balance(user, cara); //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
+    await replay(`*💰 ${pushname}'s Purse:*\n\n_💎${balance.wallet}_`);
+}
+break
+			
+	
+case 'bank':  case 'levee': {
+	if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
+        if (isBan) return reply(mess.banned)	 			
+        if (isBanChat) return reply(mess.bangc)
+    const user = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
+    const cara = "cara"
+    const balance = await eco.balance(user, cara); //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
+    await replay(`*🏦 ${pushname}'s Bank:*\n\n_💎${balance.bank}/${balance.bankCapacity}_`); 
+}
+break
+
+
+
+//--------------rob---------------------
+
+case 'rob':  case 'attack': {
+	if (!text) return replay(`Use ${prefix}rob @user`)
+	const target =
+			             m.quoted && m.mentionedJid.length === 0
+			             ? m.quoted.sender
+			             : m.mentionedJid[0] || null;    
+           if (!target || target === m.sender) return replay("what are you trying to do!")
+           if (m.quoted?.sender && !m.mentionedJid.includes(m.quoted.sender)) m.mentionedJid.push(m.quoted.sender)
+        while (m.mentionedJid.length < 2) m.mentionedJid.push(m.sender)
+        const cara = "cara"
+        const user1 = m.sender
+        const user2 = target
+	    const k = 250
+	const balance1  = await eco.balance(user1, cara)
+	const balance2  = await eco.balance(user2, cara)
+	const typ = ['ran','rob','caught'];
+    const random = typ[Math.floor(Math.random() * typ.length)];
+    if (k > balance1.wallet) return replay(`*☹️ You don't have enough money to pay incase you get caught*`);
+    if (k > balance2.wallet) return replay(`*Sorry, your victim is too poor 🤷🏽‍♂️ let go.*`);
+    let tpy = random
+  switch (random) {
+          case 'ran':
+                await replay(`*Your victim escaped, be more scaryðŸ˜¤ next time.*`)
+     
+                break
+          case 'rob':
+            const deduct1 = await eco.deduct(user2, cara, balance2.wallet);
+            const add2 = eco.give(user1, cara, balance2.wallet); 
+                await replay(`*🤑 Robbery operation successfully.🗡️*`)
+     
+                break
+          case 'caught':
+             const deduct2 = await eco.deduct(user1, cara, balance1.wallet); 
+                 await replay(`*Sorry FBI👮 caught up with you, you lost all 💎 in wallet.*`)
+     
+               break
+  default:
+   await replay('*What are you trying to do*.')
+   
+   }
+
+}
+break
+
+//--------------withdraw---------------------
+
+case 'withdraw':  case 'withdrawal': {
+      if (isBan) return reply(mess.banned)	 			
+      if (isBanChat) return reply(mess.bangc)
+      if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
+        const user = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
+		if (!text) return replay("*Provide the amount you want to withdraw!*");
+		const query = text.trim();
+        const cara = 'cara'
+        const withdraw = await eco.withdraw(user, cara, query);
+        if(withdraw.noten) return replay('*🏧 Insufficient fund in bank*'); //if user states more than whats in his wallet
+        const add = eco.give(user, cara, query);
+          replay(`*🏧 ALERT*  _💎${withdraw.amount} has been added in your wallet._`)
+        
+}
+break
+
+
+//---------------gamble--------------------
+
+
+case 'gamble':  case 'bet': {
+        if (isBan) return reply(mess.banned)	 			
+        if (isBanChat) return reply(mess.bangc)
+	const texts = text.trim().split(" ");
+		if (texts[0] === "")
+			return replay(
+				`Example:  ${prefix}gamble 100 direction(left,right,up,down)`
+			);
+    const opp = texts[1];// your value
+    const value = texts[0].toLowerCase();
+    if (!value) return replay("*Please, specify the amount you are gambling with!*");
+    if (!opp) return replay("*Specify the direction you are betting on!*");
+    let gg = parseInt(value)
+    if (!gg) return replay("*Check your text please, You are using the command in a wrong way*")
+    if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
+    const user = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
+    const cara = 'cara'
+    const balance = await eco.balance(user, cara); 
+    let g = (balance.wallet) > parseInt(value)
+    if(g == false) return replay(`*You don't have sufficient 💎 Diamond to gamble with*`);
+    let k = 50
+    let a = (k) > parseInt(value)
+   //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.	
+    if (a == true) return replay(`*Sorry ${pushname}, you can only gamble with more than 💎50.*`);
+                //if(balance.wallet < value) return replay('no enough money');
+    const f = ["left", "right", "up", "down"]
+    const r = f[Math.floor(Math.random () * f.length)]
+    if ( r == opp){
+    const give = await eco.give(user , cara, texts[0]);
+    replay(`*📉 You won 💎${texts[0]}*`)
+    }else{
+    const deduct = await eco.deduct(user, cara, texts[0]);
+    replay(`*📈 You lost 💎${texts[0]}*`)
+    }       
+     
+
+
+   
+
+}
+break
+
+
+
+
+//=======================================
+
+
+case 'hi': case 'hello': {
+          replay(`Don't be scared, i am still active 😁`)
+    }
+    break
+
 
 case 'nsfwmenu':
     if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
     if (!AntiNsfw) return reply(mess.nonsfw)
-        reply(` *━━━〈  📛 NSFW Menu 📛  〉━━━*\n\nhentaivideo, blowjobgif, hneko, masturbation, thighs, pussy, panties, orgy, ahegao, ass, bdsm, blowjob, cuckold, ero, gasm, cum, femdom, foot, gangbang, glasses, jahy, trap, blowjobgif, spank, hneko, hwaifu, gasm`)
+        reply(` *━━━〈  🍑 NSFW Menu 🍌  〉━━━*\n\nhentaivideo, blowjobgif, hneko, masturbation, thighs, pussy, panties, orgy, ahegao, ass, bdsm, blowjob, cuckold, ero, gasm, cum, femdom, foot, gangbang, glasses, jahy, trap, blowjobgif, spank, hneko, hwaifu, gasm`)
     break
 
 case 'reaction': case 'react': case 'reactions': case 'r':
         if (isBan) return reply(mess.banned)	 			
         if (isBanChat) return reply(mess.bangc)
-            reply(` *━━━〈  📍 Reactions 📍  〉━━━*\n\nbonk, cry, bully, cuddle, hug, kiss, lick, pat, smug, yeet, blush, smile, wave, highfive, handhold, nom, glomp, bite, slap, kill, happy, wink, poke, dance, cringe`)
+            reply(` *━━━〈  🦋 Reactions 🦋  〉━━━*\n\nbonk, cry, bully, cuddle, hug, kiss, lick, pat, smug, yeet, blush, smile, wave, highfive, handhold, nom, glomp, bite, slap, kill, happy, wink, poke, dance, cringe`)
         break   
     
 
