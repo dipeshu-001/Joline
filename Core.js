@@ -1533,7 +1533,7 @@ case 'repo': case 'botrepo':
     reply(`*❛ Source Code of top bot ❜* \n\n\n_Miku ➻ https://github.com/FantoX001/Miku-MD_\n\n_Sector ➻ https://github.com/SecktorBot/Secktor-Md_\n\n_Ethan-v2 ➻ https://github.com/jayjay-ops/Miku-MD_\n\n\n*Hosting Tutorial ~ https://youtu.be/fZdM7Ahb4JE*`)
     break
 
-case 'ethan': case 'about': {
+case 'details': case 'about': {
           if (isBan) return replay(mess.banned)
           await Miku.sendMessage(`${m.sender}`, 
             {text: `*❗🄴🅃🄷🄰🄽-🄱🄾🅃*\n\n *📮【About】:* 𝑨𝒖𝒕𝒐𝒎𝒂𝒕𝒆𝒅 𝑯𝒆𝒍𝒑𝒇𝒖𝒍/𝑭𝒖𝒏 𝑩𝒐𝒕 𝒕𝒐 𝒎𝒂𝒌𝒆 𝒍𝒊𝒇𝒆 𝒆𝒂𝒔𝒊𝒆𝒓 𝒐𝒏 𝑾𝒉𝒂𝒕𝒔𝑨𝒑𝒑\n\n*🏅【Support】:* https://www.instagram.com/jayjay_ops\n\n*🛸【Group】:* http://gg.gg/MikuSupport \n`},
@@ -1904,7 +1904,7 @@ const random=pages[Math.floor(Math.random() * pages.length)]
         const i = Math.floor(Math.random() * wallpaper.length);
 		
 let buttons = [
-            {buttonId: `-wallpaper ${args.join(" ")}`, buttonText: {displayText: '>>'}, type: 1}
+            {buttonId: `${prefix}wallpaper ${args.join(" ")}`, buttonText: {displayText: '>>'}, type: 1}
         ]
         let buttonMessage = {
             image: {url:wallpaper[i].image},
@@ -1926,7 +1926,7 @@ if (isBanChat) return reply(mess.bangc)
         anu = await wikimedia(args)
         hasil = anu[Math.floor(Math.random() * anu.length)]
         let buttons = [
-            {buttonId: `-wikimedia ${args.join(" ")}`, buttonText: {displayText: 'Next Image'}, type: 1}
+            {buttonId: `${prefix}wikimedia ${args.join(" ")}`, buttonText: {displayText: 'Next Image'}, type: 1}
         ]
         let buttonMessage = {
             image: { url: hasil.image },
@@ -1952,7 +1952,7 @@ case 'quotesanime': case 'quoteanime': case 'animequote': case 'animequotes':{
         let anu = await quotesAnime()
         hasil = anu[Math.floor(Math.random() * anu.length)]
         let buttons = [
-            {buttonId: `-quotesanime`, buttonText: {displayText: '>>'}, type: 1}
+            {buttonId: `${prefix}quotesanime`, buttonText: {displayText: '>>'}, type: 1}
         ]
         let buttonMessage = {
             text: `_${hasil.quotes}_\n\nBy '${hasil.karakter}', ${hasil.anime}\n\n- ${hasil.up_at}`,
@@ -2056,7 +2056,7 @@ case 'coffee': case 'kopi': {
         if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
                 let buttons = [
-                        {buttonId: `-coffee`, buttonText: {displayText: '>>'}, type: 1}
+                        {buttonId: `${prefix}coffee`, buttonText: {displayText: '>>'}, type: 1}
                     ]
                     let buttonMessage = {
                         image: { url: 'https://coffee.alexflipnote.dev/random' },
@@ -2113,7 +2113,7 @@ case 'delete': case 'del': {
  if (isBanChat) return reply(mess.bangc)
  if (!m.quoted) return
  let { chat, fromMe, id, isBaileys } = m.quoted
- if (!isBaileys) return replay('How can i delete messages of other person? Baka!')
+ if (!isBaileys) return replay('How can i delete messages of other person?')
  Miku.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
  }
  break
@@ -2124,7 +2124,7 @@ case 'delete': case 'del': {
  if (isBanChat) return reply(mess.bangc)
  if (!isBotAdmins) return replay(mess.botadmin)
  if (!isAdmins && !isCreator) return replay(mess.useradmin)
- if (!m.quoted) return reply('Please mention a message baka!')
+ if (!m.quoted) return reply('Please mention a message!')
  let { chat, fromMe, id} = m.quoted
 
 const key = {
@@ -2247,8 +2247,8 @@ await Miku.sendMessage(m.chat, { delete: key })
  replay('Deactivated _Antilink_ in this group!')
  } else {
    let buttonsntilink = [
-   { buttonId: `-antilinkgc on`, buttonText: { displayText: 'On' }, type: 1 },
-   { buttonId: `-antilinkgc off`, buttonText: { displayText: 'Off' }, type: 1 }
+   { buttonId: `${prefix}antilinkgc on`, buttonText: { displayText: 'On' }, type: 1 },
+   { buttonId: `${prefix}antilinkgc off`, buttonText: { displayText: 'Off' }, type: 1 }
    ]
    await Miku.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off`, `${global.BotName}`, m)
    }
@@ -2280,8 +2280,8 @@ await Miku.sendMessage(m.chat, { delete: key })
  replay('Deactivated youtube video antilink !')
  } else {
    let buttonsntilink = [
-   { buttonId: `-antilinkyoutubevideo on`, buttonText: { displayText: 'On' }, type: 1 },
-   { buttonId: `-antilinkyoutubevideo off`, buttonText: { displayText: 'Off' }, type: 1 }
+   { buttonId: `${prefix}antilinkyoutubevideo on`, buttonText: { displayText: 'On' }, type: 1 },
+   { buttonId: `${prefix}antilinkyoutubevideo off`, buttonText: { displayText: 'Off' }, type: 1 }
    ]
    await Miku.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off`, `${global.BotName}`, m)
    }
@@ -2314,8 +2314,8 @@ await Miku.sendMessage(m.chat, { delete: key })
  replay('Deactivated youtube channel antilink !')
  } else {
    let buttonsntilink = [
-   { buttonId: `-antilinkyoutubech on`, buttonText: { displayText: 'On' }, type: 1 },
-   { buttonId: `-antilinkyoutubech off`, buttonText: { displayText: 'Off' }, type: 1 }
+   { buttonId: `${prefix}antilinkyoutubech on`, buttonText: { displayText: 'On' }, type: 1 },
+   { buttonId: `${prefix}antilinkyoutubech off`, buttonText: { displayText: 'Off' }, type: 1 }
    ]
    await Miku.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off`, `${global.BotName}`, m)
    }
@@ -2347,8 +2347,8 @@ await Miku.sendMessage(m.chat, { delete: key })
  replay('Deactivated instagram antilink !')
  } else {
    let buttonsntilink = [
-   { buttonId: `-antilinkinstagram on`, buttonText: { displayText: 'On' }, type: 1 },
-   { buttonId: `-antilinkinstagram off`, buttonText: { displayText: 'Off' }, type: 1 }
+   { buttonId: `${prefix}antilinkinstagram on`, buttonText: { displayText: 'On' }, type: 1 },
+   { buttonId: `${prefix}antilinkinstagram off`, buttonText: { displayText: 'Off' }, type: 1 }
    ]
    await Miku.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off`, `${global.BotName}`, m)
    }
@@ -2379,8 +2379,8 @@ await Miku.sendMessage(m.chat, { delete: key })
  replay('Deactivated facebook antilink !')
  } else {
    let buttonsntilink = [
-   { buttonId: `-antilinkfacebook on`, buttonText: { displayText: 'On' }, type: 1 },
-   { buttonId: `-antilinkfacebook off`, buttonText: { displayText: 'Off' }, type: 1 }
+   { buttonId: `${prefix}antilinkfacebook on`, buttonText: { displayText: 'On' }, type: 1 },
+   { buttonId: `${prefix}antilinkfacebook off`, buttonText: { displayText: 'Off' }, type: 1 }
    ]
    await Miku.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off `, `${global.BotName}`, m)
    }
@@ -2412,8 +2412,8 @@ await Miku.sendMessage(m.chat, { delete: key })
  replay('Deactivated telegram antilink in this group')
  } else {
    let buttonsntilink = [
-   { buttonId: `-antilinktelegram on`, buttonText: { displayText: 'On' }, type: 1 },
-   { buttonId: `-antilinktelegram off`, buttonText: { displayText: 'Off' }, type: 1 }
+   { buttonId: `${prefix}antilinktelegram on`, buttonText: { displayText: 'On' }, type: 1 },
+   { buttonId: `${prefix}antilinktelegram off`, buttonText: { displayText: 'Off' }, type: 1 }
    ]
    await Miku.sendButtonText(m.chat, buttonsntilink, `Please click the button below On / Off `, `${global.BotName}`, m)
    }
@@ -2445,8 +2445,8 @@ await Miku.sendMessage(m.chat, { delete: key })
  replay('Deactivated tiktok antilink !')
  } else {
    let buttonsntilink = [
-   { buttonId: `-antilinktiktok on`, buttonText: { displayText: 'On' }, type: 1 },
-   { buttonId: `-antilinktiktok off`, buttonText: { displayText: 'Off' }, type: 1 }
+   { buttonId: `${prefix}antilinktiktok on`, buttonText: { displayText: 'On' }, type: 1 },
+   { buttonId: `${prefix}antilinktiktok off`, buttonText: { displayText: 'Off' }, type: 1 }
    ]
    await Miku.sendButtonText(m.chat, buttonsntilink, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.BotName}`, m)
    }
@@ -2477,8 +2477,8 @@ await Miku.sendMessage(m.chat, { delete: key })
  replay('Deactivated twitter antilink !')
  } else {
    let buttonsntilink = [
-   { buttonId: `-antilinktwt on`, buttonText: { displayText: 'On' }, type: 1 },
-   { buttonId: `-antilinktwt off`, buttonText: { displayText: 'Off' }, type: 1 }
+   { buttonId: `${prefix}antilinktwt on`, buttonText: { displayText: 'On' }, type: 1 },
+   { buttonId: `${prefix}antilinktwt off`, buttonText: { displayText: 'Off' }, type: 1 }
    ]
    await Miku.sendButtonText(m.chat, buttonsntilink, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.BotName}`, m)
    }
@@ -2510,8 +2510,8 @@ await Miku.sendMessage(m.chat, { delete: key })
  replay('Disabled all antilink !')
  } else {
    let buttonsntilink = [
-   { buttonId: `-antilinkall on`, buttonText: { displayText: 'On' }, type: 1 },
-   { buttonId: `-antilinkall off`, buttonText: { displayText: 'Off' }, type: 1 }
+   { buttonId: `${prefix}antilinkall on`, buttonText: { displayText: 'On' }, type: 1 },
+   { buttonId: `${prefix}antilinkall off`, buttonText: { displayText: 'Off' }, type: 1 }
    ]
    await Miku.sendButtonText(m.chat, buttonsntilink, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.BotName}`, m)
    }
@@ -2543,8 +2543,8 @@ await Miku.sendMessage(m.chat, { delete: key })
  replay('Deactivated antiwame !')
  } else {
    let buttonsntwame = [
-   { buttonId: `-antiwame on`, buttonText: { displayText: 'On' }, type: 1 },
-   { buttonId: `-antiwame off`, buttonText: { displayText: 'Off' }, type: 1 }
+   { buttonId: `${prefix}antiwame on`, buttonText: { displayText: 'On' }, type: 1 },
+   { buttonId: `${prefix}antiwame off`, buttonText: { displayText: 'Off' }, type: 1 }
    ]
    await Miku.sendButtonText(m.chat, buttonsntwame, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.BotName}`, m)
    }
@@ -2576,8 +2576,8 @@ await Miku.sendMessage(m.chat, { delete: key })
  replay('Disabled NSFW Commands!')
  } else {
    let buttonsntnsfw = [
-   { buttonId: `-nsfw on`, buttonText: { displayText: 'On' }, type: 1 },
-   { buttonId: `-nsfw off`, buttonText: { displayText: 'Off' }, type: 1 }
+   { buttonId: `${prefix}nsfw on`, buttonText: { displayText: 'On' }, type: 1 },
+   { buttonId: `${prefix}nsfw off`, buttonText: { displayText: 'Off' }, type: 1 }
    ]
    await Miku.sendButtonText(m.chat, buttonsntnsfw, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.BotName}`, m)
    }
@@ -2661,7 +2661,7 @@ case 'happymod': {
  teks += `${i.link}`
  }
  let buttons = [
- {buttonId: `-menu`, buttonText: {displayText: '✨Menu✨'}, type: 1}
+ {buttonId: `${prefix}menu`, buttonText: {displayText: '✨Menu✨'}, type: 1}
  ]
  let buttonMessage = {
  image: {url:res[0].icon},
@@ -2697,7 +2697,7 @@ case 'happymod': {
  if (!m.isGroup) return replay(mess.grouponly)
  if (!isBotAdmins) return replay(mess.botadmin)
  if (!isAdmins && !isCreator) return replay(mess.useradmin)
- if (!text) return replay('Pls enter -setname <New Group Name>  to change this Group Name')
+ if (!text) return replay('Pls enter ${prefix}setname <New Group Name>  to change this Group Name')
  await Miku.groupUpdateSubject(m.chat, text).then((res) => replay(mess.jobdone)).catch((err) => replay(jsonformat(err)))
  }
  break
@@ -2726,7 +2726,7 @@ if (isBanChat) return reply(mess.bangc)
  if (!m.isGroup) return replay(mess.grouponly)
  if (!isBotAdmins) return replay(mess.botadmin)
  if (!isAdmins && !isCreator) return replay(mess.useradmin)
- if (!text) return replay('Pls enter -setname <New Group Description>  to change this Group Description.')
+ if (!text) return replay('Pls enter ${prefix}setname <New Group Description>  to change this Group Description.')
  await Miku.groupUpdateDescription(m.chat, text).then((res) => replay(mess.jobdone)).catch((err) => replay(jsonformat(err)))
  }
  break
@@ -2930,8 +2930,8 @@ let mentioned = participants.map(v => v.jid)
      await Miku.groupSettingUpdate(m.chat, 'not_announcement').then((res) => replay(`Group has been opened!`)).catch((err) => replay(jsonformat(err)))
      } else {
      let buttons = [
-     { buttonId: '-group open', buttonText: { displayText: 'Open' }, type: 1 },
-     { buttonId: '-group close', buttonText: { displayText: 'Close' }, type: 1 }
+     { buttonId: '${prefix}group open', buttonText: { displayText: 'Open' }, type: 1 },
+     { buttonId: '${prefix}group close', buttonText: { displayText: 'Close' }, type: 1 }
      ]
      let buttonMessage = {
      image: BotLogo,
@@ -2976,6 +2976,16 @@ let mentioned = participants.map(v => v.jid)
      if (!isAdmins && !isCreator) return replay(mess.useradmin)
      let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
      await Miku.groupParticipantsUpdate(m.chat, [users], 'remove')
+     }
+     break
+
+
+     case 'add':{     			
+        if (!m.isGroup) return replay(mess.grouponly)
+     if (!isBotAdmins) return replay(mess.botadmin)
+     let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+     if (users.length == 0) return replay(`please write the number of the person you want to add`)
+      await Miku.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => replay(`✅Successfully Added!`)).catch((err) => replay(`Cannot add user to group`))
      }
      break
 
@@ -3261,7 +3271,7 @@ gis(args.join(" "), async (error, result) => {
 n = result
 images = n[Math.floor(Math.random() * n.length)].url
 let buttons = [
-{buttonId: `-gimage ${args.join(" ")}`, buttonText: {displayText: '>>'}, type: 1}
+{buttonId: `${prefix}gimage ${args.join(" ")}`, buttonText: {displayText: '>>'}, type: 1}
 ]
 let buttonMessage = {
 image: { url: images },
@@ -3315,7 +3325,7 @@ case 'google': case 'search': {
  }
  ilod = 1
  for (let i of ini_anu) {
- anu_list.push({buttonId: `-ig ${i.type} ${i.url}`, buttonText: {displayText: `Media ${ilod++}`}, type: 1})
+ anu_list.push({buttonId: `${prefix}ig ${i.type} ${i.url}`, buttonText: {displayText: `Media ${ilod++}`}, type: 1})
  }
  textbv += `\n\n_Select the media below to download_`
  let buttons = anu_list
@@ -3445,8 +3455,8 @@ Size : ${lotwit.medias[1].formattedSize}
 Link : ${lotwit.medias[1].url}
 _Please choose the video quality_`
 let buttons = [
-{buttonId: `-twitter ${lotwit.medias[0].url}`, buttonText: {displayText: `Quality ${lotwit.medias[0].quality}`}, type: 1},
-{buttonId: `-twitter ${lotwit.medias[2].url}`, buttonText: {displayText: `Quality ${lotwit.medias[2].quality}`}, type: 1}
+{buttonId: `${prefix}twitter ${lotwit.medias[0].url}`, buttonText: {displayText: `Quality ${lotwit.medias[0].quality}`}, type: 1},
+{buttonId: `${prefix}twitter ${lotwit.medias[2].url}`, buttonText: {displayText: `Quality ${lotwit.medias[2].quality}`}, type: 1}
 ]
 let buttonMessage = {
 video: {url:lotwit.medias[1].url},
@@ -3467,7 +3477,7 @@ case 'twddlxx': {
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
  let buttons = [
- {buttonId: `-menu`, buttonText: {displayText: '✨Menu✨'}, type: 1}
+ {buttonId: `${prefix}menu`, buttonText: {displayText: '✨Menu✨'}, type: 1}
  ]
  let buttonMessage = {
  video: {url:args[0]},
@@ -3531,7 +3541,7 @@ Quality : ${resd.medias[0].quality}
 Size : ${resd.medias[0].formattedSize}
 _Click the button below to download_`
 let buttons = [
-{buttonId: `-fbdl ${resd.medias[1].url}`, buttonText: {displayText: 'QualityHD'}, type: 1}
+{buttonId: `${prefix}fbdl ${resd.medias[1].url}`, buttonText: {displayText: 'QualityHD'}, type: 1}
 ]
 let buttonMessage = {
 video: {url:resd.medias[0].url},
@@ -3552,7 +3562,7 @@ case 'fbddlxx': {
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
  let buttons = [
- {buttonId: `-menu`, buttonText: {displayText: '✨Menu✨'}, type: 1}
+ {buttonId: `${prefix}menu`, buttonText: {displayText: '✨Menu✨'}, type: 1}
  ]
  let buttonMessage = {
  video: {url:args[0]},
@@ -3579,8 +3589,8 @@ reply(mess.error)
  const mikutiktokop = musim_rambutan.result.watermark
 texttk = `_Please choose the button below_`
 let buttons = [
-{buttonId: `-ttnowm ${q}`, buttonText: {displayText: 'Watermark Free'}, type: 1},
-{buttonId: `-ttaud ${q}`, buttonText: {displayText: 'Audio '}, type: 1}
+{buttonId: `${prefix}ttnowm ${q}`, buttonText: {displayText: 'Watermark Free'}, type: 1},
+{buttonId: `${prefix}ttaud ${q}`, buttonText: {displayText: 'Audio '}, type: 1}
 ]
 let buttonMessage = {
 video: {url:mikutiktokop},
@@ -3637,8 +3647,8 @@ case 'play2': case 'ytplay2': {
     let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
     let ytvc = await hx.youtube(anu.url)
     let buttons = [
-    {buttonId: `-ytmp4 ${anu.url}`, buttonText: {displayText: '► Video'}, type: 1},
-    {buttonId: `-ytmp3 ${anu.url}`, buttonText: {displayText: '♫ Audio'}, type: 1}
+    {buttonId: `${prefix}ytmp4 ${anu.url}`, buttonText: {displayText: '► Video'}, type: 1},
+    {buttonId: `${prefix}ytmp3 ${anu.url}`, buttonText: {displayText: '♫ Audio'}, type: 1}
                     ]
                     let buttonMessage = {
                         image: { url: anu.thumbnail},
@@ -3674,8 +3684,8 @@ Size : ${res.size}
 Quality : ${res.quality}
 _Select video or audio and wait a while_`
 let buttons = [
-{buttonId: `-ytmp4 ${res.link}`, buttonText: {displayText: '► Video'}, type: 1},
-{buttonId: `-ytmp3 ${res.link}`, buttonText: {displayText: '♫ Audio'}, type: 1}
+{buttonId: `${prefix}ytmp4 ${res.link}`, buttonText: {displayText: '► Video'}, type: 1},
+{buttonId: `${prefix}ytmp3 ${res.link}`, buttonText: {displayText: '♫ Audio'}, type: 1}
 ]
 let buttonMessage = {
 image: {url:res.thumb},
@@ -3701,8 +3711,8 @@ case 'music': case 'play': case 'song': case 'ytplay': {
  let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
  let ytvc = await hx.youtube(anu.url)
  let buttons = [
- {buttonId: `-ytvd ${ytvc.link}`, buttonText: {displayText: '► Video'}, type: 1},
- {buttonId: `-ytad ${ytvc.mp3}`, buttonText: {displayText: '♫ Audio'}, type: 1}
+ {buttonId: `${prefix}ytvd ${ytvc.link}`, buttonText: {displayText: '► Video'}, type: 1},
+ {buttonId: `${prefix}ytad ${ytvc.mp3}`, buttonText: {displayText: '♫ Audio'}, type: 1}
  ]
  let buttonMessage = {
  image: { url: anu.thumbnail },
@@ -3735,8 +3745,8 @@ case 'music': case 'play': case 'song': case 'ytplay': {
 *Quality :* ${res.quality}
 *Select video or audio and wait a while*`
  let buttons = [
- {buttonId: `-ytvd ${res.link}`, buttonText: {displayText: '► Video'}, type: 1},
- {buttonId: `-ytad ${res.mp3}`, buttonText: {displayText: '♫ Audio'}, type: 1}
+ {buttonId: `${prefix}ytvd ${res.link}`, buttonText: {displayText: '► Video'}, type: 1},
+ {buttonId: `${prefix}ytad ${res.mp3}`, buttonText: {displayText: '♫ Audio'}, type: 1}
  ]
  let buttonMessage = {
  image: {url:res.thumb},
@@ -3857,7 +3867,7 @@ case 'pinterest': case 'pin': {
  hx.pinterest(args.join(" ")).then(async(res) => {
  imgnyee = res[Math.floor(Math.random() * res.length)]
  let buttons = [
- {buttonId: `-pinterest ${args.join(" ")}`, buttonText: {displayText: '>>'}, type: 1}
+ {buttonId: `${prefix}pinterest ${args.join(" ")}`, buttonText: {displayText: '>>'}, type: 1}
  ]
  let buttonMessage = {
  image: { url: imgnyee },
@@ -4330,7 +4340,7 @@ case 'trap' :
 reply(mess.waiting)
  waifudd = await axios.get(`https://waifu.pics/api/nsfw/${command}`)       
  let trapbot = [
-    {buttonId: `-trap`, buttonText: {displayText: `>>`}, type: 1},
+    {buttonId: `${prefix}trap`, buttonText: {displayText: `>>`}, type: 1},
     ]
   let button2Messages = {
    image: {url:waifudd.data.url},
@@ -4352,7 +4362,7 @@ case 'hneko' :
 reply(mess.waiting)
     waifudd = await axios.get(`https://waifu.pics/api/nsfw/neko`)
  let hnekobot = [
-    {buttonId: `-${command}`, buttonText: {displayText: `>>`}, type: 1},
+    {buttonId: `${prefix}${command}`, buttonText: {displayText: `>>`}, type: 1},
     ]
   let button3Messages = {
    image: {url:waifudd.data.url},
@@ -4374,7 +4384,7 @@ case 'hwaifu' :
 reply(mess.waiting)
     waifudd = await axios.get(`https://waifu.pics/api/nsfw/waifu`)         
  let nwaifubot = [
-    {buttonId: `-${command}`, buttonText: {displayText: `>>`}, type: 1},
+    {buttonId: `${prefix}${command}`, buttonText: {displayText: `>>`}, type: 1},
     ]
   let button4Messages = {
    image: {url:waifudd.data.url},
@@ -4395,7 +4405,7 @@ case 'gasm':
 reply(mess.waiting)						
  waifudd = await axios.get(`https://nekos.life/api/v2/img/${command}`)
                            var wbuttsss = [
-        {buttonId: `-gasm`, buttonText: {displayText: `>>`}, type: 1},
+        {buttonId: `${prefix}gasm`, buttonText: {displayText: `>>`}, type: 1},
         ]
       let buttonsssMessages = {
        image: {url:waifudd.data.url},
@@ -4416,7 +4426,7 @@ case 'smug2':
 reply(mess.waiting)						
  waifudd = await axios.get(`https://nekos.life/api/v2/img/smug`)
                            var wbuttsss = [
-        {buttonId: `-smug2`, buttonText: {displayText: `>>`}, type: 1},
+        {buttonId: `${prefix}smug2`, buttonText: {displayText: `>>`}, type: 1},
         ]
       let button1ssMessages = {
        image: {url:waifudd.data.url},
@@ -4437,7 +4447,7 @@ case 'foxgirl':
 reply(mess.waiting)							
  waifudd = await axios.get(`https://nekos.life/api/v2/img/fox_girl`)
                            var wbuttsss = [
-        {buttonId: `-foxgirl`, buttonText: {displayText: `>>`}, type: 1},
+        {buttonId: `${prefix}foxgirl`, buttonText: {displayText: `>>`}, type: 1},
         ]
       let button12ssMessages = {
        image: {url:waifudd.data.url},
@@ -4458,7 +4468,7 @@ case 'animenom' :
 reply(mess.waiting)
     waifudd = await axios.get(`https://waifu.pics/api/sfw/nom`)
  let xxhnekobot = [
-    {buttonId: `-animenom`, buttonText: {displayText: `>>`}, type: 1},
+    {buttonId: `${prefix}animenom`, buttonText: {displayText: `>>`}, type: 1},
     ]
   let xx1button3Messages = {
    image: {url:waifudd.data.url},
@@ -4478,7 +4488,7 @@ case 'waifu3':
 reply(mess.waiting)						
  waifudd = await axios.get(`https://nekos.life/api/v2/img/waifu`)
                            var wbuttsss = [
-        {buttonId: `-waifu3`, buttonText: {displayText: `>>`}, type: 1},
+        {buttonId: `${prefix}waifu3`, buttonText: {displayText: `>>`}, type: 1},
         ]
       let button112ssMessages = {
        image: {url:waifudd.data.url},
@@ -4499,7 +4509,7 @@ case 'crossplay': case 'crosplay': case 'cosplay':
     if (isBanChat) return reply(mess.bangc)
     if (!m.isGroup) return replay(mess.grouponly)
                 const buttons = [
-        {buttonId: '-crossplay', buttonText: {displayText: '>>'}, type: 1},
+        {buttonId: '${prefix}crossplay', buttonText: {displayText: '>>'}, type: 1},
             ]               
         const cosplybutton = {
         image: {url: 'https://hanzz-web.herokuapp.com/api/randomimage/cosplay'},
@@ -4525,7 +4535,7 @@ case 'neko2':
 reply(mess.waiting)							
    waifud = await axios.get('https://waifu.pics/api/sfw/neko')
                 var wbutsss = [
-        {buttonId: `-neko2`, buttonText: {displayText: `>>`}, type: 1},
+        {buttonId: `${prefix}neko2`, buttonText: {displayText: `>>`}, type: 1},
         ]
       let buttonssMessage = {
        image: {url:waifud.data.url},
@@ -4550,7 +4560,7 @@ case 'tickle':
 reply(mess.waiting)							
  waifudd = await axios.get(`https://nekos.life/api/v2/img/${command}`)
                            var wbuttsss = [
-        {buttonId: `-${command}`, buttonText: {displayText: `>>`}, type: 1},
+        {buttonId: `${prefix}${command}`, buttonText: {displayText: `>>`}, type: 1},
         ]
       let buttonssMessages = {
        image: {url:waifudd.data.url},
@@ -4833,7 +4843,7 @@ if (!m.isGroup) return replay(mess.grouponly)
 reply(mess.waiting)							
 ud = await axios.get('https://waifu.pics/api/sfw/megumin')
 var wbutsss = [
-    {buttonId: `-megumin`, buttonText: {displayText: `>>`}, type: 1},
+    {buttonId: `${prefix}megumin`, buttonText: {displayText: `>>`}, type: 1},
          ]
       let buttonzMessage = {
       image: {url:ud.data.url},
@@ -4854,7 +4864,7 @@ case 'awoo':
     reply(mess.waiting)						
  waifudd = await axios.get(`https://waifu.pics/api/sfw/awoo`)
  var wbuttsss = [
-    {buttonId: `-awoo`, buttonText: {displayText: `>>`}, type: 1},
+    {buttonId: `${prefix}awoo`, buttonText: {displayText: `>>`}, type: 1},
     ]
   let button1Messages = {
    image: {url:waifudd.data.url},
@@ -4884,7 +4894,7 @@ const wall = new AnimeWallpaper();
             .catch(() => null);
 const i = Math.floor(Math.random() * wallpaper.length);
 var walb = [
-        {buttonId: `-animewall2 ${q}`, buttonText: {displayText: `>>`}, type: 1},        
+        {buttonId: `${prefix}animewall2 ${q}`, buttonText: {displayText: `>>`}, type: 1},        
         ]
       let wal = {
        image: {url:wallpaper[i].image},
@@ -4990,7 +5000,7 @@ case 'waifu' :
 reply(mess.waiting)	
     waifuddd = await axios.get('https://waifu.pics/api/sfw/waifu')
  var wbuttsssr = [
-    {buttonId: `-waifu`, buttonText: {displayText: `>>`}, type: 1},
+    {buttonId: `${prefix}waifu`, buttonText: {displayText: `>>`}, type: 1},
     ]
         let button4Messagess = {
         image: {url:waifuddd.data.url},
@@ -5011,7 +5021,7 @@ case 'neko' :
 reply(mess.waiting)	
     waifuddd = await axios.get('https://waifu.pics/api/sfw/neko')
  var wbuttsssr = [
-    {buttonId: `-neko`, buttonText: {displayText: `>>`}, type: 1},
+    {buttonId: `${prefix}neko`, buttonText: {displayText: `>>`}, type: 1},
     ]
         let buttonMessagessf = {
         image: {url:waifuddd.data.url},
@@ -5033,7 +5043,7 @@ case 'loli' :
 reply(mess.waiting)	
     waifuddd = await axios.get('https://waifu.pics/api/sfw/shinobu')
  var wbuttsssr = [
-    {buttonId: `-loli`, buttonText: {displayText: `>>`}, type: 1},
+    {buttonId: `${prefix}loli`, buttonText: {displayText: `>>`}, type: 1},
     ]
         let buttonMessagessfgr = {
         image: {url:waifuddd.data.url},
@@ -5112,12 +5122,12 @@ await sleep(1500)
 let btn = [{
 quickReplyButton: {
 displayText: '✨Menu✨',
-id: '-menu'
+id: '${prefix}menu'
 }  
 }, {
 quickReplyButton: {
 displayText: 'Bot Owner',
-id: '-owner'
+id: '${prefix}owner'
 }
 }]
 let txt = `「 *${global.OwnerName}'s Broadcast* 」\n\n${text}`
@@ -5132,94 +5142,293 @@ case 'help': case 'h': case 'menu': case 'allmenu': case 'listmenu':{
     if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
       
- const helpmenu = `Konichiwa *${pushname}* Senpai,
+ const helpmenu = `❣️ Hello Stranger *${pushname}*, have we met?
 
-I am *Miku Nakano*, a bot developed by *Fantox*.
+I am *${global.BotName}*, a bot modified by *${global.OwnerName}*.
 
-🔰 My prefix is:  ${prefix}
+┌───『 𝓗𝓪𝓷𝓭𝓸𝓾𝓽 』──
+│⊶ 𝑼𝒔𝒆 ${prefix}𝒉𝒆𝒍𝒑 𝒕𝒐 𝒔𝒆𝒆 𝒄𝒐𝒎𝒎𝒂𝒏𝒅𝒔
+│⊶ 𝑹𝒆𝒂𝒅 𝑩𝒐𝒕's 𝒓𝒖𝒍𝒆𝒔 𝒃𝒆𝒇𝒐𝒓𝒆 𝒖𝒔𝒆
+│⊶ © 𝑪𝒐𝒑𝒚𝒓𝒊𝒈𝒉𝒕 Miku
+│⊶ 𝑹𝒆𝒑𝒐𝒓𝒕 𝒂 𝒃𝒖𝒈 ${prefix}𝐨𝐰𝐧𝐞𝐫
+└──☘︎───☘︎───☘︎────☘︎
 
-Here's the list of my Commands.
 
+╔════⧫🧧𝑪𝒐𝒓𝒆🧧
+║
+║ ${prefix}profile
+║ ${prefix}help
+║ ${prefix}delete
+║ ${prefix}listgc
+║ ${prefix}listpc
+║ ${prefix}support
+║ ${prefix}repo
+║ ${prefix}script
+║ ${prefix}ethan
+║ ${prefix}about
+║ ${prefix}rules
+║ ${prefix}hello|hi
+║
+╚════════════╝ 
 
+╔════⧫🎀𝑶𝒘𝒏𝒆𝒓🎀
+║
+║ ${prefix}self
+║ ${prefix}public
+║ ${prefix}ban
+║ ${prefix}bangroup
+║ ${prefix}bye
+║ ${prefix}join
+║ ${prefix}block
+║ ${prefix}unblock
+║ ${prefix}broadcast
+║ ${prefix}setbotpp
+║ ${prefix}eval
+║
+╚════════════╝
+
+╔════⧫👥𝑮𝒓𝒐𝒖𝒑👥
+║
+║ ${prefix}promote
+║ ${prefix}demote
+║ ${prefix}revoke
+║ ${prefix}add
+║ ${prefix}remove
+║ ${prefix}tagall
+║ ${prefix}hidetag
+║ ${prefix}groupsetting
+║ ${prefix}grouplink
+║ ${prefix}setgcpp
+║ ${prefix}setname
+║ ${prefix}setdesc
+║ ${prefix}group
+║ ${prefix}nsfw
+║ ${prefix}welcome
+║
+╚════════════╝
+
+╔════⧫💳 𝑬𝒄𝒐𝒏𝒐𝒎𝒚 💳
+║
+║ ${prefix}daily
+║ ${prefix}capacity
+║ ${prefix}deposit
+║ ${prefix}transfer
+║ ${prefix}wallet
+║ ${prefix}bank
+║ ${prefix}rob
+║ ${prefix}withdraw
+║ ${prefix}gamble
+║
+╚════════════╝ 
+
+╔════⧫⛓️𝑨𝒏𝒕𝒊 𝑳𝒊𝒏𝒌⛓️
+║
+║ ${prefix}antilinkgc
+║ ${prefix}antilinktg
+║ ${prefix}antilinktt
+║ ${prefix}antilinkytch
+║ ${prefix}antilinkytvid
+║ ${prefix}antilinkig
+║ ${prefix}antilinkfb
+║ ${prefix}antilinktwit
+║ ${prefix}antilinkall
+║ ${prefix}antiwame
+║
+╚════════════╝
+
+╔════⧫🔎𝑺𝒆𝒂𝒓𝒄𝒉🔍
+║
+║ ${prefix}play
+║ ${prefix}song
+║ ${prefix}yts
+║ ${prefix}lyrics
+║ ${prefix}google
+║ ${prefix}playstore
+║ ${prefix}gimage
+║ ${prefix}pinterest
+║ ${prefix}image
+║ ${prefix}movie
+║ ${prefix}wallpaper
+║ ${prefix}searchgc
+║ ${prefix}happymod
+║ ${prefix}wikimedia
+║ ${prefix}ringtone
+║ ${prefix}anime
+║ ${prefix}animestory
+║ ${prefix}manga
+║
+╚════════════╝
+
+╔════⧫⚙️𝑪𝒐𝒏𝒗𝒆𝒓𝒕⚙️
+║
+║ ${prefix}sticker
+║ ${prefix}toimg
+║ ${prefix}tovideo
+║ ${prefix}togif
+║ ${prefix}steal
+║ ${prefix}stickermeme
+║ ${prefix}emojimix
+║ ${prefix}tourl
+║ ${prefix}tomp3
+║ ${prefix}toaudio
+║
+╚════════════╝
+
+╔════⧫🔉𝑨𝒖𝒅𝒊𝒐🔉
+║
+║ ${prefix}bass
+║ ${prefix}tempo
+║ ${prefix}blown
+║ ${prefix}deep
+║ ${prefix}earrape
+║ ${prefix}fast
+║ ${prefix}fat
+║ ${prefix}nightcore
+║ ${prefix}reverse
+║ ${prefix}robot
+║ ${prefix}slow
+║ ${prefix}squirrel
+║
+╚════════════╝
+
+╔════⧫💥𝑹𝒆𝒂𝒄𝒕𝒊𝒐𝒏𝒔💥
+║
+║ ${prefix}bonk
+║ ${prefix}cry
+║ ${prefix}bully
+║ ${prefix}cuddle
+║ ${prefix}hug
+║ ${prefix}kiss
+║ ${prefix}lick
+║ ${prefix}pat
+║ ${prefix}smug
+║ ${prefix}yeet
+║ ${prefix}blush
+║ ${prefix}smile
+║ ${prefix}wave
+║ ${prefix}highfive
+║ ${prefix}handhold
+║ ${prefix}nom
+║ ${prefix}glomp
+║ ${prefix}bite
+║ ${prefix}slap
+║ ${prefix}kill
+║ ${prefix}happy
+║ ${prefix}wink
+║ ${prefix}poke
+║ ${prefix}dance
+║ ${prefix}cringe
+║
+╚════════════╝
  
- *━━━〈  🎆 Core 🎆  〉━━━*
-
-speak, miku, stalk, profile, help, delete, deleteall, listgc, listpc, welcome, support, repo, script 
+╔════⧫📥𝑫𝒐𝒘𝒏𝒍𝒐𝒂𝒅𝒆𝒓📥
+║
+║ ${prefix}play
+║ ${prefix}ytmp3
+║ ${prefix}ytmp4
+║ ${prefix}ytvideo
+║ ${prefix}mediafire
+║ ${prefix}instagram
+║ ${prefix}igtv
+║ ${prefix}facebook
+║ ${prefix}fbmp3
+║ ${prefix}twitter
+║ ${prefix}twittermp3
+║ ${prefix}tiktok
+║ ${prefix}tiktokaudio
+║ ${prefix}tiktoknowm
+║
+╚════════════╝
  
- *━━━〈  🎀 Owner 🎀  〉━━━*
-
-self, public, ban, bangroup, bye, join, bye, block, unblock, broadcast 
-
- *━━━〈  ⭕ Group ⭕  〉━━━*
+╔════⧫☄️𝑾𝒆𝒆𝒃☄️
+║
+║ ${prefix}waifu
+║ ${prefix}loli
+║ ${prefix}neko
+║ ${prefix}ppcouple
+║ ${prefix}feed
+║ ${prefix}foxgirl
+║ ${prefix}meow
+║ ${prefix}tickle
+║ ${prefix}wallpaper
+║ ${prefix}coffee
+║ ${prefix}animenom
+║ ${prefix}waifu3
+║ ${prefix}neko2
+║ ${prefix}migumin
+║ ${prefix}awoo
+║ ${prefix}anime
+║ ${prefix}animewallpaper2
+║ ${prefix}manga
+║
+╚════════════╝
  
-promote, demote, revoke, add, remove, tagall, hidetag, groupsetting, grouplink, setgcpp, setname, setdesc, group, nsfw 
-
- *━━━〈  ➰ Anti Link ➰  〉━━━*
+╔════⧫📣𝑰𝒏𝒇𝒐𝒓𝒎𝒂𝒕𝒊𝒗𝒆📣
+║
+║ ${prefix}animequote
+║ ${prefix}quote
+║ ${prefix}covid
+║ ${prefix}earthquake
+║ ${prefix}wiki
+║
+╚════════════╝
  
-antilinkgc, antilinktg, antilinktt, antilinkytch, antilinkytvid, antilinkig, antilinkfb, antilinktwit, antilinkall, antiwame
-
- *━━━〈  🔍 Search 🔍  〉━━━*
-
-play, song, yts, lyrics, google, gimage, pinterest, image, movie, wallpaper, searchgc, happymod, wikimedia, ringtone, anime, animestory, manga, ringtone  
-
- *━━━〈  🔰 Convert 🔰  〉━━━*
-
-sticker, toimg, tovideo, togif , steal, stickermeme, emojimix, tourl, tomp3, toaudio
-
- *━━━〈  🔉 Audio 🔉  〉━━━*
-
-bass, tempo, blown, deep, earrape, fast, fat, nightcore, reverse, robot, slow, squirrel
-
- *━━━〈  📍 Reactions 📍  〉━━━*
-
-bonk, cry, bully, cuddle, hug, kiss, lick, pat, smug, yeet, blush, smile, wave, highfive, handhold, nom, glomp, bite, slap, kill, happy, wink, poke, dance, cringe
-
- *━━━〈  🌌 Downloader 🌌  〉━━━*
-
-play, ytmp3, ytmp4, ytvideo, mediafire, instagram, igtv, facebook, fbmp3, twitter, twittermp3, tiktok, tiktokaudio, tiktoknowm, mediafire  
-
- *━━━〈  🈴 Weeb 🈴  〉━━━*
-
-crosplay, waifu, loli, neko, ppcouple, feed, foxgirl, feed, meow, tickle, wallpaper, coffee, animenom, waifu3, neko2, feed, meow, tickle, migumin, awoo, animewallpaper2, anime, manga
-
- *━━━〈  ♨️ Informative ♨️  〉━━━*
-
-animequote, quote, covid, earthquake, wiki
-
- *━━━〈  🎗 Others 🎗  〉━━━*
-
-stickermeme, quotes, darkjoke 
-
- *━━━〈  🎐 Fun 🎐  〉━━━*
-
-reaction, truth, dare, couple, soulmate, handsomecheck, beautifulcheck, awesomecheck, greatcheck, gaycheck, cutecheck, lesbiancheck, hornycheck, prettycheck, lovelycheck, uglycheck, charactercheck
-
- *━━━〈  🪁 Essentials 🪁  〉━━━*
-
-qr, say, translate, fliptext, toletter
-
- *━━━〈  💥 NSFW 💥  〉━━━*
-
-🍁 Type " *${prefix}nsfw* " then enable NSFW (Admin only!) 
-
-🍁 Then type " *${prefix}nsfwmenu* " to get full list of NSFW commands.
-
+╔════⧫🦋𝑭𝒖𝒏🦋
+║
+║ ${prefix}reaction
+║ ${prefix}truth
+║ ${prefix}dare
+║ ${prefix}couple
+║ ${prefix}soulmate
+║ ${prefix}handsomecheck
+║ ${prefix}beautifulcheck
+║ ${prefix}awesomecheck
+║ ${prefix}greatcheck
+║ ${prefix}gaycheck
+║ ${prefix}cutecheck
+║ ${prefix}lesbiancheck
+║ ${prefix}hornycheck
+║ ${prefix}prettycheck
+║ ${prefix}lovelycheck
+║ ${prefix}uglycheck
+║ ${prefix}charactercheck
+║ ${prefix}quotes
+║ ${prefix}darkjoke
+║ ${prefix}stickermeme
+║
+╚════════════╝
+ 
+╔════⧫🐬𝑬𝒔𝒔𝒆𝒏𝒕𝒊𝒂𝒍/𝑶𝒕𝒉𝒆𝒓𝒔🐬
+║
+║ ${prefix}translate
+║ ${prefix}fliptext
+║ ${prefix}toletter
+║ ${prefix}bot|chat <text>
+║
+╚════════════╝
+ 
+╔════⧫🐾𝑵𝑺𝑭𝑾 🐾
+║
+║ 🍊 Type " *${prefix}nsfw* " then enable NSFW (Admin only!) 
+║
+║  🍑 Then type " *${prefix}nsfwmenu* " to get full list of NSFW commands.
+╚════════════╝
 
 
 
  『  *${global.BotName}*  』
  Powered by: *Fantox*
 
- 🔰 To use any of these commands type 
+ 🎐 To use any of these commands type 
  " *${prefix}<Command name>* ".
  
- 🔰 To get Support Group link type " *${prefix}support* ".
+ 🎐 To get Support Group link type " *${prefix}support* ".
 
- 🔰 Type " *${prefix}help* " to get full command list.`
+ 🎐 Type " *${prefix}help* " to get full command list.`
     
 
  let buttonshelpm = [
-    {buttonId: `-owner`, buttonText: {displayText: 'Bot Owner'}, type: 1}
+    {buttonId: `${prefix}owner`, buttonText: {displayText: 'Bot Owner'}, type: 1}
     ]
                 let buttonMessage = {
                     video:fs.readFileSync('./system/miku2.mp4'),gifPlayback:true,
@@ -5245,7 +5454,7 @@ case '':
  const needhelpmenu = `Do you need help ${pushname} Senpai? Type *${prefix}help* to get my full command list.`
      
          let butRun = [
-                {buttonId: `-help`, buttonText: {displayText: 'Help'}, type: 1}
+                {buttonId: `${prefix}help`, buttonText: {displayText: 'Help'}, type: 1}
                 ]
                 let buttonMessage = {
                     video:fs.readFileSync('./system/miku.mp4'),gifPlayback:true,
@@ -5260,11 +5469,11 @@ break
 
 
 
-case 'miku':
+case 'ethan':
     if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
 
-const txt = `Do you love Miku? Then we are the same.`
+const txt = `Do you love ${global.BotName}? Then we are the same.`
 const mikuarray= [
             "https://c.tenor.com/SOeIW-QVZvoAAAPo/scared-the-quintessential-quintuplets.mp4",
             "https://c.tenor.com/FDe7lTs0xvMAAAPo/miku-nakano-nakano-miku.mp4",
@@ -5307,6 +5516,7 @@ const mikuarray= [
 
 break
 
+/*
 case 'add':{     			
     if (!m.isGroup) return replay(mess.grouponly)
  if (!isBotAdmins) return replay(mess.botadmin)
@@ -5315,7 +5525,7 @@ case 'add':{
   await Miku.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => replay(`User Added Successfully!`)).catch((err) => replay(`Cannot add that user to this group!`))
  }
  break
-
+*/
 
  case "tts":  case "texttospeech":  case "say": case "speak":{
     if (isBan) return reply(mess.banned)	 			
@@ -5342,7 +5552,7 @@ case 'add':{
     reply(`Running repl....Please wait until repl.it responds...`)						
     var replqr =  await getBuffer(`https://miku-qr--fantox001.repl.co/`)
                                var qrbutton = [
-            {buttonId: `-qr`, buttonText: {displayText: `Re-run Repl`}, type: 1}
+            {buttonId: `${prefix}qr`, buttonText: {displayText: `Re-run Repl`}, type: 1}
             ]
           let bmffg = {
            image: replqr,
