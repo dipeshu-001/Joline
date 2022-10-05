@@ -2691,7 +2691,7 @@ case 'happymod': {
  }
  break
 
- case 'setname': case 'setsubject': {
+ case 'setgcname': case 'setsubject': {
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
  if (!m.isGroup) return replay(mess.grouponly)
@@ -2701,6 +2701,16 @@ case 'happymod': {
  await Miku.groupUpdateSubject(m.chat, text).then((res) => replay(mess.jobdone)).catch((err) => replay(jsonformat(err)))
  }
  break
+
+
+case 'setbotname': case 'setname': {
+    if (isBan) return reply(mess.banned)
+ if (!isCreator) return replay(mess.useradmin)
+ if (!text) return replay('Pls enter ${prefix}setbotname <Bot New Name>  to change the bot profile name')
+ await Miku.updateProfileName(m.chat, text).then((res) => replay(mess.jobdone)).catch((err) => replay(jsonformat(err)))
+ }
+ break
+
 
 case 'block': {
     if (isBan) return reply(mess.banned)	 			
@@ -5183,6 +5193,7 @@ I am *${global.BotName}*, a bot modified by *${global.OwnerName}*.
 ║ ${prefix}unblock
 ║ ${prefix}broadcast
 ║ ${prefix}setbotpp
+║ ${prefix}setbotname
 ║ ${prefix}eval
 ║
 ╚════════════╝
@@ -5199,7 +5210,7 @@ I am *${global.BotName}*, a bot modified by *${global.OwnerName}*.
 ║ ${prefix}groupsetting
 ║ ${prefix}grouplink
 ║ ${prefix}setgcpp
-║ ${prefix}setname
+║ ${prefix}setgcname
 ║ ${prefix}setdesc
 ║ ${prefix}group
 ║ ${prefix}nsfw
