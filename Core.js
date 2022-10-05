@@ -2706,8 +2706,8 @@ case 'happymod': {
 case 'setbotname': case 'setname': {
     if (isBan) return reply(mess.banned)
  if (!isCreator) return replay(mess.useradmin)
- if (!text) return replay('Pls enter ${prefix}setbotname <Bot New Name>  to change the bot profile name')
- await Miku.updateProfileName(m.chat, text).then((res) => replay(mess.jobdone)).catch((err) => replay(jsonformat(err)))
+ if (!text) return replay(`Pls enter ${prefix}setbotname <Bot New Name>  to change the bot profile name`)
+ await Miku.updateProfileName(m.chat, text).then((res) => replay(mess.jobdone));
  }
  break
 
