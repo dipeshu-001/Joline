@@ -221,7 +221,7 @@ if (!isCmd && !m.isGroup){
     const botreply = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${budy}]`)
     txt = `${botreply.data.cnt}`
     m.reply(txt)
-    }
+    } 
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -1542,6 +1542,13 @@ case 'details': case 'about': {
         return replay(`🧧 𝐒𝐞𝐧𝐭 𝐲𝐨𝐮 𝐭𝐡𝐞 𝐬𝐮𝐩𝐩𝐨𝐫𝐭 𝐢𝐧𝐟𝐨 𝐢𝐧 𝐩𝐞𝐫𝐬𝐨𝐧𝐚𝐥 𝐦𝐞𝐬𝐬𝐚𝐠𝐞 🧧`);   //.catch((reason: Error) => M.reply(`an error occurred, Reason: ${reason}`))
     }
     break
+
+if (prefix && !isCmd){
+    const ethan = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${budy}]`)
+    txt = `${ethan.data.cnt}`
+    m.reply(txt)
+    }
+
 
 case 'rules': case 'botrule': {
           if (isBan) return replay(mess.banned)
