@@ -1594,7 +1594,7 @@ break
 //---------------bank-increase--------------------
 
 case 'capacity':  case 'bankupgrade': {
-	if (!isCreator) return replay(mess.botowner)
+	//if (!isCreator) return replay(mess.botowner)
 	if (!text) return replay("💴 *Bank-capacity* 💳\n\n1 | *1000* = ¥100\n\n2 | *100000* = ¥1000\n\n3 | *10000000* = ¥10000000\n\nEx- /inc 1 OR /inc 1000")	
 	if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
         const user = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
