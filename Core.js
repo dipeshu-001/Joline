@@ -1595,7 +1595,7 @@ break
 
 case 'capacity':  case 'bankupgrade': {
 	//if (!isCreator) return replay(mess.botowner)
-	if (!text) return replay("💴 *Bank-capacity* 💳\n\n1 | *1000* = ¥100\n\n2 | *100000* = ¥1000\n\n3 | *10000000* = ¥10000000\n\nEx- /inc 1 OR /inc 1000")	
+	if (!text) return replay(`💴 *Bank-capacity* 💳\n\n1 | *1000 sp* = 💎100\n\n2 | *100000 sp* = 💎1000\n\n3 | *10000000 sp* = 💎10000000\n\nExample- ${prefix}capacity 1 OR ${prefix}bankupgrade 1000`)	
 	if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
         const user = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
 	const cara = "cara"
@@ -1605,26 +1605,26 @@ case 'capacity':  case 'bankupgrade': {
   switch (value) {
           case '1000':
           case '1':
-          if (k > balance.wallet ) return replay("Check your wallet");
+          if (k > balance.wallet ) return replay(`*You need to pay 💎100 to increase bank capacity ~ 1000 sp*`);
             const deduct1 = await eco.deduct(user, cara, 100);
             const add1 = eco.giveCapacity(user, cara, 1000); 
-                await replay(`1000 💎 storage has been added in ${pushname} bank`)
+                await replay(`*1000 💎diamond storage has been added in ${pushname} bank*`)
      
                 break
           case '100000':
           case '2':
-          if (k < balance.wallet) return replay("Check your wallet");
+          if (k < balance.wallet) return replay(`*You need to pay 💎1000 to increase bank capacity ~ 100000 sp*`);
             const deduct2 = await eco.deduct(user, cara, 1000);
             const add2 = eco.giveCapacity(user, cara, 100000); 
-                await replay(`100000 💎 storage has been added in ${pushname} bank`)
+                await replay(`*100000 💎diamond storage has been added in ${pushname} bank*`)
      
                 break
           case '10000000':
           case '3':
-          if (k < balance.wallet) return replay("Check your wallet");
+          if (k < balance.wallet) return replay(`You need to pay 💎10000 to increase bank capacity ~ 1000 sp`);
              const deduct3 = await eco.deduct(user, cara, 10000);
              const add3 = eco.giveCapacity(user, cara, 10000000); 
-                 await replay(`10000000 💎 storage has been added in ${pushname} bank`)
+                 await replay(`*10000000 💎diamond storage has been added in ${pushname} bank*`)
      
                break
   default:
