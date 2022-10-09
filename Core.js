@@ -1582,7 +1582,7 @@ case 'daily': case 'reward': {
         if (isBanChat) return reply(mess.bangc)
         let user = m.sender
 	const cara = "cara"
-	const daily  = await eco.daily(user, cara, 2000); //give 500 for daily, can be changed
+	const daily  = await eco.daily(user, cara, 500); //give 500 for daily, can be changed
 	
 	        //if (daily.cd) return replay(`You already claimed daily for today, come back in ${daily.cdL}`); //cdL is already formatted cooldown Left
 	
