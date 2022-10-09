@@ -1577,14 +1577,13 @@ case 'rules': case 'botrule': {
 
 case 'daily': case 'reward': {
 	if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
-        if (!isCreator)	return replay(`owner only`)
         if (isBan) return reply(mess.banned)	 			
         if (isBanChat) return reply(mess.bangc)
         let user = m.sender
 	const cara = "cara"
 	const daily  = await eco.daily(user, cara, 500); //give 500 for daily, can be changed
 	
-	        //if (daily.cd) return replay(`You already claimed daily for today, come back in ${daily.cdL}`); //cdL is already formatted cooldown Left
+	        if (daily.cd) return replay(`You already claimed daily for today, come back in ${daily.cdL}`); //cdL is already formatted cooldown Left
 	
             replay(`you claimed 💎${daily.amount} for daily`);        
 }
