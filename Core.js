@@ -1686,7 +1686,7 @@ case 'transfer':  case 'give': {
         
         const deduct = await eco.deduct(user1, cara, value[0]);
         const give = await eco.give(user2, cara, value[0]);
-        replay(`Transaction successful \n\n New Balance: ${balance.wallet}`)
+        replay(`*🎐 Transaction successful*`)
 
 }
 break
@@ -1772,7 +1772,7 @@ case 'withdraw':  case 'withdrawal': {
       if (isBan) return reply(mess.banned)	 			
       if (isBanChat) return reply(mess.bangc)
       if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
-        const user = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
+        const user = m.sender
 		if (!text) return replay("*Provide the amount you want to withdraw!*");
 		const query = text.trim();
         const cara = 'cara'
@@ -1803,7 +1803,7 @@ case 'gamble':  case 'bet': {
     let gg = parseInt(value)
     if (!gg) return replay("*Check your text please, You are using the command in a wrong way*")
     if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
-    const user = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
+    const user = m.sender //m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
     const cara = 'cara'
     const balance = await eco.balance(user, cara); 
     let g = (balance.wallet) > parseInt(value)
