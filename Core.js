@@ -1699,7 +1699,7 @@ case 'wallet':  case 'purse': {
         if (isBan) return reply(mess.banned)	 			
         if (isBanChat) return reply(mess.bangc)
 	if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
-    const user = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
+    const user = m.sender
     const cara = "cara"
     const balance = await eco.balance(user, cara); //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
     await replay(`*💰 ${pushname}'s Purse:*\n\n_💎${balance.wallet}_`);
@@ -1711,7 +1711,7 @@ case 'bank':  case 'levee': {
 	if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
         if (isBan) return reply(mess.banned)	 			
         if (isBanChat) return reply(mess.bangc)
-    const user = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
+    const user = m.sender
     const cara = "cara"
     const balance = await eco.balance(user, cara); //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
     await replay(`*🏦 ${pushname}'s Bank:*\n\n_💎${balance.bank}/${balance.bankCapacity}_`); 
