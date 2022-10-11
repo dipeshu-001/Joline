@@ -5534,16 +5534,6 @@ const mikuarray= [
 
 break
 
-/*
-case 'add':{     			
-    if (!m.isGroup) return replay(mess.grouponly)
- if (!isBotAdmins) return replay(mess.botadmin)
- let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
- if (users.length == 0) return replay(`Please write the number of the person you want to add to thhis group`)
-  await Miku.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => replay(`User Added Successfully!`)).catch((err) => replay(`Cannot add that user to this group!`))
- }
- break
-*/
 
  case "tts":  case "texttospeech":  case "say": case "speak":{
     if (isBan) return reply(mess.banned)	 			
@@ -5588,12 +5578,28 @@ case 'add':{
 
 default:
 
+/*
     if(isCmd){
         if (isBan) return reply(mess.banned)	 			
         if (isBanChat) return reply(mess.bangc)
         reply (`No such command programmed *${pushname}* senpai! Type *${prefix}help* to get my full command list!`)
 
     }	 			
+*/
+
+    //case 'chat': case 'bot': { 
+     if (isCmd) {      		    
+       await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=${q}]`)
+       .then((response) => {
+               // console.log(response);
+              const txt = `${response.data.cnt}`
+              m.reply(txt);
+          }).catch(err => {
+              m.reply(`Sorry ${pushname}, I do not understand what you are trying to do type ${prefix}help to see command list*`)
+          }
+      )
+   }
+//break
 
 
 if (budy.startsWith('=>')) {
