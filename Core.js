@@ -1569,6 +1569,9 @@ case 'rules': case 'botrule': {
     break
 
 
+
+
+
 //=============Economy===============
 
 
@@ -2747,6 +2750,26 @@ if (isBanChat) return reply(mess.bangc)
  await Miku.groupUpdateDescription(m.chat, text).then((res) => replay(mess.jobdone)).catch((err) => replay(jsonformat(err)))
  }
  break
+
+
+  case "pp":
+      case "setbotpp":
+        {
+          if (!isCreator) return replay(mess.botowner);
+          if (!quoted)
+            return replay(`Send/Reply Image With Caption ${prefix}setbotpp`);
+          if (!/image/.test(mime))
+          return replay(`Send/Reply Image With Caption ${prefix}setbotpp`);
+          if (/webp/.test(mime))
+          return replay(`Send/Reply Image With Caption ${prefix}setbotpp`);
+          let media = await Miku.downloadAndSaveMediaMessage(quoted);
+          await Miku.updateProfilePicture(botNumber, {
+            url: media,
+          }).catch((err) => fs.unlinkSync(media));
+          replay(`*🌹 Bot profile picture updated*`);
+        }
+         break;
+
 
  case 'setgrouppp': case 'setgruppp': case 'setgcpp': {
     if (isBan) return reply(mess.banned)	 			
