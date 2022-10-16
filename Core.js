@@ -1575,8 +1575,7 @@ case 'vote': {
      if (args.join(" ").split(";") < 2)
         return replay(`${prefix}poll question;option1,option2,option3.....`);
         let options = [];
-        for (let i of text.split(';')) {
-        //for (let i of args.join(" ").split(';')) {
+        for (let i of args.join(" ").split(';')) {
            options.push({ optionName: i });
       }
       await Miku.sendMessage(
