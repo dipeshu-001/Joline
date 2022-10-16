@@ -1570,9 +1570,9 @@ case 'rules': case 'botrule': {
 
 
 
-case 'poll':
+//case 'poll':
 case 'vote': {
- let [poll,opt] = args.join(" ").split(";");
+  let [poll,opt] = args.join(" ").split(";");
      if (args.join(" ").split(";") < 2)
         return replay(`${prefix}poll question;option1,option2,option3.....`);
         let options = [];
