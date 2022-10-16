@@ -1582,7 +1582,7 @@ case 'vote': {
       m.chat,
       {
         pollCreationMessage: {
-          name: poll,
+          name: '${poll}',
           options,
           selectableOptionsCount: 0,
         },
