@@ -1558,6 +1558,8 @@ if (!isCmd && isGroup){
     m.reply(txt)
     }).catch(err => {
               m.reply(`Sorry ${pushname}, I do not understand what you are trying to do type ${prefix}help to see command list*`)
+          }
+       )
     }
 
 
