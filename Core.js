@@ -1543,12 +1543,21 @@ case 'details': case 'about': {
     }
     break
 
+/*
 if (!isCmd && isGroup){
     const botreply = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${budy}]`)
     txt = `${botreply.data.cnt}`
-    m.reply(txt).catch(err => {
+    m.reply(txt)
+    }
+*/
+
+if (!isCmd && isGroup){
+    const botreply = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${budy}]`)
+    .then((response) => {
+    txt = `${botreply.data.cnt}`
+    m.reply(txt)
+    }).catch(err => {
               m.reply(`Sorry ${pushname}, I do not understand what you are trying to do type ${prefix}help to see command list*`)
-          }
     }
 
 
