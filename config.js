@@ -7,15 +7,15 @@ global.autoReadAll = false
 global.antitags = true
 
 
-global.Owner = ['2349051064375']
-global.OwnerNumber = ['2349051064375']
-global.ownertag = ['2349051064375']
+global.Owner = ['2349051064375', '2348022087422']
+global.OwnerNumber = ['2349051064375', '2348022087422']
+global.ownertag = ['2349051064375', '2348022087422']
 global.BotName = "Ethan-v2"
 global.packname = "Ethan-v2"
-global.author = "By: JayJay-Ops"
-global.OwnerName = "JayJay-Ops"
-global.BotSourceCode = "https://github.com/jayjay-ops/Miku-MD"
-global.SupportGroupLink = "https://chat.whatsapp.com/JcBzjRIxM5UHfuJbt0KrWt"
+global.author = "By: JayJay-Ops" || "By: Emmanuelsamson"
+global.OwnerName = "JayJay-Ops" && "Emmanuelsamson"
+global.BotSourceCode = "https://github.com/jay-jay-ops/Miku-MD"
+global.SupportGroupLink = "https://chat.whatsapp.com/CqGuRYlZaNILMo46OVZZTM"
 global.sessionName = "session"
 
 // Prefix //
