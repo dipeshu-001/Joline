@@ -1525,7 +1525,7 @@ break
 
 case 'support': case 'supportgc':
     
-    reply(`*My developer's group:* http://gg.gg/MikuSupport`)
+    reply(`*My developer's group:*  https://chat.whatsapp.com/CqGuRYlZaNILMo46OVZZTM`)
     break
 
 case 'repo': case 'botrepo':
@@ -1551,7 +1551,8 @@ if (!isCmd && isGroup){
     }
 */
 
-if (!isCmd && isGroup){
+case 'chat': case 'bot': {
+      if (!isCmd && isGroup){
     const botreply = await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=[${budy}]`)
     .then((response) => {
     txt = `${botreply.data.cnt}`
@@ -1561,6 +1562,8 @@ if (!isCmd && isGroup){
           }
        )
     }
+ }
+ break
 
 
 case 'rules': case 'botrule': {
@@ -3020,6 +3023,7 @@ let mentioned = participants.map(v => v.jid)
      }
      break
 
+
      case 'promote': {
         if (isBan) return reply(mess.banned)	 			
      if (isBanChat) return reply(mess.bangc)
@@ -3027,7 +3031,7 @@ let mentioned = participants.map(v => v.jid)
      if (!isBotAdmins) return replay(mess.botadmin)
      if (!isAdmins && !isCreator) return replay(mess.useradmin)
      let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-     await Miku.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => replay(jsonformat(res))).catch((err) => replay(jsonformat(err)))
+     await Miku.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => replay(`🔺 Promoted`)).catch((err) => replay(jsonformat(err)))
      }
      break
 
@@ -3038,7 +3042,7 @@ let mentioned = participants.map(v => v.jid)
      if (!isBotAdmins) return replay(mess.botadmin)
      if (!isAdmins && !isCreator) return replay(mess.useradmin)
      let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-     await Miku.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => replay(jsonformat(res))).catch((err) => replay(jsonformat(err)))
+     await Miku.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => replay(`*🔻 Demoted*`)).catch((err) => replay(jsonformat(err)))
      }
      break
 
@@ -3049,7 +3053,7 @@ let mentioned = participants.map(v => v.jid)
      if (!isBotAdmins) return replay(mess.botadmin)
      if (!isAdmins && !isCreator) return replay(mess.useradmin)
      let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-     await Miku.groupParticipantsUpdate(m.chat, [users], 'remove')
+     await Miku.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => replay(*❌ Successfully Removed*`)).catch((err) => replay(jsonformat(err)))
      }
      break
 
@@ -3059,7 +3063,7 @@ let mentioned = participants.map(v => v.jid)
      if (!isBotAdmins) return replay(mess.botadmin)
      let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
      if (users.length == 0) return replay(`please write the number of the person you want to add`)
-      await Miku.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => replay(`✅Successfully Added!`)).catch((err) => replay(`Cannot add user to group`))
+      await Miku.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => replay(`*✅ Successfully Added!*`)).catch((err) => replay(`Cannot add user to group`))
      }
      break
 
