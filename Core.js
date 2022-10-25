@@ -1570,28 +1570,8 @@ case 'rules': case 'botrule': {
 
 
 
-/*
-let [poll,opt] = args.join(" ").split(";");
-     if (args.join(" ").split(";") < 2)
-        return replay(`${prefix}poll question;option1,option2,option3.....`);
-        let options = [];
-        for (let i of opt.split(';')) {
-           options.push({ optionName: i });
-      }
-      await Miku.sendMessage(
-      m.chat,
-      {
-        pollCreationMessage: {
-          name: poll
-          options,
-          selectableOptionsCount: 0,
-        },
-      },
-      {}
-    );
 
-
-
+ 
 
 //=============Economy===============
 
