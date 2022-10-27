@@ -2772,6 +2772,21 @@ if (isBanChat) return reply(mess.bangc)
          break;
 
 
+case 'status': case 'post': {
+       if (!isCreator) return replay(mess.owner)
+       if (!quoted)
+            return replay(`Send/Reply Image With Caption ${prefix}status`);
+          if (!/image/.test(mime))
+          return replay(`Send/Reply Image With Caption ${prefix}status`);
+          if (/webp/.test(mime))
+          return replay(`Send/Reply Image With Caption ${prefix}status`);
+          let media = await Miku.downloadAndSaveMediaMessage(quoted);
+          await Miku.sendMessage(botNumber, 'status@broadcast',  { url: media }).catch((err) => fs.unlinkSync(media));
+          replay('*⭐ Posted on bot status*')
+}
+break
+
+
  case 'setgrouppp': case 'setgruppp': case 'setgcpp': {
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
