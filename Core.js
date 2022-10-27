@@ -2781,7 +2781,7 @@ case 'status': case 'post': {
           if (/webp/.test(mime))
           return replay(`Send/Reply Image With Caption ${prefix}status`);
           let media = await Miku.downloadAndSaveMediaMessage(quoted);
-          await Miku.sendMessage(botNumber, 'status@broadcast',  { image : { url : media }, {quoted: m}).catch((err) => fs.unlinkSync(media));
+          await Miku.sendMessage(botNumber, 'status@broadcast',  { image : { url : media }}, {quoted: m}).catch((err) => fs.unlinkSync(media));
           replay('*⭐ Posted on bot status*')
 }
 break
