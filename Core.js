@@ -1605,7 +1605,7 @@ case 'capacity':  case 'bankupgrade': {
 	const cara = "cara"
 	let value = text.trim();
 	let k = parseInt(value)
-	const balance  = await eco.balance(user, cara)
+	const balance  = await eco.balance(user, cara) 
   switch (value) {
           case '1000':
           case '1':
@@ -3979,6 +3979,7 @@ await fs.unlinkSync(memek)
 }
 break
 
+/*
 case 'sgif': case 'sticker': case 's': {
     if (isBan) return reply(mess.banned)
     if (isBanChat) return reply(mess.bangc)
@@ -3996,6 +3997,33 @@ case 'sgif': case 'sticker': case 's': {
  }
  }
  break
+*/
+
+case 'sgif': case 'sticker': case 's': {
+    if (isBan) return reply(mess.banned)
+    if (isBanChat) return reply(mess.bangc)
+    const user = m.sender
+	const cara = "cara" 
+	const k = 10
+	const balance  = await eco.balance(user, cara)
+    if (k > balance.wallet) return replay(`*~ Sorry ${pushname}, you need at least 💎10 to use this command.*\n\n*~ Withdraw from your bank by using ${prefix}withdraw <amount>*\n\n*~ Use from the economy commands list to gain 💎Diamonds*`)
+ if (/image/.test(mime)) {
+ let media = await quoted.download()
+ let encmedia = await Miku.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+ await fs.unlinkSync(encmedia)
+ const deduct = eco.deduct(user, cara, k) return replay(`*✅ Transaction Successful :- 💎10 has been deducted from your wallet*\n\n*Reason :‑* _Making Sticker requires 💎diamonds_\n\n${pushname}`)
+ } else if (/video/.test(mime)) {
+ if ((quoted.msg || quoted).seconds > 11) return reply('Maximum 10 seconds!')
+ let media = await quoted.download()
+ let encmedia = await Miku.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+ await fs.unlinkSync(encmedia)
+ const deduct = eco.deduct(user, cara, k) return replay(`*✅ Transaction Successful :- 💎10 has been deducted from your wallet*\n\n*Reason :‑* _Making Sticker requires 💎diamonds_\n\n${pushname}`)
+ } else {
+ reply(`Send Image/Video With Caption ${prefix + command}\nVideo Duration 1-9 Seconds`)
+ }
+ }
+ break
+
 
 case 'wiki':
     if (isBan) return reply(mess.banned)
