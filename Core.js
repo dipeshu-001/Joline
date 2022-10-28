@@ -4011,13 +4011,15 @@ case 'sgif': case 'sticker': case 's': {
  let media = await quoted.download()
  let encmedia = await Miku.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
  await fs.unlinkSync(encmedia)
- const deduct = eco.deduct(user, cara, k) return replay(`*✅ Transaction Successful :- 💎10 has been deducted from your wallet*\n\n*Reason :‑* _Making Sticker requires 💎diamonds_\n\n${pushname}`)
+ const deduct = eco.deduct(user, cara, k)
+       replay(`*✅ Transaction Successful :- 💎10 has been deducted from your wallet*\n\n*Reason :‑* _Making Sticker requires 💎diamonds_\n\n${pushname}`)
  } else if (/video/.test(mime)) {
  if ((quoted.msg || quoted).seconds > 11) return reply('Maximum 10 seconds!')
  let media = await quoted.download()
  let encmedia = await Miku.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
  await fs.unlinkSync(encmedia)
- const deduct = eco.deduct(user, cara, k) return replay(`*✅ Transaction Successful :- 💎10 has been deducted from your wallet*\n\n*Reason :‑* _Making Sticker requires 💎diamonds_\n\n${pushname}`)
+ const deduct = eco.deduct(user, cara, k)
+       replay(`*✅ Transaction Successful :- 💎10 has been deducted from your wallet*\n\n*Reason :‑* _Making Sticker requires 💎diamonds_\n\n${pushname}`)
  } else {
  reply(`Send Image/Video With Caption ${prefix + command}\nVideo Duration 1-9 Seconds`)
  }
