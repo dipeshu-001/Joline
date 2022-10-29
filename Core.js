@@ -2774,33 +2774,30 @@ if (isBanChat) return reply(mess.bangc)
 
 case 'status': case 'post': {
         if (!isCreator) return replay(mess.owner)
+        if (!quoted) return replay(`Send/Reply Image With Caption ${prefix}status`)
         if (/video/.test(mime)) {
             if ((quoted.msg || quoted).seconds > 30) return reply('Maximum 30 seconds video is allowed!')
         }
-        else {
-            reply(`Send Image/Video With Caption ${prefix + command}\nVideo Duration 30 Seconds max`)
-        }
-
         const messageType = Object.keys (m.message)[0]
-
-
         if (messageType === 'imageMessage') {
             const media = await downloadMediaMessage(m,'media',{ },{ logger,reuploadRequest: sock.updateMediaMessage})
-
             await writeFile('./image.jpeg', media)
-            await Miku.sendMessage(botNumber, 'status@broadcast',  { url: './image.jpeg' }).catch((err) => fs.unlinkSync(media))
-           reply('⭐ Posted on bot status')
+            await Miku.sendMessage(botNumber, 'status@broadcast',  { url: './image.jpeg', media}).catch((err) => fs.unlinkSync(media))
+            reply('⭐ Posted on bot status')
         }
-
-        if (messageType === 'videoMessage') {
+        else if (messageType === 'videoMessage') {
             const media = await downloadMediaMessage(m,'media',{ },{ logger,reuploadRequest: sock.updateMediaMessage})
             await writeFile('./video.mp4', media)
-            await Miku.sendMessage(botNumber, 'status@broadcast',  { url: media }).catch((err) => fs.unlinkSync(media))
+            await Miku.sendMessage(botNumber, 'status@broadcast',  { url: 'video.mp4', media}).catch((err) => fs.unlinkSync(media))
            reply('⭐ Posted on bot status')
+        }
+        else {
+            replay(`an error occurred`)
         }
 
  }
  break
+
 
 
  case 'setgrouppp': case 'setgruppp': case 'setgcpp': {
