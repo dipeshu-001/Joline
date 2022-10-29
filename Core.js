@@ -2773,18 +2773,34 @@ if (isBanChat) return reply(mess.bangc)
 
 
 case 'status': case 'post': {
-       if (!isCreator) return replay(mess.botowner)
-       if (!quoted)
-            return replay(`Send/Reply Image With Caption ${prefix}status`);
-          if (!/image/.test(mime))
-          return replay(`Send/Reply Image With Caption ${prefix}status`);
-          if (/webp/.test(mime))
-          return replay(`Send/Reply Image With Caption ${prefix}status`);
-          let media = await Miku.downloadAndSaveMediaMessage(quoted);
-          await Miku.sendMessage('status@broadcast',  { image : { url : media }}, m).catch((err) => fs.unlinkSync(media));
-          replay(`*⭐ Posted on bot's status*`)
-}
-break
+        if (!isCreator) return replay(mess.owner)
+        if (/video/.test(mime)) {
+            if ((quoted.msg || quoted).seconds > 30) return reply('Maximum 30 seconds video is allowed!')
+        }
+        else {
+            reply(`Send Image/Video With Caption ${prefix + command}\nVideo Duration 30 Seconds max`)
+        }
+
+        const messageType = Object.keys (m.message)[0]
+
+
+        if (messageType === 'imageMessage') {
+            const media = await downloadMediaMessage(m,'media',{ },{ logger,reuploadRequest: sock.updateMediaMessage})
+
+            await writeFile('./image.jpeg', media)
+            await Miku.sendMessage(botNumber, 'status@broadcast',  { url: './image.jpeg' }).catch((err) => fs.unlinkSync(media))
+           reply('⭐ Posted on bot status')
+        }
+
+        if (messageType === 'videoMessage') {
+            const media = await downloadMediaMessage(m,'media',{ },{ logger,reuploadRequest: sock.updateMediaMessage})
+            await writeFile('./video.mp4', media)
+            await Miku.sendMessage(botNumber, 'status@broadcast',  { url: media }).catch((err) => fs.unlinkSync(media))
+           reply('⭐ Posted on bot status')
+        }
+
+ }
+ break
 
 
  case 'setgrouppp': case 'setgruppp': case 'setgcpp': {
@@ -3030,9 +3046,11 @@ let mentioned = participants.map(v => v.jid)
         if (isBan) return reply(mess.banned)	 			
      if (isBanChat) return reply(mess.bangc)
      if (!m.isGroup) return replay(mess.grouponly)
+     if (itsMe) return replay(`*🥱 How can I remove myself*`)
      if (!isBotAdmins) return replay(mess.botadmin)
      if (!isAdmins && !isCreator) return replay(mess.useradmin)
      let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+     if (users == itsMe) return replay(`*🥱 How can I remove myself*`)
      await Miku.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => replay(`*❌ Successfully Removed*`)).catch((err) => replay(jsonformat(err)))
      }
      break
