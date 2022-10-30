@@ -1836,6 +1836,70 @@ break
 
 
 
+//-----------------Slot----------------------
+
+
+case 'slot': case 'spin': {
+       if (isBan) return replay(mess.banned);
+       if (isBanChat) return replay(mess.bangc)
+       if (!isCreator) return replay(mess.botowner)
+       if (!m.isGroup) return replay(mess.grouponly)
+       if (!text) return replay(`Use ${prefix}slot to spin`)
+       //const fruit = ["🍍","🍋","🥥"]
+       
+       const user = m.sender
+       const cara = "cara"
+       const k = 100
+       const balance1  = await eco.balance(user, cara)
+       const fruits = 
+                      ["🍍","🥥","🍋"],
+                      ["🍋","🍋","🍋"],
+                      ["🥥","🍋","🍍"],
+                      ["🍍","🥥","🍍"],
+                      ["🍋","🍍","🍍"],
+                      ["🥥","🥥","🥥"],
+                      ["🍋","🍋","🍇"],
+                      ["🍍","🍍","🍍"],
+                      ["🍇","🍇","🍇","🍇"];
+       
+       if (k > balance1.wallet) return replay(`You are going to be betting on your wallet, you need at least 💎100`);
+       const random = fruits[Math.floor(Math.random() * fruits.length)];
+       if (random == fruits[0])
+           const deduct1 = await eco.deduct(user, cara, 20);
+                  replay(`Totally out of line\n\n--> 🍍~🥥~🍋`)
+       else if (random == fruits[1])
+           const give1 = eco.give(user, cara, 100); 
+                  replay(`You harvested a basket of\n\n--> 🍋+🍋+🍋`)
+       else if (random == fruits[2])
+           const deduct2 = await eco.deduct(user, cara, 20);
+                  replay(`You suck at playing this game\n\n--> 🥥-🍋-🍍`)
+       else if (random == fruits[3])
+           const deduct3 = await eco.deduct(user, cara, 10);
+                  replay(`How can you harvest coconut 🥥 in a pineapple 🍍 farm\n\n--> 🍍>🥥<🍍`)
+       else if (random == fruits[4])
+           const give2 = eco.give(user, cara, 30); 
+                 replay(`Wow, ${pushname} you were so close to winning pineapples\n\n--> 🍋-🍍+🍍`)
+       else if (random == fruits[5])
+           const give3 = eco.give(user, cara, 100); 
+                replay(`Impressive, You must be a specialist in plucking coconuts\n\n--> 🥥+🥥+🥥`)
+       else if (random == fruits[6])
+           const give4 = eco.give(user, cara, 30); 
+                replay(`You Tried but \"Nearly cannot kill a bird\"\n\n--> 🍋+🍋-🍇`)
+       else if (random == fruits[7])
+           const give5 = eco.give(user, cara, 100); 
+                replay(`Amazing, you are going to be make pineapple juice for the family\n\n--> 🍍+🍍+🍍`)
+       else if (random == fruits[8])
+           const give6 = eco.give(user, cara, 500); 
+                replay(`🥶 JackPot ${pushname}\n\n--> 🍇×🍇×🍇×🍇`)
+       else {
+           replay(`I guess you are not mature enough to play this game`)
+       }
+}
+break
+
+
+
+
 
 //=======================================
 
