@@ -1860,8 +1860,8 @@ case 'slot': case 'spin': {
                       ["🥥","🥥","🥥"],
                       ["🍋","🍋","🍇"],
                       ["🍍","🍍","🍍"],
-                      ["🍇","🍇","🍇","🍇"];
-                    ]
+                      ["🍇","🍇","🍇","🍇"]
+                    ];
        
        if (k > balance1.wallet) return replay(`You are going to be betting on your wallet, you need at least 💎100`);
        const random = fruits[Math.floor(Math.random() * fruits.length)];
