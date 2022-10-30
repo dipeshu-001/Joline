@@ -1851,7 +1851,7 @@ case 'slot': case 'spin': {
        const cara = "cara"
        const k = 100
        const balance1  = await eco.balance(user, cara)
-       const fruits = 
+       const fruits =[ 
                       ["🍍","🥥","🍋"],
                       ["🍋","🍋","🍋"],
                       ["🥥","🍋","🍍"],
@@ -1861,6 +1861,7 @@ case 'slot': case 'spin': {
                       ["🍋","🍋","🍇"],
                       ["🍍","🍍","🍍"],
                       ["🍇","🍇","🍇","🍇"];
+                    ]
        
        if (k > balance1.wallet) return replay(`You are going to be betting on your wallet, you need at least 💎100`);
        const random = fruits[Math.floor(Math.random() * fruits.length)];
