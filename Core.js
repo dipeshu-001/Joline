@@ -1838,7 +1838,7 @@ break
 
 //-----------------Slot----------------------
 
-
+/*
  case 'slot': case 'spin': {
        if (isBan) return replay(mess.banned);
        if (isBanChat) return replay(mess.bangc)
@@ -1899,7 +1899,7 @@ break
 }
 break
 
-
+*/
 
 
 //=======================================
