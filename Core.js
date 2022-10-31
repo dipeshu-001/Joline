@@ -1862,10 +1862,10 @@ break
        const k = 100
        const balance1  = await eco.balance(user, cara)
        const opp =
-       const f =  [["🍍","🥥","🍋"], ["🍋","🍋","🍋"], ["🥥", "🍋", "🍍"], ["🍍","🥥","🍍"], ["🍋","🍍","🍍"], ["🥥","🥥","🥥"], [ "🍋","🍋","🍇"], ["🍍","🍍","🍍"], ["🍇","🍇","🍇","🍇"]]
+       const f =  ["🍍","🥥","🍋"],["🍋","🍋","🍋"],["🥥", "🍋", "🍍"],["🍍","🥥","🍍"],["🍋","🍍","🍍"],["🥥","🥥","🥥"],[ "🍋","🍋","🍇"],["🍍","🍍","🍍"], ["🍇","🍇","🍇","🍇"]
        
        if (k > balance1.wallet) return replay(`You are going to be betting on your wallet, you need at least 💎100`);
-       const fruits = f[0][Math.floor(Math.random() * f[0].length)];
+       const fruits = f[Math.floor(Math.random() * f.length)];
        if (fruits == fruit1)
            const deduct1 = await eco.deduct(user, cara, 20);
                   replay(`Totally out of line\n\n--> 🍍~🥥~🍋`)
