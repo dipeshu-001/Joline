@@ -1839,48 +1839,58 @@ break
 //-----------------Slot----------------------
 
 
-case 'slot': case 'spin': {
+ case 'slot': case 'spin': {
        if (isBan) return replay(mess.banned);
        if (isBanChat) return replay(mess.bangc)
        if (!isCreator) return replay(mess.botowner)
        if (!m.isGroup) return replay(mess.grouponly)
        if (!text) return replay(`Use ${prefix}slot to spin`)
-       //const fruit = ["🍍","🍋","🥥"]
+       const fruit1 = ["🍍","🥥","🍋"]
+       const fruit2 = ["🍋","🍋","🍋"]
+       const fruit3 = ["🥥","🍋","🍍"]
+       const fruit4 = ["🍍","🥥","🍍"]
+       const fruit5 = ["🍋","🍍","🍍"]
+       const fruit6 = ["🥥","🥥","🥥"]
+       const fruit7 = ["🍋","🍋","🍇"]
+       const fruit8 = ["🍍","🍍","🍍"]
+       const fruit9 = ["🍇","🍇","🍇","🍇"]
+       
+       
        
        const user = m.sender
        const cara = "cara"
        const k = 100
        const balance1  = await eco.balance(user, cara)
        const opp =
-       const f =  [["🍍","🥥","🍋"], ["🍋","🍋","🍋"], ["🥥","🍋","🍍"], ["🍍","🥥","🍍"], ["🍋","🍍","🍍"], ["🥥","🥥","🥥"], ["🍋","🍋","🍇"], ["🍍","🍍","🍍"], ["🍇","🍇","🍇","🍇"]];
+       const f =  [["🍍","🥥","🍋"], ["🍋","🍋","🍋"], ["🥥", "🍋", "🍍"], ["🍍","🥥","🍍"], ["🍋","🍍","🍍"], ["🥥","🥥","🥥"], [ "🍋","🍋","🍇"], ["🍍","🍍","🍍"], ["🍇","🍇","🍇","🍇"]]
        
        if (k > balance1.wallet) return replay(`You are going to be betting on your wallet, you need at least 💎100`);
-       const fruits = f[Math.floor(Math.random() * f.length)];
-       if (fruits == f[0][0])
+       const fruits = f[0][Math.floor(Math.random() * f[0].length)];
+       if (fruits == fruit1)
            const deduct1 = await eco.deduct(user, cara, 20);
                   replay(`Totally out of line\n\n--> 🍍~🥥~🍋`)
-       else if (fruits == f[0][1])
+       else if (fruits == fruit2)
            const give1 = eco.give(user, cara, 100); 
                   replay(`You harvested a basket of\n\n--> 🍋+🍋+🍋`)
-       else if (fruits == f[0][2])
+       else if (fruits == fruit3)
            const deduct2 = await eco.deduct(user, cara, 20);
                   replay(`You suck at playing this game\n\n--> 🥥-🍋-🍍`)
-       else if (fruits == f[0][3])
+       else if (fruits == fruit4)
            const deduct3 = await eco.deduct(user, cara, 10);
                   replay(`How can you harvest coconut 🥥 in a pineapple 🍍 farm\n\n--> 🍍>🥥<🍍`)
-       else if (fruits == f[0][4])
+       else if (fruits == fruit5)
            const give2 = eco.give(user, cara, 30); 
                  replay(`Wow, ${pushname} you were so close to winning pineapples\n\n--> 🍋-🍍+🍍`)
-       else if (fruits == f[0][5])
+       else if (fruits == fruit6)
            const give3 = eco.give(user, cara, 100); 
                 replay(`Impressive, You must be a specialist in plucking coconuts\n\n--> 🥥+🥥+🥥`)
-       else if (fruits == f[0][6])
+       else if (fruits == fruit7)
            const give4 = eco.give(user, cara, 30); 
                 replay(`You Tried but \"Nearly cannot kill a bird\"\n\n--> 🍋+🍋-🍇`)
-       else if (fruits == f[0][7])
+       else if (fruits == fruit8)
            const give5 = eco.give(user, cara, 100); 
                 replay(`Amazing, you are going to be make pineapple juice for the family\n\n--> 🍍+🍍+🍍`)
-       else if (fruits == f[0][8])
+       else if (fruits == fruit9 )
            const give6 = eco.give(user, cara, 500); 
                 replay(`🥶 JackPot ${pushname}\n\n--> 🍇×🍇×🍇×🍇`)
        else {
