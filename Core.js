@@ -1903,7 +1903,7 @@ case 'slot': case 'spin': {
        const mess3 = near[Math.floor(Math.random() * near.length)];
        const mess4 = jack[Math.floor(Math.random() * jack.length)];
        
-       if ((f1 !== f2) && f2 !== f3))
+       if ((f1 !== f2) && f2 !== f3)
            const deduct1 = await eco.deduct(user, cara, 20);
                   replay(`${mess1}\nLose --> 💎20`)
        else if ((f1 == f2) && f2 == f3)
