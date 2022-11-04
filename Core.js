@@ -1648,10 +1648,10 @@ case 'deposit':  case 'pay-in': {
         if (isBan) return reply(mess.banned)	 			
         if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
 		if (!text) return replay("Provide the amount you want to deposit!");
-		const texts = text.trim().split(" ");
+		const texts = text.trim();
 		const user = m.sender;
 		const cara = 'cara'
-        const deposit = await eco.deposit(user, cara, texts[0]);
+        const deposit = await eco.deposit(user, cara, texts);
             if(deposit.noten) return replay('You can\'t deposit what you don\'t have.'); //if user states more than whats in his wallet
              replay(`Successfully Deposited 💎${deposit.amount} to your bank.`)
 		
@@ -1838,56 +1838,21 @@ break
 
 //-----------------Slot----------------------
 
+
 case 'slot': case 'spin': {
        if (isBan) return replay(mess.banned);
        if (isBanChat) return replay(mess.bangc)
        if (!isCreator) return replay(mess.botowner)
        if (!m.isGroup) return replay(mess.grouponly)
        if (!text) return replay(`Use ${prefix}slot to spin`)
-       const fruit1 = ["🍍",
-                         "🥥",
-                         "🍎",
-                         "🍌",
-                         "🥕",
-                         "🍇"]
-                         
-       const fruit2 = ["🍍",
-                         "🥥",
-                         "🍎",
-                         "🍌",
-                         "🥕",
-                         "🍇"]
-                         
-       const fruit3 = ["🍍",
-                         "🥥",
-                         "🍎",
-                         "🍌",
-                         "🥕",
-                         "🍇"]
-                         
-       const fruit4 = ["🍇",
-                          "🥥"]
-       const lose = ['You suck at playing this game\n\n--> 🍍-🥥-🍋',
-                        'Totally out of line\n\n--> 🥥-🍋-🍍',
-                        'Are you a newbie?\n\n--> 🍋-🍍-🥥'
-                       ];
-                       
-       const won = ['You harvested a basket of\n\n--> 🍋+🍋+🍋',
-                       'Impressive, You must be a specialist in plucking coconuts\n\n--> 🥥+🥥+🥥',
-                       'Amazing, you are going to be making pineapple juice for the family\n\n--> 🍍+🍍+🍍',
-                      ];
-                      
-       const near = ['So Close, you cannot harvest coconut 🥥 in a pineapple 🍍 farm\n\n--> 🍍>🥥<🍍',
-                        'Wow, ${pushname} you were so close to winning pineapples\n\n--> 🍋-🍍+🍍',
-                        'Hmmm ${pushname}, you were so close to winning Lemons\n\n--> 🍋+🍋-🍍'
-                       ];
-                       
-       const jack = ['🥶 JackPot ${pushname}\n\n--> 🍇×🍇×🍇×🍇',
-                        '🎉 JaaackPooot!\n\n--> 🥥×🥥×🥥×🥥',
-                        '🎊 You Just hit a jackpot worth 💎500'
-                       ]
-       
-       
+       const fruit1 = ["🍍", "🥥", "🍎", "🍌", "🥕", "🍇"]
+       const fruit2 = ["🍌", "🥕", "🍍", "🍇", "🍎", "🥥"]  
+       const fruit3 = ["🍇", "🥕", "🍌", "🍎", "🥥", "🍍"]         
+       const fruit4 = ["🍇", "🥥"]
+       const lose = ['You suck at playing this game\n\n--> 🍍-🥥-🍋', 'Totally out of line\n\n--> 🥥-🍋-🍍', 'Are you a newbie?\n\n--> 🍋-🍍-🥥']
+       const won = ['You harvested a basket of\n\n--> 🍋+🍋+🍋', 'Impressive, You must be a specialist in plucking coconuts\n\n--> 🥥+🥥+🥥', 'Amazing, you are going to be making pineapple juice for the family\n\n--> 🍍+🍍+🍍']             
+       const near = ['So Close, you cannot harvest coconut 🥥 in a pineapple 🍍 farm\n\n--> 🍍>🥥<🍍', 'Wow, ${pushname} you were so close to winning pineapples\n\n--> 🍋-🍍+🍍', 'Hmmm ${pushname}, you were so close to winning Lemons\n\n--> 🍋+🍋-🍍']          
+       const jack = ['🥶 JackPot ${pushname}\n\n--> 🍇×🍇×🍇×🍇', '🎉 JaaackPooot!\n\n--> 🥥×🥥×🥥×🥥', '🎊 You Just hit a jackpot worth 💎500']
        const user = m.sender
        const cara = "cara"
        const k = 100
@@ -1904,24 +1869,24 @@ case 'slot': case 'spin': {
        const mess4 = jack[Math.floor(Math.random() * jack.length)];
        
        if ((f1 !== f2) && f2 !== f3)
-           const deduct1 = await eco.deduct(user, cara, 20);
-                  replay(`${mess1}\nLose --> 💎20`)
+       const deduct1 = await eco.deduct(user, cara, 20);
+       replay(`${mess1}\nLose --> 💎20`)
        else if ((f1 == f2) && f2 == f3)
-           const give1 = await eco.give(user, cara, 100); 
-                  replay(`${mess2}\nWon --> 💎100`)
+       const give1 = await eco.give(user, cara, 100); 
+       replay(`${mess2}\nWon --> 💎100`)
        else if ((f1 == f2) && f2 !== f3)
-           const give2 = await eco.give(user, cara, 20);
-                  replay(`${mess3}\nWon --> 💎20`)
+       const give2 = await eco.give(user, cara, 20);
+       replay(`${mess3}\nWon --> 💎20`)
        else if ((f1 !== f2) && f1 == f3)
-           const give3 = await eco.give(user, cara, 20);
-                  replay(`${mess3}\nWon --> 💎20`)
+       const give3 = await eco.give(user, cara, 20);
+       replay(`${mess3}\nWon --> 💎20`)
        else if ((f1 !== f2) && f2 == f3)
-           const give4 = eco.give(user, cara, 20); 
-                 replay(`${mess3}\nWon --> 💎20`)
+       const give4 = eco.give(user, cara, 20); 
+       replay(`${mess3}\nWon --> 💎20`)
+       else if ((f1 == f2) && (f2 == f3) && (f3 == f4))
+       const give5 = eco.give(user, cara, 500);
        else { 
-             if ((f1 == f2) && (f2 == f3) && f3 == f4);
-                const give5 = eco.give(user, cara, 500); 
-                     replay(`${mess4}\nJackPot --> 💎500`)
+       replay(`Do you understand what you are doing?`)
        }
 }
 break
