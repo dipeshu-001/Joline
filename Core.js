@@ -1843,7 +1843,7 @@ case 'slot': case 'spin': {
        if (isBanChat) return replay(mess.bangc)
        if (!isCreator) return replay(mess.botowner)
        if (!m.isGroup) return replay(mess.grouponly)
-       if (!text) return replay(`Use ${prefix}slot to spin`)
+       //if (thisDaye !== ('Friday' || 'Saturday' || 'Sunday')) replay(`You can only play this game during weekends!`)
        const fruit1 = ["🍍", "🥥", "🍎", "🍌", "🥕", "🍇"]
        const fruit2 = ["🍌", "🥕", "🍍", "🍇", "🍎", "🥥"]  
        const fruit3 = ["🍇", "🥕", "🍌", "🍎", "🥥", "🍍"]         
