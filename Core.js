@@ -1867,24 +1867,30 @@ case 'slot': case 'spin': {
        const mess3 = near[Math.floor(Math.random() * near.length)];
        const mess4 = jack[Math.floor(Math.random() * jack.length)];
        
-       if ((f1 !== f2) && f2 !== f3)
+       if ((f1 !== f2) && f2 !== f3){
           const deduct1 = await eco.deduct(user, cara, 20);
                  replay(`${mess1}\nLose --> 💎20`)
-       else if ((f1 == f2) && f2 == f3)
+       }
+       else if ((f1 == f2) && f2 == f3){
           const give1 = await eco.give(user, cara, 100); 
                 replay(`${mess2}\nWon --> 💎100`)
-       else if ((f1 == f2) && f2 !== f3)
+       }
+       else if ((f1 == f2) && f2 !== f3){
           const give2 = await eco.give(user, cara, 20);
                 replay(`${mess3}\nWon --> 💎20`)
-       else if ((f1 !== f2) && f1 == f3)
+       }
+       else if ((f1 !== f2) && f1 == f3){
           const give3 = await eco.give(user, cara, 20);
                 replay(`${mess3}\nWon --> 💎20`)
-       else if ((f1 !== f2) && f2 == f3)
+       }
+       else if ((f1 !== f2) && f2 == f3){
           const give4 = eco.give(user, cara, 20); 
                 replay(`${mess3}\nWon --> 💎20`)
-       else if ((f1 == f2) && (f2 == f3) && (f3 == f4))
+       }
+       else if ((f1 == f2) && (f2 == f3) && (f3 == f4)){
           const give5 = eco.give(user, cara, 500);
                replay(`${mess4}\n🎊 JackPot --> 💎500`)
+       }
        else { 
                replay(`Do you understand what you are doing?`)
        }
