@@ -1841,11 +1841,12 @@ break
 case 'slot': case 'spin': {
        if (isBan) return replay(mess.banned);
        if (isBanChat) return replay(mess.bangc)
-       //if (!isCreator) return replay(mess.botowner)
        if (!m.isGroup) return replay(mess.grouponly)
+       
+       var today = new Date();
+       if (today.getDay() !== 0 || today.getDay() !== 5 || today.getDay() !== 6 ) return replay(`*You can only play this game during weekends*\n\n🐾 Friday*\n*🎏 Saturday*\n*🎐 Sunday*`)
        if (text == 'help') return replay(`*1:* Use ${prefix}slot to play\n\n*2:* You must have 💎100 in your wallet\n\n*3:* If you don't have money in wallet then withdraw from your bank\n\n*4:* If you don't have money in your bank too then use economy features to gain money`)
        if (text == 'money') return replay(`*1:* Small Win --> +💎20\n\n*2:* Small Lose --> -💎20\n\n*3:* Big Win --> +💎100\n\n*4:* Big Lose --> -💎50\n\n*5:* 🎉 JackPot --> +💎1000`)
-       if (thisHari !== ('Friday'||'Saturday'|| 'Sunday')) return replay(`*You can only play this game during weekends*\n\n*🪔 Friday*\n*🎏 Saturday*\n*🎐 Sunday*`)
        const fruit1= ["🍍", "🥥", "🍎", "🍇"]
        const fruit2 = ["🍍", "🍇", "🍎", "🥥"]  
        const fruit3 = ["🍇", "🍎", "🥥", "🍍"]         
