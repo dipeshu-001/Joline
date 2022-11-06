@@ -1845,8 +1845,7 @@ case 'slot': case 'spin': {
        if (!m.isGroup) return replay(mess.grouponly)
        if (text == 'help') return replay(`*1:* Use ${prefix}slot to play\n\n*2:* You must have 💎100 in your wallet\n\n*3:* If you don't have money in wallet then withdraw from your bank\n\n*4:* If you don't have money in your bank too then use economy features to gain money`)
        if (text == 'money') return replay(`*1:* Small Win --> +💎20\n\n*2:* Small Lose --> -💎20\n\n*3:* Big Win --> +💎100\n\n*4:* Big Lose --> -💎50\n\n*5:* 🎉 JackPot --> +💎1000`)
-
-       if (thisHari !== ('Friday'||'Saturday'||'Monday')) return replay(`*You can only play this game during weekends*\n\n*🪔 Friday*\n*🎏 Saturday*\n*🎐 Sunday*`)
+       if (thisHari !== ('Friday'||'Saturday'|| 'Sunday')) return replay(`*You can only play this game during weekends*\n\n*🪔 Friday*\n*🎏 Saturday*\n*🎐 Sunday*`)
        const fruit1= ["🍍", "🥥", "🍎", "🍇"]
        const fruit2 = ["🍍", "🍇", "🍎", "🥥"]  
        const fruit3 = ["🍇", "🍎", "🥥", "🍍"]         
@@ -5350,6 +5349,17 @@ I am *${global.BotName}*, a bot modified by *${global.OwnerName}*.
 ║
 ╚════════════╝
 
+╔════⧫🕹️𝑮𝒂𝒎𝒆𝒔🕹️
+║
+║ ${prefix}slot
+║ ${prefix}gamble
+║ ${prefix}slot help
+║ ${prefix}truth
+║ ${prefix}slot money
+║ ${prefix}dare
+║
+╚════════════╝
+
 ╔════⧫💳 𝑬𝒄𝒐𝒏𝒐𝒎𝒚 💳
 ║
 ║ ${prefix}daily
@@ -5360,7 +5370,6 @@ I am *${global.BotName}*, a bot modified by *${global.OwnerName}*.
 ║ ${prefix}bank
 ║ ${prefix}rob
 ║ ${prefix}withdraw
-║ ${prefix}gamble
 ║
 ╚════════════╝ 
 
@@ -5520,8 +5529,6 @@ I am *${global.BotName}*, a bot modified by *${global.OwnerName}*.
 ╔════⧫🦋𝑭𝒖𝒏🦋
 ║
 ║ ${prefix}reaction
-║ ${prefix}truth
-║ ${prefix}dare
 ║ ${prefix}couple
 ║ ${prefix}soulmate
 ║ ${prefix}handsomecheck
