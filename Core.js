@@ -1817,7 +1817,7 @@ case 'gamble':  case 'bet': {
    //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.	
     if (a == true) return replay(`*Sorry ${pushname}, you can only gamble with more than 💎50.*`);
                 //if(balance.wallet < value) return replay('no enough money');
-    const f = ["left", "right", "up", "down"]
+    const f = ["left", "right", "up", "down", "left", "right", "up", "down"]
     const r = f[Math.floor(Math.random () * f.length)]
     if ( r == opp){
     const give = await eco.give(user , cara, texts[0]);
