@@ -1845,10 +1845,8 @@ case 'slot': case 'spin': {
        if (!m.isGroup) return replay(mess.grouponly)
        if (text == 'help') return replay(`*1:* Use ${prefix}slot to play\n\n*2:* You must have 💎100 in your wallet\n\n*3:* If you don't have money in wallet then withdraw from your bank\n\n*4:* If you don't have money in your bank too then use economy features to gain money`)
        if (text == 'money') return replay(`*1:* Small Win --> +💎20\n\n*2:* Small Lose --> -💎20\n\n*3:* Big Win --> +💎100\n\n*4:* Big Lose --> -💎50\n\n*5:* 🎉 JackPot --> +💎1000`)
-       var myweekend = ['Friday', 'Saturday', 'Monday']
-       var today = myweekend[thisHari];
 
-       if (!today) return replay(`*You can only play this game during weekends*\n\n*🪔 Friday*\n*🎏 Saturday*\n*🎐 Sunday*`)
+       if (thisHari !== ('Friday'||'Saturday'||'Monday')) return replay(`*You can only play this game during weekends*\n\n*🪔 Friday*\n*🎏 Saturday*\n*🎐 Sunday*`)
        const fruit1= ["🍍", "🥥", "🍎", "🍇"]
        const fruit2 = ["🍍", "🍇", "🍎", "🥥"]  
        const fruit3 = ["🍇", "🍎", "🥥", "🍍"]         
