@@ -1841,10 +1841,11 @@ break
 case 'slot': case 'spin': {
        if (isBan) return replay(mess.banned);
        if (isBanChat) return replay(mess.bangc)
-       if (!isCreator) return replay(mess.botowner)
+       //if (!isCreator) return replay(mess.botowner)
        if (!m.isGroup) return replay(mess.grouponly)
        if (text == 'help') return replay(`*1:* Use ${prefix}slot to play\n\n*2:* You must have 💎100 in your wallet\n\n*3:* If you don't have money in wallet then withdraw from your bank\n\n*4:* If you don't have money in your bank too then use economy features to gain money`)
-       var myweekend = ['Friday', 'Saturday', 'Sunday']
+       if (text == 'money') return replay(`*1:* Small Win --> +💎20\n\n*2:* Small Lose --> -💎20\n\n*3:* Big Win --> +💎100\n\n*4:* Big Lose --> -💎50\n\n*5:* 🎉 JackPot --> +💎1000`)
+       var myweekend = ['Friday', 'Saturday', 'Monday']
        var today = myweekend[thisHari];
 
        if (!today) return replay(`*You can only play this game during weekends*\n\n*🪔 Friday*\n*🎏 Saturday*\n*🎐 Sunday*`)
@@ -1879,23 +1880,23 @@ case 'slot': case 'spin': {
        }
        else if ((f1 == f2) && f2 == f3){
           const give1 = await eco.give(user, cara, 100); 
-                replay(`${mess2}\n*_Big Win -->* 💎100_`)
+                replay(`${mess2}\n*_Big Win -->* _💎100_`)
        }
        else if ((f1 == f2) && f2 !== f3){
-          const give2 = await eco.give(user, cara, 10);
-                replay(`${mess3}\n_Small Win --> 💎10_`)
+          const give2 = await eco.give(user, cara, 20);
+                replay(`${mess3}\n*Small Win -->* _💎20_`)
        }
        else if ((f1 !== f2) && f1 == f3){
-          const deduct2 = await eco.deduct(user, cara, 10);
-                replay(`${mess5}\n\n*Small Lose -->* _💎30_`)
+          const deduct2 = await eco.deduct(user, cara, 20);
+                replay(`${mess5}\n\n*Small Lose -->* _💎20_`)
        }
        else if ((f1 !== f2) && f2 == f3){
-          const give4 = eco.give(user, cara, 50); 
-                replay(`${mess3}\n\n*Small Win* --> 💎50_`)
+          const give4 = eco.give(user, cara, 20); 
+                replay(`${mess3}\n\n*Small Win -->* _💎20_`)
        }
        else if ((f1 == f2) && (f2 == f3) && (f3 == f4)){
           const give5 = eco.give(user, cara, 1000);
-               replay(`${mess4}\n\n_🎊 JackPot --> 💎1000_`)
+               replay(`${mess4}\n\n_🎊 JackPot --> _💎1000_`)
        }
        else { 
                replay(`Do you understand what you are doing?`)
