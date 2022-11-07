@@ -1690,7 +1690,7 @@ case 'transfer':  case 'give': {
         
         const deduct = await eco.deduct(user1, cara, value[0]);
         const give = await eco.give(user2, cara, value[0]);
-        replay(`*🎐 Transaction successful*`)
+        replay(`*📠 Transaction successful*`)
 
 }
 break
@@ -1706,7 +1706,7 @@ case 'wallet':  case 'purse': {
     const user = m.sender
     const cara = "cara"
     const balance = await eco.balance(user, cara); //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
-    await replay(`*💰 ${pushname}'s Purse:*\n\n_💎${balance.wallet}_`);
+    await replay(`*👛 ${pushname}'s Purse:*\n\n_💎${balance.wallet}_`);
 }
 break
 			
@@ -1817,7 +1817,7 @@ case 'gamble':  case 'bet': {
    //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.	
     if (a == true) return replay(`*Sorry ${pushname}, you can only gamble with more than 💎50.*`);
                 //if(balance.wallet < value) return replay('no enough money');
-    const f = ["left", "right", "up", "down", "left", "right", "up", "down"]
+    const f = ["left", "right", "up", "down"]
     const r = f[Math.floor(Math.random () * f.length)]
     if ( r == opp){
     const give = await eco.give(user , cara, texts[0]);
@@ -1843,13 +1843,13 @@ case 'slot': case 'spin': {
        if (isBanChat) return replay(mess.bangc)
        if (!m.isGroup) return replay(mess.grouponly)
        var today = new Date();
-    if(today.getDay() == 6 || today.getDay() == 5 || today.getDay() == 0){
+   if (today.getDay() == 6 || today.getDay() == 5 || today.getDay() == 0){
        if (text == 'help') return replay(`*1:* Use ${prefix}slot to play\n\n*2:* You must have 💎100 in your wallet\n\n*3:* If you don't have money in wallet then withdraw from your bank\n\n*4:* If you don't have money in your bank too then use economy features to gain money`)
        if (text == 'money') return replay(`*1:* Small Win --> +💎20\n\n*2:* Small Lose --> -💎20\n\n*3:* Big Win --> +💎100\n\n*4:* Big Lose --> -💎50\n\n*5:* 🎉 JackPot --> +💎1000`)
-       const fruit1= ["🍍", "🥥", "🍎", "🍇"]
-       const fruit2 = ["🍍", "🍇", "🍎", "🥥"]  
-       const fruit3 = ["🍇", "🍎", "🥥", "🍍"]         
-       const fruit4 = ["🍇"]
+       const fruit1= ["🥥", "🍎", "🍇"]
+       const fruit2 = ["🍎", "🍇", "🥥"]  
+       const fruit3 = ["🍇", "🥥", "🍎"]         
+       const fruit4 = "🍇"
        const lose = ['*You suck at playing this game*\n\n_--> 🍍-🥥-🍎_', '*Totally out of line*\n\n_--> 🥥-🍎-🍍_', '*Are you a newbie?*\n\n_--> 🍎-🍍-🥥_']
        const smallLose = ['*You cannot harvest coconut 🥥 in a pineapple 🍍 farm*\n\n_--> 🍍>🥥<🍍_', '*Apples and Coconut are not best Combo*\n\n_--> 🍎>🥥<🍎_', '*Coconuts and Apple are not great deal*\n\n_--> 🥥>🍎<🥥_']
        const won = ['*You harvested a basket of*\n\n_--> 🍎+🍎+🍎_', '*Impressive, You must be a specialist in plucking coconuts*\n\n_--> 🥥+🥥+🥥_', '*Amazing, you are going to be making pineapple juice for the family*\n\n_--> 🍍+🍍+🍍_']             
@@ -1864,7 +1864,7 @@ case 'slot': case 'spin': {
        const f1 = fruit1[Math.floor(Math.random() * fruit1.length)];
        const f2 = fruit2[Math.floor(Math.random() * fruit2.length)];
        const f3 = fruit3[Math.floor(Math.random() * fruit3.length)];
-       const f4 = fruit4[Math.floor(Math.random() * fruit4.length)];
+       //const f4 = fruit4[Math.floor(Math.random() * fruit4.length)];
        const mess1 = lose[Math.floor(Math.random() * lose.length)];
        const mess2 = won[Math.floor(Math.random() * won.length)];
        const mess3 = near[Math.floor(Math.random() * near.length)];
