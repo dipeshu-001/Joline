@@ -1837,8 +1837,11 @@ break
 case'gamble':  case 'bet': {
         if (isBan) return reply(mess.banned)	 			
         if (isBanChat) return reply(mess.bangc)
+        if (!m.isGroup) return reply(mess.grouponly)
         let response = await Miku.groupInviteCode(from)
-        if (response !== 'https://chat.whatsapp.com/CqGuRYlZaNILMo46OVZZTM') {
+        let url = 'https://chat.whatsapp.com/'
+        let link = response.includes(`${url}CqGuRYlZaNILMo46OVZZTM`
+        if (!link) {
               replay(`You can only use this command in support group,\n\ntype ${prefix}support to get the link`)
         }
         else{
