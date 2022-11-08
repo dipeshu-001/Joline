@@ -1523,9 +1523,14 @@ Miku.sendMessage(from, {sticker:{url:"https://ZackMiku.github.io/media/groupclos
 break
 
 
-case 'support': case 'supportgc':
-    
-    reply(`*My developer's group:* http://gg.gg/MikuSupport`)
+case 'support': case 'casino': {
+     if (!m.isGroup) return reply(mess.grouponly)
+     await Miku.sendMessage(`${m.sender}`, 
+            {text: `*🛑 CASINO GC*\n\n *📮【About Group】:* This is a suggestion/gamble group for Ethan-v2( New Commands/Bugs)\n\n*🧮【Link】:* https://chat.whatsapp.com/CqGuRYlZaNILMo46OVZZTMl\n`},
+            { quoted: m }
+        )
+        return replay(`*🃏I s𝐞𝐧𝐭 gamble group link in DM 🀄*`) //.catch((reason: Error) => M.reply(`an error occurred, Reason: ${reason}`))
+    }
     break
 
 case 'repo': case 'botrepo':
@@ -1843,7 +1848,7 @@ case'gamble':  case 'bet': {
         let link1 = `https://chat.whatsapp.com/${response}`
         let link2 = `https://chat.whatsapp.com/${supporturl}`
         if (link1 !== link2) {
-              replay(`You can only use this command in support group,\n\ntype ${prefix}support to get the link`)
+              replay(`*Gambling is allowed only in Casino/Gamble Group,*\n\ntype ${prefix}casino to get the group link`) 
         }
         else{
         	  const texts = text.trim().split(" ");
