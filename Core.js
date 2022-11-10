@@ -1796,7 +1796,7 @@ break
 
 //---------------gamble--------------------
 
-/*
+
 case 'gamble':  case 'bet': {
         if (isBan) return reply(mess.banned)	 			
         if (isBanChat) return reply(mess.bangc)
@@ -1835,10 +1835,10 @@ case 'gamble':  case 'bet': {
    
 }
 break
-*/
 
 
 
+/*
 case'gamble':  case 'bet': {
         if (isBan) return reply(mess.banned)	 			
         if (isBanChat) return reply(mess.bangc)
@@ -1885,7 +1885,7 @@ case'gamble':  case 'bet': {
   }
 }
 break
-
+*/
 
 
 
@@ -1965,7 +1965,13 @@ break
 
 
 case 'hi': case 'hello': {
-          replay(`Don't be scared, i am still active 😁`)
+        let response = await Miku.groupInviteCode(from)
+        let supporturl = `CqGuRYlZaNILMo46OVZZTM`
+        let link1 = `https://chat.whatsapp.com/${response}`
+        let link2 = `https://chat.whatsapp.com/${supporturl}`
+        if (link1 !== link2) {
+           replay(`*You can only say hello in casino group*`) 
+          //replay(`Don't be scared, i am still active 😁`)
     }
     break
 
@@ -5339,10 +5345,16 @@ break
 case 'help': case 'h': case 'menu': case 'allmenu': case 'listmenu':{
     if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
-      
+// I am *${global.BotName}*, a bot modified by *${global.OwnerName}*.     
  const helpmenu = `❣️ Hello Stranger *${pushname}*, have we met?
 
-I am *${global.BotName}*, a bot modified by *${global.OwnerName}*.
+Speed : ${latensie.toFixed(4)} miliseconds
+Up Time : ${runtime(process.uptime())}
+Bot Name : ${global.BotName}
+Owner Name : ${global.OwnerName}
+𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : Amazon AWS
+𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿 : ${Object.keys(global.db.users).length}
+
 
 ┌───『 𝓗𝓪𝓷𝓭𝓸𝓾𝓽 』──
 │⊶ 𝑼𝒔𝒆 ${prefix}𝒉𝒆𝒍𝒑 𝒕𝒐 𝒔𝒆𝒆 𝒄𝒐𝒎𝒎𝒂𝒏𝒅𝒔
