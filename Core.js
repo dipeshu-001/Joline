@@ -1843,13 +1843,13 @@ case'gamble':  case 'lottery': {
 	 var response = await Miku.groupInviteCode(from)
      var link1 = `https://chat.whatsapp.com/${response}`
      var link2 = `https://chat.whatsapp.com/CqGuRYlZaNILMo46OVZZTM`
+     var texts = text.trim().split(" ");
+     var value = texts[0].toLowerCase();
      var gg = parseInt(value)
      var g = (balance.wallet) > parseInt(value)
      var k = 50
-     var a = (k) > parseInt(value)
-     const texts = text.trim().split(" ");
+     const a = (k) > parseInt(value)
      const opp = texts[1];// your value
-     const value = texts[0].toLowerCase();
      const user = m.sender //m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
      const cara = 'cara'
      const balance = await eco.balance(user, cara); 
