@@ -1853,7 +1853,8 @@ case'gamble':  case 'lottery': {
      const g = (balance.wallet) > parseInt(value)
      const k = 50
      const a = (k) > parseInt(value)
-     const f = ["left", "right", "up", "down"]
+     const twice = gg*2
+     const f = ["up", "right", "left", "down", "up", "left", "down", "right", "up", "down", "right", "left"]
      const r = f[Math.floor(Math.random () * f.length)]
 	 if (isBan) return reply(mess.banned)	 			
      if (isBanChat) return reply(mess.bangc)
@@ -1870,8 +1871,8 @@ case'gamble':  case 'lottery': {
         if (g == false) return replay(`*You don't have sufficient 💎 Diamond to gamble with*`);
         if (a == true) return replay(`*Sorry ${pushname}, you can only gamble with more than 💎50.*`);
         if ( r == opp){
-           let give = await eco.give(user , cara, texts[0]);
-           replay(`*📉 You won 💎${texts[0]}*`)
+           let give = await eco.give(user , cara, twice);
+           replay(`*📉 You won 💎${twice}*`)
         }
         else{
            let deduct = await eco.deduct(user, cara, texts[0]);
