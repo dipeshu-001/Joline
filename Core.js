@@ -1838,57 +1838,6 @@ break
 
 
 
-/*
-case'gamble':  case 'bet': {
-        if (isBan) return reply(mess.banned)	 			
-        if (isBanChat) return reply(mess.bangc)
-        if (!m.isGroup) return reply(mess.grouponly)
-        let response = await Miku.groupInviteCode(from)
-        let supporturl = `CqGuRYlZaNILMo46OVZZTM`
-        let link1 = `https://chat.whatsapp.com/${response}`
-        let link2 = `https://chat.whatsapp.com/${supporturl}`
-        if (link1 !== link2) {
-              replay(`*Gambling is allowed only in Casino/Gamble Group,*\n\ntype ${prefix}casino to get the group link`) 
-        }
-        else{
-        	  const texts = text.trim().split(" ");
-		if (texts[0] === "")
-			return replay(
-				`Example:  ${prefix}gamble 100 direction(left,right,up,down)`
-			);
-    const opp = texts[1];// your value
-    const value = texts[0].toLowerCase();
-    if (!value) return replay("*Please, specify the amount you are gambling with!*");
-    if (!opp) return replay("*Specify the direction you are betting on!*");
-    let gg = parseInt(value)
-    if (!gg) return replay("*Check your text please, You are using the command in a wrong way*")
-    if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
-    const user = m.sender //m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
-    const cara = 'cara'
-    const balance = await eco.balance(user, cara); 
-    let g = (balance.wallet) > parseInt(value)
-    if(g == false) return replay(`*You don't have sufficient 💎 Diamond to gamble with*`);
-    let k = 50
-    let a = (k) > parseInt(value)
-   //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.	
-    if (a == true) return replay(`*Sorry ${pushname}, you can only gamble with more than 💎50.*`);
-                //if(balance.wallet < value) return replay('no enough money');
-    const f = ["left", "right", "up", "down"]
-    const r = f[Math.floor(Math.random () * f.length)]
-    if ( r == opp){
-    const give = await eco.give(user , cara, texts[0]);
-    replay(`*📉 You won 💎${texts[0]}*`)
-    }else{
-    const deduct = await eco.deduct(user, cara, texts[0]);
-    replay(`*📈 You lost 💎${texts[0]}*`)
-    }
-  }
-}
-break
-*/
-
-
-
 
 //-----------------Slot----------------------
 
@@ -1965,15 +1914,8 @@ break
 
 
 case 'hi': case 'hello': {
-        let response = await Miku.groupInviteCode(from)
-        let supporturl = `CqGuRYlZaNILMo46OVZZTM`
-        let link1 = `https://chat.whatsapp.com/${response}`
-        let link2 = `https://chat.whatsapp.com/${supporturl}`
-        if (link1 !== link2) {
-           replay(`*You can only say hello in casino group*`) 
-          //replay(`Don't be scared, i am still active 😁`)
-    }
-    }
+      replay(`Don't be scared, i am still active 😁`)
+
     break
 
 
