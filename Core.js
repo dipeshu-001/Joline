@@ -1796,7 +1796,7 @@ break
 
 //---------------gamble--------------------
 
-
+/*
 case 'gamble':  case 'bet': {
         if (isBan) return reply(mess.banned)	 			
         if (isBanChat) return reply(mess.bangc)
@@ -1835,6 +1835,55 @@ case 'gamble':  case 'bet': {
    
 }
 break
+*/
+
+
+
+case'gamble':  case 'lottery': {
+	 var response = await Miku.groupInviteCode(from)
+     var link1 = `https://chat.whatsapp.com/${response}`
+     var link2 = `https://chat.whatsapp.com/CqGuRYlZaNILMo46OVZZTM`
+     var gg = parseInt(value)
+     var g = (balance.wallet) > parseInt(value)
+     var k = 50
+     var a = (k) > parseInt(value)
+     const texts = text.trim().split(" ");
+     const opp = texts[1];// your value
+     const value = texts[0].toLowerCase();
+     const user = m.sender //m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
+     const cara = 'cara'
+     const balance = await eco.balance(user, cara); 
+     const f = ["left", "right", "up", "down"]
+     const r = f[Math.floor(Math.random () * f.length)]
+	 if (isBan) return reply(mess.banned)	 			
+     if (isBanChat) return reply(mess.bangc)
+     if (!m.isGroup) return reply(mess.grouponly)
+     if (link1 == link2){
+        if (texts[0] === "")
+			return replay(
+				`Example:  ${prefix}gamble 100 direction(left,right,up,down)`
+			);
+	    if (!value) return replay("*Please, specify the amount you are gambling with!*");
+        if (!opp) return replay("*Specify the direction you are betting on!*");
+        if (!gg) return replay("*Check your text please, You are using the command in a wrong way*")
+        if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
+        if (g == false) return replay(`*You don't have sufficient 💎 Diamond to gamble with*`);
+        if (a == true) return replay(`*Sorry ${pushname}, you can only gamble with more than 💎50.*`);
+        if ( r == opp){
+           const give = await eco.give(user , cara, texts[0]);
+           replay(`*📉 You won 💎${texts[0]}*`)
+        }
+        else{
+           const deduct = await eco.deduct(user, cara, texts[0]);
+           replay(`*📈 You lost 💎${texts[0]}*`)
+         }
+     }
+     else{
+         replay(`*Gambling is allowed only in Casino/Gamble Group,*\n\ntype ${prefix}casino to get the group link`)
+     }
+}
+break
+
 
 
 
@@ -1915,7 +1964,7 @@ break
 
 case 'hi': case 'hello': {
       replay(`Don't be scared, i am still active 😁`)
-
+    }
     break
 
 
