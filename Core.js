@@ -1846,13 +1846,13 @@ case'gamble':  case 'lottery': {
      var texts = text.trim().split(" ");
      var value = texts[0].toLowerCase();
      var gg = parseInt(value)
-     var g = (balance.wallet) > parseInt(value)
+     var balance = await eco.balance(user, cara); 
      var k = 50
      const a = (k) > parseInt(value)
      const opp = texts[1];// your value
-     const user = m.sender //m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
+     const g = (balance.wallet) > parseInt(value)
+     const user = m.sender
      const cara = 'cara'
-     const balance = await eco.balance(user, cara); 
      const f = ["left", "right", "up", "down"]
      const r = f[Math.floor(Math.random () * f.length)]
 	 if (isBan) return reply(mess.banned)	 			
