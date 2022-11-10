@@ -1844,15 +1844,15 @@ case'gamble':  case 'lottery': {
      var link1 = `https://chat.whatsapp.com/${response}`
      var link2 = `https://chat.whatsapp.com/CqGuRYlZaNILMo46OVZZTM`
      var texts = text.trim().split(" ");
+     var opp = texts[1];// your value
      var value = texts[0].toLowerCase();
      var gg = parseInt(value)
-     var balance = await eco.balance(user, cara); 
-     var k = 50
-     const a = (k) > parseInt(value)
-     const opp = texts[1];// your value
-     const g = (balance.wallet) > parseInt(value)
-     const user = m.sender
+     var user = m.sender //m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
      const cara = 'cara'
+     const balance = await eco.balance(user, cara); 
+     const g = (balance.wallet) > parseInt(value)
+     const k = 50
+     const a = (k) > parseInt(value)
      const f = ["left", "right", "up", "down"]
      const r = f[Math.floor(Math.random () * f.length)]
 	 if (isBan) return reply(mess.banned)	 			
@@ -1870,11 +1870,11 @@ case'gamble':  case 'lottery': {
         if (g == false) return replay(`*You don't have sufficient 💎 Diamond to gamble with*`);
         if (a == true) return replay(`*Sorry ${pushname}, you can only gamble with more than 💎50.*`);
         if ( r == opp){
-           const give = await eco.give(user , cara, texts[0]);
+           let give = await eco.give(user , cara, texts[0]);
            replay(`*📉 You won 💎${texts[0]}*`)
         }
         else{
-           const deduct = await eco.deduct(user, cara, texts[0]);
+           let deduct = await eco.deduct(user, cara, texts[0]);
            replay(`*📈 You lost 💎${texts[0]}*`)
          }
      }
@@ -1883,6 +1883,7 @@ case'gamble':  case 'lottery': {
      }
 }
 break
+
 
 
 
