@@ -1973,6 +1973,7 @@ case 'hi': case 'hello': {
            replay(`*You can only say hello in casino group*`) 
           //replay(`Don't be scared, i am still active 😁`)
     }
+    }
     break
 
 
