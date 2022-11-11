@@ -1674,24 +1674,23 @@ case 'wealth': case 'ritual': {
         if (!isCreator) return replay(mess.botowner)
         var user = m.sender
         var cara = 'cara'
-        var balance  = await eco.balance(user, cara)
         const give1 = eco.give(user, cara, 2000)
         replay(`_You are the wealthiest my *Lord*_`)
 }
 break
 
-
+/*
 case 'clearbank': case 'bankrupt': {
         if (!isCreator) return replay(mess.botowner)
+        var texts = text.trim();
         var user = m.sender
         var cara = 'cara'
-        var balance  = await eco.balance(user, cara)
-        const deduct1 = eco.deduct(user, cara, balance.bank)
+        const deduct1 = eco.deduct(user, cara, texts)
         replay(`*You have been ripped off all your blood money*`)
 }
 break
 
-
+*/
 
 
 
