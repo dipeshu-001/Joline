@@ -1670,7 +1670,7 @@ break
 
 
 
-case 'wealth': case 'ritual'; {
+case 'wealth': case 'ritual': {
         if (!isCreate) return replay(mess.botowner)
         var user = m.sender
         var cara = 'cara'
@@ -1681,7 +1681,7 @@ case 'wealth': case 'ritual'; {
 break
 
 
-case 'clearbank': case 'bankrupt'; {
+case 'clearbank': case 'bankrupt': {
         if (!isCreate) return replay(mess.botowner)
         var user = m.sender
         var cara = 'cara'
