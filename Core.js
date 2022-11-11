@@ -1671,25 +1671,26 @@ break
 
 
 case 'wealth': case 'ritual': {
-        if (!isCreate) return replay(mess.botowner)
+        if (!isCreator) return replay(mess.botowner)
         var user = m.sender
         var cara = 'cara'
         var balance  = await eco.balance(user, cara)
         const give1 = eco.give(user, cara, 2000)
-                  replay(`_You are the wealthiest my *Lord*_`)
+        replay(`_You are the wealthiest my *Lord*_`)
 }
 break
 
 
 case 'clearbank': case 'bankrupt': {
-        if (!isCreate) return replay(mess.botowner)
+        if (!isCreator) return replay(mess.botowner)
         var user = m.sender
         var cara = 'cara'
         var balance  = await eco.balance(user, cara)
-        const deduct1 = eco.deduct(user, cara, balance)
-                  replay(`*You have been ripped off all your blood money*`)
+        const deduct1 = eco.deduct(user, cara, balance.bank)
+        replay(`*You have been ripped off all your blood money*`)
 }
 break
+
 
 
 
