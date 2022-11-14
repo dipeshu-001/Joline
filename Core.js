@@ -3933,19 +3933,22 @@ break
 case 'music': case 'play': case 'song': case 'ytplay': {
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
+ const YT=require('./lib/ytdlcore')
+ const { isUrl, fetchBuffer } = require('./lib/Function')
+
+ if(!text) return Miku.sendMessage(from,{text:"Pls enter song name to play!"},{quoted:m})
  let yts = require("yt-search")
  let search = await yts(text)
- let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
- let ytvc = await hx.youtube(anu.url)
- let buttons = [
- {buttonId: `${prefix}ytvd ${ytvc.link}`, buttonText: {displayText: '► Video'}, type: 1},
- {buttonId: `${prefix}ytad ${ytvc.mp3}`, buttonText: {displayText: '♫ Audio'}, type: 1}
- ]
+ let anu = search.videos[0]
+ let buttons = {buttonId: `${prefix}ytad ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1},
+ //{buttonId: `${prefix}ytvd ${text}`, buttonText: {displayText: '► Video'}, type: 1}
+
  let buttonMessage = {
  image: { url: anu.thumbnail },
- caption: `「  _Miku Youtube Player_  」
+ caption: `「  _Ethan Music Player 2.0_  」
 
 *Title :* ${anu.title}
+
 *Duration :* ${anu.timestamp}
 *Viewers :* ${anu.views}
 *Uploaded :* ${anu.ago}
