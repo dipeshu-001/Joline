@@ -3940,7 +3940,7 @@ case 'music': case 'play': case 'song': case 'ytplay': {
  let yts = require("yt-search")
  let search = await yts(text)
  let anu = search.videos[0]
- let buttons = {buttonId: `${prefix}ytad ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1},
+ let buttons = {buttonId: `${prefix}ytad ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
  //{buttonId: `${prefix}ytvd ${text}`, buttonText: {displayText: '► Video'}, type: 1}
 
  let buttonMessage = {
