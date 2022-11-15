@@ -3940,20 +3940,19 @@ case 'music': case 'play': case 'song': case 'ytplay': {
  let yts = require("yt-search")
  let search = await yts(text)
  let anu = search.videos[0]
- let buttons = {buttonId: `${prefix}ytad ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
- //{buttonId: `${prefix}ytvd ${text}`, buttonText: {displayText: '► Video'}, type: 1}
-
+ let buttons = [{buttonId: `${prefix}ytad ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1},
+               {buttonId: `${prefix}ytvd ${text}`, buttonText: {displayText: '► Video'}, type: 1}
+]
  let buttonMessage = {
  image: { url: anu.thumbnail },
- caption: `「  _Ethan Music Player 2.0_  」
+ caption: `「  _🎵Ethan Music Player 2.0🎙️_  」
 
 *Title :* ${anu.title}
-
 *Duration :* ${anu.timestamp}
 *Viewers :* ${anu.views}
 *Uploaded :* ${anu.ago}
-*Channel :* ${anu.author.name}
-*Url :* ${anu.url}`,
+*Channel :* ${anu.author.name}`,
+//*Url :* ${anu.url}`,
  footer: `${global.BotName}`,
  buttons: buttons,
  headerType: 4,
