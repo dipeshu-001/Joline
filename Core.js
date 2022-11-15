@@ -5377,8 +5377,9 @@ replay('Broadcast Sent !')
 }
 break    
 
+//-----------------------------------------
 
-case 'help': case 'h': case 'menu': case 'allmenu': case 'listmenu':{
+case 'menu': case 'allmenu': case 'listmenu':{
     if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
 // I am *${global.BotName}*, a bot modified by *${global.OwnerName}*.     
@@ -5681,7 +5682,7 @@ Owner Name : ${global.OwnerName}
  
  🎐 To get Support Group link type " *${prefix}support* ".
 
- 🎐 Type " *${prefix}help* " to get full command list.`
+ 🎐 Type " *${prefix}help* " to get full command list. `
     
 
  let buttonshelpm = [
@@ -5699,6 +5700,90 @@ Owner Name : ${global.OwnerName}
                 }
 break
  
+
+case 'help': case 'h': {
+	if (isBan) return reply(mess.ban)	 			
+    if (isBanChat) return reply(mess.banChat)
+    const helper = `\n
+    
+⊶ ⏲️Speed : ${latensie.toFixed(4)} miliseconds
+⊶ ⏰Up Time : ${runtime(process.uptime())}
+⊶ ⛄Bot Name : ${global.BotName}
+⊶ 🎀Owner : ${global.OwnerName}
+⊶ ⛳𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : Amazon AWS
+⊶ 📡𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿 : ${Object.keys(global.db.users).length}
+⊶────────────────────
+⊶ 𝑹𝒆𝒂𝒅 𝑩𝒐𝒕𝒕𝒐 𝒓𝒖𝒍𝒆𝒔 𝒃𝒆𝒇𝒐𝒓𝒆 𝒖𝒔𝒆
+⊶ © 𝑪𝒐𝒑𝒚𝒓𝒊𝒈𝒉𝒕 miku
+⊶ 𝑹𝒆𝒑𝒐𝒓𝒕 𝒂 𝒃𝒖𝒈 ${prefix}𝐨𝐰𝐧𝐞𝐫
+⊶─────────────────────
+
+❥︎ Ⓖ︎𝗲𝗻𝗲𝗿𝗮𝗹 
+🎐 ${prefix}𝙷𝚎𝚕𝚙1
+
+❥︎ Ⓐ︎𝗻𝗶𝗺𝗲 
+🎐 ${prefix}𝙷𝚎𝚕𝚙2
+
+❥︎ Ⓕ︎𝘂𝗻-Ⓖ︎𝗮𝗺𝗲𝘀 
+🎐 ${prefix}𝙷𝚎𝚕𝚙3
+
+❥︎ Ⓜ︎𝗲𝗱𝗶𝗮 
+🎐 ${prefix}𝙷𝚎𝚕𝚙4
+
+❥︎ Ⓜ︎𝗼𝗱𝗲𝗿𝗮𝘁𝗶𝗼𝗻 
+🎐 ${prefix}𝙷𝚎𝚕𝚙5
+
+❥︎ Ⓔ︎𝗱𝘂𝗰𝗮𝘁𝗶𝘃𝗲 
+🎐 ${prefix}𝙷𝚎𝚕𝚙6
+
+❥︎ Ⓓ︎𝗲𝘃𝗲𝗹𝗼𝗽𝗲𝗿 
+🎐 ${prefix}𝙷𝚎𝚕𝚙7
+
+❥︎ Ⓑ︎𝗼𝘁𝘀 
+🎐 ${prefix}𝙷𝚎𝚕𝚙8
+
+❥︎ Ⓟ︎𝗼𝗿𝗻𝗼 
+🎐 ${prefix}𝙷𝚎𝚕𝚙9
+
+─────────────────────
+
+╔════⧫🐾𝑵𝑺𝑭𝑾 🐾
+║
+║ Type *${prefix}nsfw* then enable NSFW (Admin only!) 
+║
+║ Then type *${prefix}nsfwmenu* to get NSFW commands.
+╚════════════╝
+
+
+ 『  *${global.BotName}*  』
+ Powered by: *Fantox*
+
+🎐 To use any of these commands type 
+ " *${prefix}<Command name>* ".
+
+❛ 𝑝𝑙𝑒𝑎𝑠𝑒 𝐷𝑜𝑛'𝑡 𝑘𝑖𝑙𝑙 𝑚𝑦 𝑣𝑖𝑏𝑒𝑠 ❦︎ ❜
+`
+
+
+ let buttonhelper = [
+    {buttonId: `${prefix}owner`, buttonText: {displayText: '🎀Bot Owner🎀'}, type: 1},
+    {buttonId: `${prefix}casino`, buttonText: {displayText: '🧧Casino🧧'}, type: 1},
+    {buttonId: `${prefix}help1`, buttonText: {displayText: '☃️Help1☃️'}, type: 1}
+    ]
+                let buttonMessage = {
+                    file: Miku.sendMessage(m.chat,{video:fs.readFileSync('./system/miku2.mp4'),gifPlayback:true,caption:helper},{quoted:m}),
+                    caption: helper,
+                    footer: `${BotName}`,
+                    buttons: buttonhelper,
+                    headerType: 4
+                }
+            Miku.sendMessage(m.chat, buttonMessage,{ quoted:m })
+                }
+}
+break
+
+
+
 
 case '':
     if(isCmd){
