@@ -5779,7 +5779,6 @@ case 'help': case 'h': {
                 }
             Miku.sendMessage(m.chat, buttonMessage,{ quoted:m })
                 }
-}
 break
 
 
