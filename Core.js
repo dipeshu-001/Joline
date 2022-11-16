@@ -5768,16 +5768,16 @@ case 'help': case 'h': {
  let buttonhelper = [
     {buttonId: `${prefix}owner`, buttonText: {displayText: '🎀Bot Owner🎀'}, type: 1},
     {buttonId: `${prefix}casino`, buttonText: {displayText: '🧧Casino🧧'}, type: 1},
-    {buttonId: `${prefix}help1`, buttonText: {displayText: '☃️Help1☃️'}, type: 1}
+    {buttonId: `${prefix}help1`, buttonText: {displayText: '☃️Help1☃️'}, type: 1},
     ]
                 let buttonMessage = {
                     file: Miku.sendMessage(m.chat,{video:fs.readFileSync('./system/miku2.mp4'),gifPlayback:true,caption:helper},{quoted:m}),
                     caption: helper,
-                    footer: `${BotName}`,
+                    footer: `${global.BotName}`,
                     buttons: buttonhelper,
                     headerType: 4
                 }
-            Miku.sendMessage(m.chat, buttonMessage,{ quoted:m })
+            Miku.sendButtonText(m.chat, buttonMessage,{ quoted:m })
                 }
 break
 
@@ -6029,7 +6029,7 @@ case 'help6': case 'h6': {
 
 let buttonhelper6 = [
                 {buttonId: `${prefix}wallet`, buttonText: {displayText: '💰Wallet💰'}, type: 1},
-                {buttonId: `${prefix}bank`, buttonText: {displayText: '🏧Bank🏧'}, type: 1}
+                {buttonId: `${prefix}bank`, buttonText: {displayText: '🏧Bank🏧'}, type: 1},
                 ]
                 let buttonMessage = {
                     file: Miku.sendMessage(m.chat,{video:fs.readFileSync('./system/miku.mp4'),gifPlayback:true,caption:helper6},{quoted:m}),
@@ -6038,7 +6038,7 @@ let buttonhelper6 = [
                     buttons: buttonhelper6,
                     headerType: 4
                 }
-            Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
+            Miku.sendButtonText(m.chat,buttonMessage,{quoted:m})
 }
 break
 
