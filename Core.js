@@ -5782,6 +5782,444 @@ case 'help': case 'h': {
 break
 
 
+case 'help1': case 'h1': {
+	if (isBan) return reply(mess.ban)	 			
+    if (isBanChat) return reply(mess.banChat)
+    const helper1 = `-Ⓖ︎Ⓔ︎Ⓝ︎Ⓔ︎Ⓡ︎Ⓐ︎Ⓛ︎ 🎐
+──────────────
+⛲ ${prefix}hi/hello
+⛲ ${prefix}profile
+⛲ ${prefix}listgc
+⛲ ${prefix}listpc
+⛲ ${prefix}support
+⛲ ${prefix}casino
+⛲ ${prefix}repo
+⛲ ${prefix}script
+⛲ ${prefix}ethan
+⛲ ${prefix}about
+⛲ ${prefix}rules
+⛲ ${prefix}lyrics
+⛲ ${prefix}animequote 
+⛲ ${prefix}quote
+⛲ ${prefix}covid
+⛲ ${prefix}earthquake
+⛲ ${prefix}translate
+⛲ ${prefix}fliptext
+⛲ ${prefix}toletter
+⛲ ${prefix}bot
+⛲ ${prefix}wiki
+⛲ ${prefix}searchgc
+⛲ ${prefix}sticker
+⛲ ${prefix}toimg
+⛲ ${prefix}tovideo
+⛲ ${prefix}togif
+⛲ ${prefix}steal
+⛲ ${prefix}stickermeme
+⛲ ${prefix}emojimix
+⛲ ${prefix}tourl
+⛲ ${prefix}tomp3
+⛲ ${prefix}toaudio
+⛲ ${prefix}tts
+⛲ ${prefix}bass
+⛲ ${prefix}tempo
+⛲ ${prefix}
+⛲ ${prefix}blown
+⛲ ${prefix}deep
+⛲ ${prefix}earrape
+⛲ ${prefix}fast
+⛲ ${prefix}fat
+⛲ ${prefix}nightcore
+⛲ ${prefix}reverse
+⛲ ${prefix}robot
+⛲ ${prefix}squirrel
+⛲ ${prefix}slow
+
+──────────────`
+
+let buttonhelper1 = [
+                {buttonId: `${prefix}help2`, buttonText: {displayText: '🧨Help2🧨'}, type: 1},
+                {buttonId: `${prefix}help3`, buttonText: {displayText: '🪔Help3🪔'}, type: 1}
+                ]
+                let buttonMessage = {
+                    file: Miku.sendMessage(m.chat,{video:fs.readFileSync('./system/miku.mp4'),gifPlayback:true,caption:helper1},{quoted:m}),
+                    caption: helper1,
+                    footer: `${global.BotName}`,
+                    buttons: buttonhelper1,
+                    headerType: 4
+                }
+            Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
+}
+break
+
+
+case 'help2': case 'h2': {
+	if (isBan) return reply(mess.ban)	 			
+    if (isBanChat) return reply(mess.banChat)
+    const helper2 = `-Ⓐ︎Ⓝ︎Ⓘ︎Ⓜ︎Ⓔ︎Ⓢ︎ 🎐
+──────────────
+🐼 ${prefix}waifu
+🐼 ${prefix}loli
+🐼 ${prefix}ppcouple
+🐼 ${prefix}neko
+🐼 ${prefix}meow
+🐼 ${prefix}feed
+🐼 ${prefix}foxgirl
+🐼 ${prefix}tickle
+🐼 ${prefix}animewallpaper2
+🐼 ${prefix}coffee
+🐼 ${prefix}animenom
+🐼 ${prefix}waifu3
+🐼 ${prefix}neko2
+🐼 ${prefix}migumin
+🐼 ${prefix}awoo
+🐼 ${prefix}anime
+🐼 ${prefix}manga
+──────────────`
+
+let buttonhelper2 = [
+                {buttonId: `${prefix}help4`, buttonText: {displayText: '💐Help4💐'}, type: 1},
+                {buttonId: `${prefix}help5`, buttonText: {displayText: '💮Help5💮'}, type: 1}
+                ]
+                let buttonMessage = {
+                    file: Miku.sendMessage(m.chat,{video:fs.readFileSync('./system/miku.mp4'),gifPlayback:true,caption:helper2},{quoted:m}),
+                    caption: helper2,
+                    footer: `${global.BotName}`,
+                    buttons: buttonhelper2,
+                    headerType: 4
+                }
+            Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
+}
+break
+
+
+case 'help3': case 'h3': {
+	if (isBan) return reply(mess.ban)	 			
+    if (isBanChat) return reply(mess.banChat)
+    const helper3 = `-ⒺⒸⓄⓃⓄⓂⓎ 🎐
+──────────────
+🦋 ${prefix}daily
+🦋 ${prefix}capacity
+🦋 ${prefix}deposit
+🦋 ${prefix}wallet
+🦋 ${prefix}transfer
+🦋 ${prefix}bank
+🦋 ${prefix}rob
+🦋 ${prefix}withdraw
+──────────────`
+
+let buttonhelper3 = [
+                {buttonId: `${prefix}help6`, buttonText: {displayText: '🦈Help6🦈'}, type: 1},
+                {buttonId: `${prefix}help7`, buttonText: {displayText: '🪐Help7🪐'}, type: 1}
+                ]
+                let buttonMessage = {
+                    file: Miku.sendMessage(m.chat,{video:fs.readFileSync('./system/miku.mp4'),gifPlayback:true,caption:helper3},{quoted:m}),
+                    caption: helper3,
+                    footer: `${global.BotName}`,
+                    buttons: buttonhelper3,
+                    headerType: 4
+                }
+            Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
+}
+break
+
+
+case 'help4': case 'h4': {
+	if (isBan) return reply(mess.ban)	 			
+    if (isBanChat) return reply(mess.banChat)
+    const helper4 = `-Ⓜ︎Ⓔ︎Ⓓ︎Ⓘ︎Ⓐ︎ 🎐
+──────────────
+🐝 ${prefix}play
+🐝 ${prefix}yts
+🐝 ${prefix}happymod
+🐝 ${prefix}google
+🐝 ${prefix}playstore
+🐝 ${prefix}gimage
+🐝 ${prefix}pinterest
+🐝 ${prefix}image
+🐝 ${prefix}movie
+🐝 ${prefix}wallpaper
+🐝 ${prefix}wikimedia
+🐝 ${prefix}ringtone
+🐝 ${prefix}anime
+🐝 ${prefix}animestory
+🐝 ${prefix}manga
+🐝 ${prefix}ytmp3
+🐝 ${prefix}ytmp4
+🐝 ${prefix}ytvideo
+🐝 ${prefix}instagram
+🐝 ${prefix}mediafire
+🐝 ${prefix}igtv
+🐝 ${prefix}facebook
+🐝 ${prefix}fbmp3
+🐝 ${prefix}twitter
+🐝 ${prefix}twittermp3
+🐝 ${prefix}tiktok
+🐝 ${prefix}tiktokaudio
+🐝 ${prefix}tiktoknowm
+──────────────`
+
+let buttonhelper4 = [
+                {buttonId: `${prefix}help8`, buttonText: {displayText: '🌺Help8🌺'}, type: 1},
+                {buttonId: `${prefix}help9`, buttonText: {displayText: '🎏Help9🎏'}, type: 1}
+                ]
+                let buttonMessage = {
+                    file: Miku.sendMessage(m.chat,{video:fs.readFileSync('./system/miku.mp4'),gifPlayback:true,caption:helper4},{quoted:m}),
+                    caption: helper4,
+                    footer: `${global.BotName}`,
+                    buttons: buttonhelper4,
+                    headerType: 4
+                }
+            Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
+}
+break
+
+case 'help5': case 'h5': {
+	if (isBan) return reply(mess.ban)	 			
+    if (isBanChat) return reply(mess.banChat)
+    const helper5 = `-Ⓜ︎Ⓞ︎Ⓓ︎Ⓔ︎Ⓡ︎Ⓐ︎Ⓣ︎Ⓘ︎Ⓞ︎Ⓝ︎ 🎐
+──────────────
+🧸 ${prefix}promote
+🧸 ${prefix}demote
+🧸 ${prefix}revoke
+🧸 ${prefix}groupsetting
+🧸 ${prefix}add
+🧸 ${prefix}remove
+🧸 ${prefix}tagall
+🧸 ${prefix}hidetag
+🧸 ${prefix}setgcpp
+🧸 ${prefix}grouplink
+🧸 ${prefix}setgcname
+🧸 ${prefix}setdesc
+🧸 ${prefix}nsfw
+🧸 ${prefix}group
+──────────────`
+
+let buttonhelper5 = [
+                {buttonId: `${prefix}rules`, buttonText: {displayText: '🧧Rule🧧'}, type: 1},
+                {buttonId: `${prefix}profile`, buttonText: {displayText: '🎋Profile🎋'}, type: 1}
+                ]
+                let buttonMessage = {
+                    file: Miku.sendMessage(m.chat,{video:fs.readFileSync('./system/miku.mp4'),gifPlayback:true,caption:helper5},{quoted:m}),
+                    caption: helper5,
+                    footer: `${global.BotName}`,
+                    buttons: buttonhelper5,
+                    headerType: 4
+                }
+            Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
+}
+break
+
+
+case 'help6': case 'h6': {
+	if (isBan) return reply(mess.ban)	 			
+    if (isBanChat) return reply(mess.banChat)
+    const helper6 = `-ⒶⓃⓉⒾⓁⒾⓃⓀ 🎐
+──────────────
+⚕️ ${prefix}antilinkgc
+⚕️ ${prefix}antilinktg
+⚕️ ${prefix}antilinktt
+⚕️ ${prefix}antilinkytch
+⚕️ ${prefix}antilinkytvid
+⚕️ ${prefix}antilinkig
+⚕️ ${prefix}antilinkfb
+⚕️ ${prefix}antilinktwit
+⚕️ ${prefix}antilinkall
+⚕️ ${prefix}antilinkwame
+──────────────`
+
+let buttonhelper6 = [
+                {buttonId: `${prefix}wallet`, buttonText: {displayText: '💰Wallet💰'}, type: 1},
+                {buttonId: `${prefix}bank`, buttonText: {displayText: '🏧Bank🏧'}, type: 1}
+                ]
+                let buttonMessage = {
+                    file: Miku.sendMessage(m.chat,{video:fs.readFileSync('./system/miku.mp4'),gifPlayback:true,caption:helper6},{quoted:m}),
+                    caption: helper6,
+                    footer: `${global.BotName}`,
+                    buttons: buttonhelper6,
+                    headerType: 4
+                }
+            Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
+}
+break
+
+
+case 'help7': case 'h7': {
+	if (isBan) return reply(mess.ban)	 			
+    if (isBanChat) return reply(mess.banChat)
+    const helper7 = `-Ⓓ︎Ⓔ︎Ⓥ︎Ⓔ︎Ⓛ︎Ⓞ︎Ⓟ︎Ⓔ︎Ⓡ︎ 🎐
+──────────────
+🎗️ ${prefix}self
+🎗️ ${prefix}public
+🎗️ ${prefix}ban
+🎗️ ${prefix}bangroup
+🎗️ ${prefix}bye
+🎗️ ${prefix}join
+🎗️ ${prefix}qr
+🎗️ ${prefix}block
+🎗️ ${prefix}unblock
+🎗️ ${prefix}broadcast
+🎗️ ${prefix}setbotpp
+🎗️ ${prefix}eval
+──────────────`
+
+let buttonhelper7 = [
+                {buttonId: `${prefix}hi`, buttonText: {displayText: '👋Hi👋'}, type: 1},
+                {buttonId: `${prefix}hello`, buttonText: {displayText: '✌️Hello✌️'}, type: 1}
+                ]
+                let buttonMessage = {
+                    file: Miku.sendMessage(m.chat,{video:fs.readFileSync('./system/miku.mp4'),gifPlayback:true,caption:helper7},{quoted:m}),
+                    caption: helper7,
+                    footer: `${global.BotName}`,
+                    buttons: buttonhelper7,
+                    headerType: 4
+                }
+            Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
+}
+break
+
+
+case 'help8': case 'h8': {
+	if (isBan) return reply(mess.ban)	 			
+    if (isBanChat) return reply(mess.banChat)
+    const helper8 =  `-Ⓖⓐⓜⓔⓢ  🎐
+──────────────
+🕹️ ${prefix}truth
+🕹️ ${prefix}gamble
+🕹️ ${prefix}dare
+🕹️ ${prefix}slot
+🕹️ ${prefix}slot help
+🕹️ ${prefix}slot money
+
+──────────────`
+
+let buttonhelper8 = [
+                {buttonId: `${prefix}support`, buttonText: {displayText: '🌴Support🌴'}, type: 1},
+                {buttonId: `${prefix}help3`, buttonText: {displayText: '🎰Slot🎰'}, type: 1}
+                ]
+                let buttonMessage = {
+                    file: Miku.sendMessage(m.chat,{video:fs.readFileSync('./system/miku.mp4'),gifPlayback:true,caption:helper8},{quoted:m}),
+                    caption: helper8,
+                    footer: `${global.BotName}`,
+                    buttons: buttonhelper8,
+                    headerType: 4
+                }
+            Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
+}
+break
+
+
+case 'help9': case 'h9': {
+	if (isBan) return reply(mess.ban)	 			
+    if (isBanChat) return reply(mess.banChat)
+    const helper9 = `-ⒻⓊⓃ-ⓇⒺⒶⒸⓉⒾⓄⓃ 🎐
+──────────────
+🍹 ${prefix}couple
+🍹 ${prefix}soulmate
+🍹 ${prefix}handsomecheck
+🍹 ${prefix}beautifulcheck
+🍹 ${prefix}awesomecheck
+🍹 ${prefix}greatcheck
+🍹 ${prefix}gaycheck
+🍹 ${prefix}cutecheck
+🍹 ${prefix}lesbiancheck
+🍹 ${prefix}hornycheck
+🍹 ${prefix}prettycheck
+🍹 ${prefix}lovelycheck
+🍹 ${prefix}uglycheck
+🍹 ${prefix}charactercheck
+🍹 ${prefix}darkjoke
+🍹 ${prefix}bonk
+🍹 ${prefix}cry
+🍹 ${prefix}bully
+🍹 ${prefix}cuddle
+🍹 ${prefix}hug
+🍹 ${prefix}kiss
+🍹 ${prefix}lick
+🍹 ${prefix}pat
+🍹 ${prefix}smug
+🍹 ${prefix}yeet
+🍹 ${prefix}blush
+🍹 ${prefix}smile
+🍹 ${prefix}wave
+🍹 ${prefix}highfive
+🍹 ${prefix}handhold
+🍹 ${prefix}nom
+🍹 ${prefix}glomp
+🍹 ${prefix}bite
+🍹 ${prefix}slap
+🍹 ${prefix}kill
+🍹 ${prefix}happy
+🍹 ${prefix}wink
+🍹 ${prefix}poke
+🍹 ${prefix}dance
+🍹 ${prefix}cringe
+──────────────`
+
+let buttonhelper9 = [
+                {buttonId: `${prefix}ppcouple`, buttonText: {displayText: '🦚CouplePP🦚'}, type: 1},
+                {buttonId: `${prefix}ethan`, buttonText: {displayText: '🎄Ethan🎄'}, type: 1}
+                ]
+                let buttonMessage = {
+                    file: Miku.sendMessage(m.chat,{video:fs.readFileSync('./system/miku.mp4'),gifPlayback:true,caption:helper9},{quoted:m}),
+                    caption: helper9,
+                    footer: `${global.BotName}`,
+                    buttons: buttonhelper9,
+                    headerType: 4
+                }
+            Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
+}
+break
+
+
+
+
+case 'help10': case 'h10': {
+	if (isBan) return reply(mess.ban)	 			
+    if (isBanChat) return reply(mess.banChat)
+    const helper10 =  `-ⓅⓄⓇⓃⓄ 🎐
+──────────────
+🍑 ${prefix}hentaivideo
+🍑 ${prefix}blowjobgif
+🍑 ${prefix}hneko
+🍑 ${prefix}masturbation
+🍑 ${prefix}thighs
+🍑 ${prefix}pussy
+🍑 ${prefix}panties
+🍑 ${prefix}orgy
+🍑 ${prefix}ahegao
+🍑 ${prefix}ass
+🍑 ${prefix}bdsm
+🍑 ${prefix}blowjob 
+🍑 ${prefix}cuckold
+🍑 ${prefix}ero
+🍑 ${prefix}gasm
+🍑 ${prefix}cum
+🍑 ${prefix}femdom
+🍑 ${prefix}foot
+🍑 ${prefix}gangbang
+🍑 ${prefix}glasses
+🍑 ${prefix}jahy
+🍑 ${prefix}trap
+🍑 ${prefix}spank
+🍑 ${prefix}hwaifu
+
+──────────────`
+
+let buttonhelper10 = [
+                {buttonId: `${prefix}about`, buttonText: {displayText: '🎸About🎸'}, type: 1},
+                {buttonId: `${prefix}quote`, buttonText: {displayText: '🎎Quote🎎'}, type: 1}
+                ]
+                let buttonMessage = {
+                    file: Miku.sendMessage(m.chat,{video:fs.readFileSync('./system/miku.mp4'),gifPlayback:true,caption:helper10},{quoted:m}),
+                    caption: helper10,
+                    footer: `${global.BotName}`,
+                    buttons: buttonhelper10,
+                    headerType: 4
+                }
+            Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
+}
+break
+
 
 
 case '':
