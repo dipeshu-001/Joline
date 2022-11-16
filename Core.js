@@ -5827,7 +5827,7 @@ case 'help1': case 'h1': {
 ⛲ ${prefix}tts
 ⛲ ${prefix}bass
 ⛲ ${prefix}tempo
-⛲ ${prefix}
+⛲ ${prefix}stalk
 ⛲ ${prefix}blown
 ⛲ ${prefix}deep
 ⛲ ${prefix}earrape
@@ -6046,7 +6046,7 @@ let buttonhelper6 = [
                     buttons: buttonhelper6,
                     headerType: 1
                 }
-            Miku.sendButtonText(m.chat,buttonMessage,{quoted:m})
+            Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
 }
 break
 
