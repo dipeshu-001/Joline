@@ -6003,8 +6003,8 @@ case 'help5': case 'h5': {
 ──────────────`
 
 let buttonhelper5 = [
-                {buttonId: `${prefix}help6`, buttonText: {displayText: '🧧Rule🧧'}, type: 1},
-                {buttonId: `${prefix}help7`, buttonText: {displayText: '🎋Profile🎋'}, type: 1}
+                {buttonId: `${prefix}help6`, buttonText: {displayText: '🍾Help6🍾'}, type: 1},
+                {buttonId: `${prefix}help7`, buttonText: {displayText: '🎎Help7🎎'}, type: 1}
                 ]
                 let buttonMessage = {
                     video: fs.readFileSync('./system/miku2.mp4'),gifPlayback:true,
@@ -6216,7 +6216,7 @@ case 'help10': case 'h10': {
 
 let buttonhelper10 = [
                 {buttonId: `${prefix}about`, buttonText: {displayText: '❄️About❄️'}, type: 1},
-                {buttonId: `${prefix}quote`, buttonText: {displayText: '🧧Rule🧧'}, type: 1}
+                {buttonId: `${prefix}rule`, buttonText: {displayText: '🧧Rule🧧'}, type: 1}
                 ]
                 let buttonMessage = {
                     video: fs.readFileSync('./system/miku2.mp4'),gifPlayback:true,
