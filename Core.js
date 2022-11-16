@@ -5766,15 +5766,15 @@ case 'help': case 'h': {
 
 
 const buttonhelper = [
-  {buttonId: '!owner', buttonText: {displayText: 'Button 1'}, type: 1},
-  {buttonId: '!casino', buttonText: {displayText: 'Button 2'}, type: 1},
-  {buttonId: '!help1', buttonText: {displayText: 'Button 3'}, type: 1}
+  {buttonId: '${prefix}owner', buttonText: {displayText: '🎀Bot Owner🎀'}, type: 1},
+  {buttonId: '${prefix}casino', buttonText: {displayText: '🧧Casino🧧'}, type: 1},
+  {buttonId: '${prefix}help1', buttonText: {displayText: '☃️Help1☃️'}, type: 1}
 ]
 
 const buttonMessage = {
     video: fs.readFileSync('./system/miku2.mp4'),gifPlayback:true,
     caption: helper,
-    footer: '${global.BotName}',
+    footer: '${BotName}',
     buttons: buttonhelper,
     headerType: 1
                 }
