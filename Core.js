@@ -5770,9 +5770,9 @@ case 'help': case 'h': {
 
 
 const buttonhelper = [
-  {buttonId: '${prefix}owner', buttonText: {displayText: '🎀Bot Owner🎀'}, type: 1},
-  {buttonId: '${prefix}casino', buttonText: {displayText: '🧧Casino🧧'}, type: 1},
-  {buttonId: '${prefix}help1', buttonText: {displayText: '☃️Help1☃️'}, type: 1}
+  {buttonId: `${prefix}owner`, buttonText: {displayText: '🎀Bot Owner🎀'}, type: 1},
+  {buttonId: `${prefix}casino`, buttonText: {displayText: '🧧Casino🧧'}, type: 1},
+  {buttonId: `${prefix}help1`, buttonText: {displayText: '☃️Help1☃️'}, type: 1}
 ]
 
 const buttonMessage = {
