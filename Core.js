@@ -1535,7 +1535,7 @@ case 'support': case 'casino': {
 
 case 'repo': case 'botrepo':
     
-    reply(`*❛ Source Code of top bot ❜* \n\n\n_Miku ➻ https://github.com/FantoX001/Miku-MD_\n\n_Sector ➻ https://github.com/SecktorBot/Secktor-Md_\n\n_Ethan-v2 ➻ https://github.com/jayjay-ops/Miku-MD_\n\n\n*Hosting Tutorial ~ https://youtu.be/fZdM7Ahb4JE*`)
+    reply(`*❛ Source Code of top bot ❜* \n\n\n_Miku ➻ https://github.com/FantoX001/Miku-MD_\n\n_Secktor ➻ https://github.com/SamPandey001/Secktor-Md_\n\n_Ethan-v2 ➻ https://github.com/jayjay-ops/Miku-MD_\n\n\n*Hosting Tutorial ~ https://youtu.be/fZdM7Ahb4JE*`)
     break
 
 case 'details': case 'about': {
@@ -1573,6 +1573,21 @@ case 'rules': case 'botrule': {
     }
     break
 
+
+
+case 'report': case 'suggest ': {
+    if (isBan) return reply(mess.banned)
+    if (isBanChat) return reply(mess.bangc)
+    if (!text) return reply(`please provide a report message you want to deliver`)
+    const msg = text.trim().split(" ");
+	const mod = [botNumber, ...global.Owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net')
+	await Miku.sendMessage(`${mod}`, 
+            {text: `📮 Report Message/n/n${msg}`},
+            { quoted: `📮-------📮` }
+        )
+        return replay(`*✅ Your Report has been submitted Successfully, you will get response shortly♥️*`); 
+ }
+ break  
 
 
 
