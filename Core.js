@@ -1598,7 +1598,7 @@ case 'report': case 'suggest ': {
     const msg = text.trim().split(" ");
     if (msg.length > 300) return reply(`Are you trying to send virus!`)
     const txtmsg = `*📮 Report Message*\n\n_Sender: @${m.sender.split("@")[0]}_\n_SMS: ${msg}_`
-	for (let mod global.Owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != '09051064375@s.whatsapp.net'))
+	for (let mod of global.Owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != '09051064375@s.whatsapp.net'))
 	await Miku.sendMessage(`${mod}`, {text: `${txtmsg}`},  { quoted: m })
 	//await Miku.sendMessage(`120363043720243658@g.us`, {text: `${txtmsg}`, mentions: groupAdmins}, { quoted: m })
     replay(`_✅ Your Report has been submitted Successfully to *Support group* & *Owner*_\n\n*_You will get response shortly♥️_`); 
