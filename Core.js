@@ -1574,21 +1574,20 @@ case 'rules': case 'botrule': {
     break
 
 
-
+  
 case 'report': case 'suggest ': {
     if (isBan) return reply(mess.banned)
     if (isBanChat) return reply(mess.bangc)
     if (!text) return reply(`please provide a report message you want to deliver`)
     const msg = text.trim().split(" ");
-	const mod = [botNumber, ...global.Owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net')
-	await Miku.sendMessage(`${mod}`, 
-            {text: `📮 Report Message/n/n${msg}`},
-            { quoted: `📮-------📮` }
-        )
-        return replay(`*✅ Your Report has been submitted Successfully, you will get response shortly♥️*`); 
+    if (msg.length > 300) return reply(`Are you trying to send virus!`)
+    const txtmsg = `*📮 Report Message*\n\n_Sender: @${m.sender.split("@")[0]}_\n_SMS: ${msg}_`
+	for (let mod of global.Owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != '09051064375@s.whatsapp.net'))
+	m.reply(txtmsg, mod)
+	m.reply(txtmsg, m.sender)
+    replay(`*✅ Your Report has been submitted Successfully*\n\n*you will get response shortly♥️*`); 
  }
- break  
-
+ break
 
 
  
