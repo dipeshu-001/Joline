@@ -3238,7 +3238,7 @@ case 'remove':{
      if (!isAdmins && !isCreator) return replay(mess.useradmin)
      let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
      if (!users) return replay(`*Mention/tag the person you want to remove*`)
-     if (itsMe.includes(users)) return replay(`*You don't expect me to remove myself, do you!*`)
+     //if (itsMe.includes(users)) return replay(`*You don't expect me to remove myself, do you!*`)
      if (groupAdmins.includes(users)) return replay(`*i can't remove admins from groups*`)
      if (groupOwner.includes(users)) return replay(`*How do you expect me to remove the group owner, do it if you can!*`)
      if (!participants.includes(users)) return replay(`The person you are trying to remove is not in this group`)
