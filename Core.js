@@ -1573,23 +1573,6 @@ case 'rules': case 'botrule': {
     }
     break
 
-/*
-
-case 'report': case 'suggest ': {
-    if (isBan) return reply(mess.banned)
-    if (isBanChat) return reply(mess.bangc)
-    if (!text) return reply(`please provide a report message you want to deliver`)
-    const msg = text.trim().split(" ");
-    if (msg.length > 300) return reply(`Are you trying to send virus!`)
-    const txtmsg = `*📮 Report Message*\n\n_Sender: @${m.sender.split("@")[0]}_\n_SMS: ${msg}_`
-	for (let mod of global.Owner.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').filter(v => v != '09051064375@s.whatsapp.net'))
-	await Miku.sendMessage(`${mod}`, {text: `${txtmsg}`},  { quoted: m })
-	await Miku.sendMessage(`120363043720243658@g.us`, {text: `${txtmsg}`, mentions: groupAdmins}, { quoted: m })
-    replay(`_✅ Your Report has been submitted Successfully to *Support group* & *Owner*_\n\n*_You will get response shortly♥️_`); 
- }
- break  
- */
-
 
 case 'report': case 'suggest ': {
     if (isBan) return reply(mess.banned)
@@ -3232,6 +3215,7 @@ let mentioned = participants.map(v => v.jid)
      }
      break
 
+/*
      case 'remove':{
         if (isBan) return reply(mess.banned)	 			
      if (isBanChat) return reply(mess.bangc)
@@ -3243,6 +3227,27 @@ let mentioned = participants.map(v => v.jid)
      await Miku.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => replay(`*❌ Successfully Removed*`)).catch((err) => replay(jsonformat(err)))
      }
      break
+*/
+
+     
+case 'remove':{
+        if (isBan) return reply(mess.banned)	 			
+     if (isBanChat) return reply(mess.bangc)
+     if (!m.isGroup) return replay(mess.grouponly)
+     if (!isBotAdmins) return replay(mess.botadmin)
+     if (!isAdmins && !isCreator) return replay(mess.useradmin)
+     let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+     if (!users) return replay(`*Mention/tag the person you want to remove*`)
+     if (itsMe.includes(users)) return replay(`*You don't expect me to remove myself, do you!*`)
+     if (groupAdmins.includes(users)) return replay(`*i can't remove admins from groups*`)
+     if (groupOwner.includes(users)) return replay(`*How do you expect me to remove the group owner, do it if you can!*`)
+     if (!participants.includes(users)) return replay(`The person you are trying to remove is not in this group`)
+     else{
+         await Miku.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => replay(`❌ Successfully Removed`)).catch((err) => replay(jsonformat(err)))
+          }
+     }
+     break
+
 
 
      case 'join': {
@@ -5374,6 +5379,7 @@ Owner Name : ${global.OwnerName}
 ║ ${prefix}script
 ║ ${prefix}ethan
 ║ ${prefix}about
+║ ${prefix}report
 ║ ${prefix}rules
 ║ ${prefix}hello|hi
 ║
@@ -5390,6 +5396,7 @@ Owner Name : ${global.OwnerName}
 ║ ${prefix}qr
 ║ ${prefix}block
 ║ ${prefix}unblock
+║ ${prefix}getcase
 ║ ${prefix}broadcast
 ║ ${prefix}setbotpp
 ║ ${prefix}setbotname
@@ -5677,7 +5684,7 @@ case 'help': case 'h': {
 ⊶ 𝑹𝒆𝒂𝒅 𝑩𝒐𝒕𝒕𝒐 𝒓𝒖𝒍𝒆𝒔 𝒃𝒆𝒇𝒐𝒓𝒆 𝒖𝒔𝒆
 ⊶ © 𝑪𝒐𝒑𝒚𝒓𝒊𝒈𝒉𝒕 miku
 ⊶ 𝑹𝒆𝒑𝒐𝒓𝒕 𝒂 𝒃𝒖𝒈 ${prefix}𝐨𝐰𝐧𝐞𝐫
-⊶─────────────────────
+⊶────────────────────
 
 ❥︎ Ⓖ︎𝗲𝗻𝗲𝗿𝗮𝗹 
 🎐 ${prefix}𝙷𝚎𝚕𝚙1
@@ -5762,6 +5769,7 @@ case 'help1': case 'h1': {
 ⛲ ${prefix}repo
 ⛲ ${prefix}script
 ⛲ ${prefix}ethan
+⛲ ${prefix}report
 ⛲ ${prefix}about
 ⛲ ${prefix}rules
 ⛲ ${prefix}lyrics
@@ -6024,6 +6032,7 @@ case 'help7': case 'h7': {
 🎗️ ${prefix}bye
 🎗️ ${prefix}join
 🎗️ ${prefix}qr
+🎗️ ${prefix}getcase
 🎗️ ${prefix}block
 🎗️ ${prefix}unblock
 🎗️ ${prefix}broadcast
