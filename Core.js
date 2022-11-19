@@ -3237,16 +3237,16 @@ case 'remove':{
      if (!isBotAdmins) return replay(mess.botadmin)
      if (!isAdmins && !isCreator) return replay(mess.useradmin)
      let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-     if (!text) return replay(`*Mention/tag the person you want to remove*`)
-     if (botNumber) return replay(`*You don't expect me to remove myself, do you!*`)
-     if (groupAdmins.includes(users)) return replay(`*i can't remove admins from groups*`)
      if (groupOwner) return replay(`*How do you expect me to remove the group owner, do it if you can!*`)
-     if (!participants) return replay(`The person you are trying to remove is not in this group`)
+     //if (itsMe) return replay(`*You don't expect me to remove myself, do you!*`)
+     if (groupAdmins.includes(users)) return replay(`*i can't remove admins from groups*`)
+     //if (!participants) return replay(`The person you are trying to remove is not in this group`)
      else{
          await Miku.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => replay(`❌ Successfully Removed`)).catch((err) => replay(jsonformat(err)))
           }
      }
      break
+
 
 
 
