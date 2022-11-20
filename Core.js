@@ -3006,6 +3006,25 @@ case 'status': case 'post': {
  }
  break
 
+
+case'tagadmins': case 'admins': case 'admin' {
+    if (isBan) return reply(mess.banned)	 			
+ if (isBanChat) return reply(mess.bangc)
+ if (!m.isGroup) return replay(mess.grouponly)
+ if (!(quoted || text.length > 2)) return replay(`*Please quote or write a meaningful message to tag admins to*`)
+ let teks = `*「 Tag Admins 」*
+  
+ *Message : ${text}*\n\n`
+ for (let mem of groupAdmins) {
+ teks += `🎀 @${mem.id.split('@')[0]}\n`
+ }
+ Miku.sendMessage(m.chat, { text: teks, mentions: groupAdmins}, { quoted: m })
+ }
+ break
+
+
+
+
 /*
      case 'purge':{
         if (isBan) return reply(mess.banned)	 			
