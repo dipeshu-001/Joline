@@ -1693,7 +1693,6 @@ break
 /*
 case 'clearbank': case 'bankrupt': {
         if (!isCreator) return replay(mess.botowner)
-        var texts = text.trim();
         var user = m.sender
         var cara = 'cara'
         const deduct1 = eco.deduct(user, cara, texts)
@@ -1946,7 +1945,7 @@ case 'slot': case 'spin': {
        const fruit1= ["🥥", "🍎", "🍇"]
        const fruit2 = ["🍎", "🍇", "🥥"]  
        const fruit3 = ["🍇", "🥥", "🍎"]         
-       const fruit4 = "🍇"
+       const fruit4 = ["🍇", "🍇", "🍇"]
        const lose = ['*You suck at playing this game*\n\n_--> 🍍-🥥-🍎_', '*Totally out of line*\n\n_--> 🥥-🍎-🍍_', '*Are you a newbie?*\n\n_--> 🍎-🍍-🥥_']
        const smallLose = ['*You cannot harvest coconut 🥥 in a pineapple 🍍 farm*\n\n_--> 🍍>🥥<🍍_', '*Apples and Coconut are not best Combo*\n\n_--> 🍎>🥥<🍎_', '*Coconuts and Apple are not great deal*\n\n_--> 🥥>🍎<🥥_']
        const won = ['*You harvested a basket of*\n\n_--> 🍎+🍎+🍎_', '*Impressive, You must be a specialist in plucking coconuts*\n\n_--> 🥥+🥥+🥥_', '*Amazing, you are going to be making pineapple juice for the family*\n\n_--> 🍍+🍍+🍍_']             
@@ -1961,7 +1960,7 @@ case 'slot': case 'spin': {
        const f1 = fruit1[Math.floor(Math.random() * fruit1.length)];
        const f2 = fruit2[Math.floor(Math.random() * fruit2.length)];
        const f3 = fruit3[Math.floor(Math.random() * fruit3.length)];
-       //const f4 = fruit4[Math.floor(Math.random() * fruit4.length)];
+       const f4 = fruit4[Math.floor(Math.random() * fruit4.length)];
        const mess1 = lose[Math.floor(Math.random() * lose.length)];
        const mess2 = won[Math.floor(Math.random() * won.length)];
        const mess3 = near[Math.floor(Math.random() * near.length)];
@@ -1988,7 +1987,7 @@ case 'slot': case 'spin': {
           const give4 = eco.give(user, cara, 20); 
                 replay(`${mess3}\n\n*Small Win -->* _💎20_`)
        }
-       else if ((f1 == f2) && (f2 == f3) && (f3 == f4)){
+       else if (((f1 == f2) && f2 == f3) && f3 == f4){
           const give5 = eco.give(user, cara, 1000);
                replay(`${mess4}\n\n_🎊 JackPot --> _💎1000_`)
        }
@@ -3234,20 +3233,6 @@ let mentioned = participants.map(v => v.jid)
       await Miku.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => replay(`✅Successfully Added!`)).catch((err) => replay(`Cannot add user to group`))
      }
      break
-
-/*
-     case 'remove':{
-        if (isBan) return reply(mess.banned)	 			
-     if (isBanChat) return reply(mess.bangc)
-     if (!m.isGroup) return replay(mess.grouponly)
-     if (itsMe) return replay(`*🥱 How can I remove myself*`)
-     if (!isBotAdmins) return replay(mess.botadmin)
-     if (!isAdmins && !isCreator) return replay(mess.useradmin)
-     let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net' 
-     await Miku.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => replay(`*❌ Successfully Removed*`)).catch((err) => replay(jsonformat(err)))
-     }
-     break
-*/
 
      
 case 'remove':{
@@ -5337,6 +5322,7 @@ case 'leavegc': case 'leavegroup': case 'bye': {
                 break
 
 
+/*
 case 'bc': case 'broadcast': case 'bcall': {
     if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
@@ -5362,7 +5348,41 @@ Miku.send5ButImg(yoi, txt, `${global.BotName}`, BotLogo, btn, Thumb)
 }
 replay('Broadcast Sent !')
 }
-break    
+break  
+*/
+
+
+
+case'broadcast': case 'bc': {
+    if (isBan) return reply(mess.banned)	 			
+    if (isBanChat) return reply(mess.bangc)
+if (!isCreator) return replay(mess.botowner)
+if (!text) return replay(`Please enter some text to broadcast! \n\nExample : ${prefix + command} ${global.OwnerName}`)
+let anu = await store.chats.all().filter(v => v.id.endsWith('g.us')).map(v => v.id)               //await store.chats.all().map(v => v.id)
+replay(`Sent Broadcast To ${anu.length} Chats`) //\nTime's up ${anu.length * 1} second
+for (let yoi of anu) {
+let btn = [{
+quickReplyButton: {
+displayText: '💞Menu💞',
+id: '${prefix}menu'
+}  
+}, {
+quickReplyButton: {
+displayText: '🎀Bot Owner🎀',
+id: '${prefix}owner'
+}
+}]
+let txt = `「 *BOT'S ANNOUNCEMENT* 」\n\n${text}`
+Miku.send5ButImg(yoi, txt, `sent by owner >> JayJay`, BotLogo, btn, Thumb)
+}
+replay('Broadcast Sent !')
+}
+break
+	
+
+
+
+  
 
 //-----------------------------------------
 
