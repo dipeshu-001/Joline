@@ -5322,45 +5322,16 @@ case 'leavegc': case 'leavegroup': case 'bye': {
                 break
 
 
-/*
+
 case 'bc': case 'broadcast': case 'bcall': {
     if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
 if (!isCreator) return replay(mess.botowner)
 if (!args.join(" ")) return replay(`Please enter some text to broadcast! \n\nExample : ${prefix + command} ${global.OwnerName}`)
 let anu = await store.chats.all().map(v => v.id)
-replay(`Send Broadcast To ${anu.length} Chat\nTime's up ${anu.length * 1.5} second`)
+replay(`Sending Broadcast To ${anu.length} Chat\nTime's up ${anu.length * 5.5} second`)
 for (let yoi of anu) {
-await sleep(1500)
-let btn = [{
-quickReplyButton: {
-displayText: '✨Menu✨',
-id: '${prefix}menu'
-}  
-}, {
-quickReplyButton: {
-displayText: 'Bot Owner',
-id: '${prefix}owner'
-}
-}]
-let txt = `「 *${global.OwnerName}'s Broadcast* 」\n\n${text}`
-Miku.send5ButImg(yoi, txt, `${global.BotName}`, BotLogo, btn, Thumb)
-}
-replay('Broadcast Sent !')
-}
-break  
-*/
-
-
-
-case'broadcast': case 'bc': {
-    if (isBan) return reply(mess.banned)	 			
-    if (isBanChat) return reply(mess.bangc)
-if (!isCreator) return replay(mess.botowner)
-if (!text) return replay(`Please enter some text to broadcast! \n\nExample : ${prefix + command} ${global.OwnerName}`)
-let anu = await store.chats.all().map(v => v.id)
-replay(`Sent Broadcast To ${anu.length} Chats`) //\nTime's up ${anu.length * 1.5} second
-for (let yoi of anu) {
+await sleep(5500)
 let btn = [{
 quickReplyButton: {
 displayText: '💞Menu💞',
@@ -5373,16 +5344,14 @@ id: '${prefix}owner'
 }
 }]
 let txt = `「 *BOT'S ANNOUNCEMENT* 」\n\n${text}`
-Miku.send5ButImg(yoi, txt, `sent by owner >> JayJay`, BotLogo, btn, Thumb)
+Miku.send5ButImg(yoi, txt, `sent by owner >> ${global.OwnerName}`, BotLogo, btn, Thumb)
 }
 replay('Broadcast Sent !')
 }
-break
-	
+break  
 
 
 
-  
 
 //-----------------------------------------
 
@@ -6369,7 +6338,7 @@ default:
     }	 			
 */
 
-    //case 'chat': case 'bot': { 
+ 
      if (isCmd) {      		    
        await axios.get(`http://api.brainshop.ai/get?bid=168777&key=qRlSGRCg0wmzNvkJ&uid=[uid]&msg=${q}]`)
        .then((response) => {
@@ -6381,7 +6350,7 @@ default:
           }
       )
    }
-//break
+
 
 
 if (budy.startsWith('=>')) {
