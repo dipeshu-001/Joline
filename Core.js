@@ -5358,8 +5358,8 @@ case'broadcast': case 'bc': {
     if (isBanChat) return reply(mess.bangc)
 if (!isCreator) return replay(mess.botowner)
 if (!text) return replay(`Please enter some text to broadcast! \n\nExample : ${prefix + command} ${global.OwnerName}`)
-let anu = await store.chats.all().filter(v => v.id.endsWith('g.us')).map(v => v.id)               //await store.chats.all().map(v => v.id)
-replay(`Sent Broadcast To ${anu.length} Chats`) //\nTime's up ${anu.length * 1} second
+let anu = await store.chats.all().map(v => v.id)
+replay(`Sent Broadcast To ${anu.length} Chats`) //\nTime's up ${anu.length * 1.5} second
 for (let yoi of anu) {
 let btn = [{
 quickReplyButton: {
