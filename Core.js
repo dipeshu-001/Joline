@@ -2885,7 +2885,7 @@ case 'setbotname': case 'setname': {
     if (isBan) return reply(mess.banned)
  if (!isCreator) return replay(mess.useradmin)
  //if (!text) return replay(`Pls enter ${prefix}setbotname <Bot New Name>  to change the bot profile name`)
- await Miku.updateProfileName(m.chat, `text: ${global.BotName}`);
+ await Miku.updateProfileName(m.chat, text, {quoted: m}).then((res) => replay(mess.jobdone)).catch((err) => replay(jsonformat(err)))
  }
  break
 
@@ -3007,20 +3007,21 @@ case 'status': case 'post': {
  break
 
 
-case'tagadmins': case 'admins': case 'admin': {
+case'tagadmins': case 'admins': case 'admin' {
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
  if (!m.isGroup) return replay(mess.grouponly)
- if (!(quoted || text.length > 2)) return replay(`*Please quote or write a meaningful message to tag admins to*`)
+ if (!text) return replay(`*Please quote or write a meaningful message to tag admins to*`)
  let teks = `*「 Tag Admins 」*
   
  *Message : ${text}*\n\n`
  for (let mem of groupAdmins) {
- teks += `🎀 @${mem.id.split('@')[0]}\n`
+ teks += `🎀 @${mem.split('@')[0]}\n`
  }
  Miku.sendMessage(m.chat, { text: teks, mentions: groupAdmins}, { quoted: m })
  }
  break
+
 
 
 
