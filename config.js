@@ -7,27 +7,25 @@ global.autoReadAll = false
 global.antitags = true
 
 
-global.Owner = ['2349051064375']
-global.OwnerNumber = ['2349051064375']
-global.ownertag = ['2349051064375']
-global.BotName = "Ethan-v2"
-global.packname = "Ethan-v2"
-global.author = "By: JayJay-Ops"
-global.OwnerName = "JayJay-Ops"
-global.BotSourceCode = "https://github.com/jayjay-ops/Miku-MD"
-global.SupportGroupLink = "https://chat.whatsapp.com/JcBzjRIxM5UHfuJbt0KrWt"
+global.Owner = ['919609900020']
+global.OwnerNumber = ['919609900020']
+global.ownertag = ['919609900020']
+global.BotName = "Cujo-joline"
+global.packname = "✨ Joline"
+global.author = "𝖳𝗈𝗌𝗁𝗂||𝖪𝗎𝗇 ✨"
+global.OwnerName = "Toshi_kun"
 global.sessionName = "session"
 
 // Prefix //
 // If you want to change the prefix, change it and also change all switch's button id from Core.js  otherwise buttons will not work //
-global.prefa = ['!'] 
+global.prefa = ['+'] 
 
 
-global.location = "Edo State, Nigeria"
+global.location = "India, Kolkata"
 global.reactmoji = "🌹"
 global.themeemoji = "🤴"
 global.vidmenu = { url: 'https://c.tenor.com/YGuLegQWubwAAAPo/miku-nakano-gotoubun-no-hanayome.mp4' }
-global.websitex = "https://github.com/jayjay-ops"
+global.websitex = "https://github.com/Toshi-san001"
 global.lolhuman = "is this play 😂"
 
 
@@ -69,7 +67,7 @@ global.mess = {
     nolink: 'Please provide me a valid *link* !',
     error: 'An error occurred!',
     banned: 'You are *Banned* fron using the bot, seek owners number to get *unbanned*!',
-    bangc: 'This Group is *Banned* from using Commands!, seek help from bot owner by typing command *!owner*',
+    bangc: 'This Group is *Banned* from using Commands!, seek help from bot owner by typing command *+owner*',
     nonsfw: 'Get yourself a girlfriend/boyfriend! This is not a porn enabled group!'
     
 }
